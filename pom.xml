@@ -26,14 +26,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>javafx</artifactId>
-			<version>2.2</version>
-			<scope>system</scope>
-			<systemPath>${env.JAVA_HOME}/lib/javafx-mx.jar</systemPath>
-		</dependency>
-
-		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>eclipselink</artifactId>
 			<version>2.5.2-M1</version>
@@ -54,6 +46,8 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.name}</finalName>
+
 		<plugins>
 
 			<plugin>
@@ -71,14 +65,21 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/jar-with-dependencies.xml</descriptor>
+					</descriptors>
 					<archive>
 						<manifest>
 							<Main-Class>${mainClass}</Main-Class>
+							<addClasspath>true</addClasspath>
+							<classpathLayoutType>repository</classpathLayoutType>
 						</manifest>
 						<manifestEntries>
 							<JavaFX-Application-Class>${mainClass}</JavaFX-Application-Class>
 							<Main-Class>${mainClass}</Main-Class>
 							<JavaFX-Version>${javafx.version}+</JavaFX-Version>
+							<implementation-version>1.0</implementation-version>
+							<Class-Path>javafx-${javafx.version}.jar</Class-Path>
 						</manifestEntries>
 					</archive>
 				</configuration>
@@ -95,9 +96,9 @@
 							<target>
 								<taskdef name="jfxdeploy" classname="com.sun.javafx.tools.ant.DeployFXTask"
 									classpathref="maven.plugin.classpath" />
-								<taskdef name="jfxsignjar" classname="com.sun.javafx.tools.ant.FXSingJatTask"
-									classpathref="maven.plugin.classpath" />
-								<jfxdeploy outdir="${project.build.directory}"
+								<!-- Firmar Jar <taskdef name="jfxsignjar" classname="com.sun.javafx.tools.ant.FXSingJatTask" 
+									classpathref="maven.plugin.classpath" /> -->
+								<jfxdeploy outdir="${project.build.directory}/deploy"
 									outfile="${project.build.finalName}" nativeBundles="all">
 									<info title="${project.name}" />
 									<application name="${project.name}" mainClass="${mainClass}" />
@@ -109,9 +110,8 @@
 										<jvmarg value="-Xmx1024m" />
 									</platform>
 								</jfxdeploy>
-								<jfxsingjar destdir="${project.build.directory}">
-									<fileset dir="${project.build.directory}" include="*.jar" />
-								</jfxsingjar>
+								<!-- Lineas para Firmar el Jar <jfxsingjar destdir="${project.build.directory}"> 
+									<fileset dir="${project.build.directory}" include="*.jar" /> </jfxsingjar> -->
 							</target>
 						</configuration>
 						<goals>
@@ -119,6 +119,24 @@
 						</goals>
 					</execution>
 				</executions>
+
+				<dependencies>
+					<dependency>
+						<groupId>com.oracle</groupId>
+						<artifactId>javafx</artifactId>
+						<version>2.2</version>
+						<scope>system</scope>
+						<systemPath>${env.JAVA_HOME}/lib/javafx-mx.jar</systemPath>
+					</dependency>
+					<dependency>
+						<groupId>com.oracle</groupId>
+						<artifactId>ant-javafx</artifactId>
+						<version>${javafx.version}</version>
+						<systemPath>${env.JAVA_HOME}/lib/ant-javafx.jar</systemPath>
+						<scope>system</scope>
+					</dependency>
+				</dependencies>
+
 			</plugin>
 
 		</plugins>

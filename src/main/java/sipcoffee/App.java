@@ -9,24 +9,20 @@ import netscape.javascript.JSObject;
 
 public class App extends Application{
 	
-	/*private WebView webView;
+	private WebView webView;
 	private WebEngine engine;
-	private JSObject windowJS;*/
+	private JSObject windowJS;
 	
 	@Override
 	public void start(Stage stage){
 		
-		WebView webView = new WebView();
-		WebEngine engine = webView.getEngine();
+		webView = new WebView();
+		engine = webView.getEngine();
+		windowJS = (JSObject) engine.executeScript("window");
 		
 		engine.load( getClass().getResource("web/index.html").toExternalForm() );
 		
-		/*
-		JSObject windowJS = (JSObject) engine.executeScript("window");		
-		engine.executeScript("window.console.log = java.lang.System.out.println");
-		engine.executeScript("window.console.debug = java.lang.System.out.println");
-		*/
-				
+					
 		stage.setTitle("Sipcoffee");
 		stage.setScene( new Scene(webView) );
 		stage.show();
