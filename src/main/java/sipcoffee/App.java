@@ -20,12 +20,19 @@ public class App extends Application{
 		engine = webView.getEngine();
 		windowJS = (JSObject) engine.executeScript("window");
 		
+		windowJS.setMember("javaMain", this);
+		engine.executeScript("window.console.log = function(obj){ javaMain.print(obj); };");
+		
 		engine.load( getClass().getResource("web/index.html").toExternalForm() );
 		
 					
 		stage.setTitle("Sipcoffee");
 		stage.setScene( new Scene(webView) );
 		stage.show();
+	}
+	
+	public void print(Object obj){
+		System.out.println(obj);
 	}
 	
 	public static void main(String[] args) {
