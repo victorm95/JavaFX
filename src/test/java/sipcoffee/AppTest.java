@@ -1,38 +1,38 @@
 package sipcoffee;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertTrue;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+import sipcoffee.models.Conexion;
+import sipcoffee.models.Rol;
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+
+public class AppTest {
+	
+	private Rol rol1 ,rol2;
+	
+	@Before
+	public void config(){
+		rol1 = new Rol();
+		rol1.setNombre("Administrador");
+		
+		rol2 = new Rol("Cosechadr");
+	}
+	
+	@Test
+	@Ignore
+	public void test1(){
+		assertTrue("Insertando Administrador",Conexion.persist(rol1));
+		assertTrue("Insertando Cosechador	",Conexion.persist(rol2));
+	}
+	
+	@After
+	public void exit(){
+		
+	}
+	
 }
