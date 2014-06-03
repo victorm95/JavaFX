@@ -1,20 +1,42 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app="rol">
 	<head>
-		<meta charset="UTF-8" />
-		<title>Home</title>
-		
-		<script>
-			console.log("Funciona!!!");
-		</script>
-		
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width , initial-scale=1"/>
+		<title>AngularJS</title>
+
+		<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+		<script src="js/jquery/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap/bootstrap.min.js"></script>
+		<script src="js/angularjs/angular.min.js"></script>
+
+		<script src="js/controllers/rolController.js"></script>
 	</head>
-	
-<body>
-	
-	<header>
-		<h1>Home</h1>
-	</header>
-	
-</body>
+
+	<body>
+
+		<section class="container">
+
+			<article class="well well-lg" ng-controller="rolController">
+
+				<div class="form-group row">
+					<div class="col-md-4">
+						<input ng-model="name" class="form-control input-lg" placeholder="Rol..."/>
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg" ng-click="guardar(name)">
+							Enviar
+						</button>
+					</div>
+				</div>
+
+				<div class="alert alert-info">
+					<h3> {{ mensaje }} </h3>
+				</div>
+
+			</article>
+
+		</section>
+
+	</body>
 </html>

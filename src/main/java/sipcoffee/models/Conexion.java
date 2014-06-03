@@ -33,5 +33,17 @@ public class Conexion {
 			return false;
 		}
 	}
+	
+	public static boolean remove(Object obj){
+		try{
+			init();
+			manager.getTransaction().begin();
+			manager.remove(obj);
+			manager.getTransaction().commit();
+			return true;
+		}catch(Exception e){
+			return false;
+		}
+	}
 
 }

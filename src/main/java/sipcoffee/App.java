@@ -6,6 +6,8 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import netscape.javascript.JSObject;
+import sipcoffee.models.Conexion;
+import sipcoffee.models.Rol;
 
 public class App extends Application{
 	
@@ -23,9 +25,13 @@ public class App extends Application{
 		windowJS.setMember("javaMain", this);
 		engine.executeScript("window.console.log = function(obj){ javaMain.print(obj); };");
 		
+		/*-------------------------------  Agragar los modelos al webView --------------------------------*/
+		windowJS.setMember("Rol",new Rol());
+		
+		/*------------------------------------------------------------------------------------------------*/
+		
 		engine.load( getClass().getResource("web/index.html").toExternalForm() );
 		
-					
 		stage.setTitle("Sipcoffee");
 		stage.setScene( new Scene(webView) );
 		stage.show();
