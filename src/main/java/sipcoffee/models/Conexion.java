@@ -1,47 +1,58 @@
 package sipcoffee.models;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 public class Conexion {
-	
+
 	public static final String PERSISTENCE_UNIT_DEV = "dev";
-	
+
 	public static EntityManagerFactory factory;
 	public static EntityManager manager;
-	
-	//Constructor privado para aplicar patron Singleton
-	private Conexion(){}
-	private static void init(){
-		if(factory == null){
-			factory = Persistence.createEntityManagerFactory(Conexion.PERSISTENCE_UNIT_DEV);
+
+	// Constructor privado para aplicar patron Singleton
+	private Conexion() {
+	}
+
+	private static void init() {
+		if (factory == null) {
+			factory = Persistence
+					.createEntityManagerFactory(Conexion.PERSISTENCE_UNIT_DEV);
 		}
-		if(manager == null){
+		if (manager == null) {
 			manager = factory.createEntityManager();
 		}
 	}
-	
-	public static boolean persist(Object obj){
-		try{
+
+	public static boolean persist(Object obj) {
+		try {
 			init();
 			manager.getTransaction().begin();
 			manager.persist(obj);
 			manager.getTransaction().commit();
 			return true;
-		}catch(Exception e){
+		} catch (Exception e) {
 			return false;
 		}
 	}
-	
-	public static boolean remove(Object obj){
-		try{
+
+	public static List<Object> namedQuery(String queryName) {
+		init();
+		return manager.createNamedQuery(queryName).getResultList();
+	}
+
+	public static boolean delete(Object obj) {
+		try {
 			init();
 			manager.getTransaction().begin();
 			manager.remove(obj);
 			manager.getTransaction().commit();
 			return true;
-		}catch(Exception e){
+		} catch (Exception e) {
 			return false;
 		}
 	}

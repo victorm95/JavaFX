@@ -1,21 +1,30 @@
 package sipcoffee.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import jdk.nashorn.internal.parser.JSONParser;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Entity
 @Table(name = "Roles")
+@NamedQuery(name = "all-Rol", query = "SELECT rol FROM Rol as rol")
 public class Rol {
-	
+
 	// Constructores
-	public Rol(){}
-	public Rol(String nombre){
+	public Rol() {
+	}
+
+	public Rol(String nombre) {
 		this.nombre = nombre;
 	}
 
@@ -28,30 +37,30 @@ public class Rol {
 	private String nombre;
 
 	/*-------------------------------------- Acciones DB ---------------------------------------------*/
-	
-	public Rol create(){
-		return new Rol();
-	}
-	
-	public Rol create(String nombre){
-		return new Rol(nombre);
-	}
-	
-	public boolean save(){
+
+	public boolean save() {
 		return Conexion.persist(this);
 	}
-	
-	public String all(){
+
+	public String all() {
+		JSONArray jsonArray = new JSONArray();
 		
-		return "";
+		List<Object> list = Conexion.namedQuery("all-Rol");
+		
+		for( Object rol : list ){
+			jsonArray.put( ((Rol)rol).toJson() );
+		}
+		
+		return jsonArray.toString();
+	}
+
+	public boolean delete() {
+		return Conexion.delete(this);
 	}
 	
-	public boolean delete(){
-		return Conexion.remove(this);
-	}
-	
+
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
-	
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -59,20 +68,20 @@ public class Rol {
 	public String getNombre() {
 		return this.nombre;
 	}
-	
-	public int getId(){
+
+	public int getId() {
 		return this.id;
 	}
 
 	/*-------------------------------------- Conversiones ---------------------------------------------*/
-	
-	public String toJson(){
+
+	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put("id", this.id);
 		json.put("nombre", this.nombre);
 		return json.toString();
 	}
-	
+
 	@Override
 	public String toString() {
 		return "[id=" + this.id + ", nombre=" + this.nombre + "]";

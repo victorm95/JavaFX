@@ -9,6 +9,7 @@
 		<script src="js/jquery/jquery-2.1.1.min.js"></script>
 		<script src="js/bootstrap/bootstrap.min.js"></script>
 		<script src="js/angularjs/angular.min.js"></script>
+		<script src="js/controllers/jsonrpc-min.js"></script>
 
 		<script src="js/controllers/rolController.js"></script>
 	</head>
@@ -28,6 +29,14 @@
 							Enviar
 						</button>
 					</div>
+				</div>
+
+				<div class="alert alert-success">
+					<ul>
+						<li ng-repeat="rol in roles">
+							<span> {{ rol.nombre }}</span>
+						</li>
+					</ul>
 				</div>
 
 				<div class="alert alert-info">

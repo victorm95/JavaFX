@@ -25,8 +25,8 @@ public class RolTest {
 		assertTrue("Insertando Administrador",Conexion.persist(admin));
 		assertTrue("Insertando Cosechador	",Conexion.persist(cosecha));
 	
-		assertTrue("Eliminando Administrador",Conexion.remove(admin));
-		assertTrue("Eliminando Cosechador	",Conexion.remove(cosecha));
+		assertTrue("Eliminando Administrador",Conexion.delete(admin));
+		assertTrue("Eliminando Cosechador	",Conexion.delete(cosecha));
 	}
 	
 	@After

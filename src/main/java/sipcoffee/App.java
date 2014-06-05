@@ -6,41 +6,41 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import netscape.javascript.JSObject;
-import sipcoffee.models.Conexion;
-import sipcoffee.models.Rol;
+import sipcoffee.controllers.RolCtrl;
 
-public class App extends Application{
-	
+public class App extends Application {
+
 	private WebView webView;
 	private WebEngine engine;
 	private JSObject windowJS;
-	
+
 	@Override
-	public void start(Stage stage){
-		
+	public void start(Stage stage) {
+
 		webView = new WebView();
 		engine = webView.getEngine();
 		windowJS = (JSObject) engine.executeScript("window");
-		
+
 		windowJS.setMember("javaMain", this);
 		engine.executeScript("window.console.log = function(obj){ javaMain.print(obj); };");
 		
+
 		/*-------------------------------  Agragar los modelos al webView --------------------------------*/
-		windowJS.setMember("Rol",new Rol());
-		
+		windowJS.setMember("Rol", new RolCtrl());
+
 		/*------------------------------------------------------------------------------------------------*/
-		
-		engine.load( getClass().getResource("web/index.html").toExternalForm() );
-		
+
+		engine.load(getClass().getResource("web/index.html").toExternalForm());
+
 		stage.setTitle("Sipcoffee");
-		stage.setScene( new Scene(webView) );
+		stage.setScene(new Scene(webView));
 		stage.show();
 	}
-	
-	public void print(Object obj){
+
+	public void print(Object obj) {
 		System.out.println(obj);
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
