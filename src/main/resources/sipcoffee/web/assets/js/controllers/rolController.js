@@ -13,7 +13,7 @@ function($scope) {
 			}));
 			if (rol.save()) {
 				$scope.mensaje = "Se ha creado el Rol " + name + " exitosamente.";
-				$scope.roles.push( JSON.parse(rol.toJson()) );
+				$scope.roles.push(JSON.parse(rol.toJson()));
 			} else {
 				$scope.mensaje = "Ocurrio un error al guradar el Rol " + name + ".";
 			}
