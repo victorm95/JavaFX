@@ -3,10 +3,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>sipcoffee</groupId>
-	<artifactId>Prueba1FX</artifactId>
+	<artifactId>Sipcoffee</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>JavaFX-Prueba</name>
+	<name>Sipcoffee</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
