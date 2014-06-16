@@ -36,6 +36,7 @@ public class Conexion {
 			manager.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
+			System.out.println("Error Persist: " + e.toString());
 			return false;
 		}
 	}

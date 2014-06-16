@@ -4,7 +4,7 @@ rol.controller('rolController', ['$scope',
 function($scope) {
 
 	$scope.mensaje = "";
-	//$scope.roles = JSON.parse(Rol.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
+	$scope.roles = JSON.parse(Rol.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
 	$scope.placeholder = "Escribe el nombre del Rol";
 
 	$scope.guardar = function(name) {
