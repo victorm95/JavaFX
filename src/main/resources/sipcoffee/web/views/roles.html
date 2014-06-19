@@ -39,27 +39,31 @@
 							<th class="info">Rol</th>
 						</tr>
 
-						<tr>
-							<td ng-click="seleccionar('Administrador')">Administrador</td>
+						<tr ng-repeat="rol in roles">
+							<td ng-click="seleccionar('')">{{ rol.nombre }}</td>
 						</tr>
 
+						<!--
 						<tr>
-							<td ng-click="seleccionar('Cosechador')">Cosechador</td>
+						<td ng-click="seleccionar('Administrador')">Administrador</td>
 						</tr>
-
 						<tr>
-							<td ng-click="seleccionar('Fumigador')">Fumigador</td>
+						<td ng-click="seleccionar('Cosechador')">Cosechador</td>
 						</tr>
+						<tr>
+						<td ng-click="seleccionar('Fumigador')">Fumigador</td>
+						</tr>
+						-->
 
 					</table>
 				</article>
 
 				<article class="well well-lg col-md-offset-7 col-md-4 affix affix-top">
-					<form class="form-horizontal">
+					<form class="form-horizontal" ng-submit="guardar()">
 						<div class="form-group">
 							<label for="nombre" class="control-label col-md-offset-1 col-md-2">Nombre</label>
 							<div class="col-md-7">
-								<input type="text" name="nombre" id="nombre" placeholder="{{ placeholder }}" class="form-control" required />
+								<input type="text" ng-model="nombre" name="nombre" id="nombre" placeholder="{{ placeholder }}" class="form-control" required />
 							</div>
 						</div>
 

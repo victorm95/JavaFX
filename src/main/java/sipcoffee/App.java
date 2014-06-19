@@ -24,17 +24,16 @@ public class App extends Application {
 		windowJS.setMember("javaMain", this);
 		engine.executeScript("window.console.log = function(obj){ javaMain.print(obj); };");
 		engine.executeScript("window.load = function(url){ javaMain.load(url); };");
-		
 
 		/*-------------------------------  Agragar los modelos al webView --------------------------------*/
 		windowJS.setMember("Rol", new RolCtrl());
 
 		/*------------------------------------------------------------------------------------------------*/
 
-		//engine.load(getClass().getResource("web/views/roles.html").toExternalForm());		
+		// engine.load(getClass().getResource("web/views/roles.html").toExternalForm());
 
 		load("web/views/roles.html");
-		
+
 		stage.setTitle("Sipcoffee");
 		stage.setScene(new Scene(webView));
 		stage.show();
@@ -43,11 +42,12 @@ public class App extends Application {
 	public void print(Object obj) {
 		System.out.println(obj);
 	}
-	
-	public void load(String url){
+
+	public void load(String url) {
 		System.out.println("Reload: " + url);
-		System.out.println("Location: "+engine.getLocation());
-		System.out.println("Load: " + getClass().getResource(url).toExternalForm());
+		System.out.println("Location: " + engine.getLocation());
+		System.out.println("Load: "
+				+ getClass().getResource(url).toExternalForm());
 		engine.load(getClass().getResource(url).toExternalForm());
 	}
 

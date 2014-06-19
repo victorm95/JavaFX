@@ -2,12 +2,15 @@ package sipcoffee.models;
 
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +25,7 @@ public class Usuario {
 
 	// Constructores
 	public Usuario() {
+		this.activo = true;
 	}
 
 	@Id
@@ -29,10 +33,7 @@ public class Usuario {
 	@Column(name = "id_usuario")
 	private int id;
 
-	@Column(name = "id_rol")
-	private int idRol;
-
-	@Column(name = "nombre")
+	@Column(name = "nombre", length = 30)
 	private String nombre;
 
 	@Column(name = "cedula")
@@ -51,12 +52,44 @@ public class Usuario {
 	@Column(name = "fecha_registro")
 	private Date fechaRegistro;
 
-	public int getIdRol() {
-		return idRol;
+	@JoinColumn(name = "rol", referencedColumnName = "id_rol", nullable = false)
+	@OneToOne
+	private Rol rol;
+
+	/*-------------------------------------- Acciones DB ---------------------------------------------*/
+
+	public Date getFechaRegistro() {
+		return fechaRegistro;
 	}
 
-	public void setIdRol(int idRol) {
-		this.idRol = idRol;
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public boolean save() {
+		return Conexion.persist(this);
+	}
+
+	public String all() {
+		JSONArray jsonArray = new JSONArray();
+
+		List<Object> list = Conexion.namedQuery("all-Rol");
+
+		for (Object rol : list) {
+			jsonArray.put(((Rol) rol).toJson());
+		}
+
+		return jsonArray.toString();
+	}
+
+	public boolean delete() {
+		return Conexion.delete(this);
+	}
+
+	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
+
+	public int getId() {
+		return this.id;
 	}
 
 	public String getNombre() {
@@ -99,48 +132,26 @@ public class Usuario {
 		this.activo = activo;
 	}
 
-	
-	
-	/*-------------------------------------- Acciones DB ---------------------------------------------*/
-
-	public Date getFechaRegistro() {
-		return fechaRegistro;
-	}
-
-	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
-	}
-
-	public boolean save() {
-		return Conexion.persist(this);
-	}
-
-	public String all() {
-		JSONArray jsonArray = new JSONArray();
-
-		List<Object> list = Conexion.namedQuery("all-Rol");
-
-		for (Object rol : list) {
-			jsonArray.put(((Rol) rol).toJson());
-		}
-
-		return jsonArray.toString();
-	}
-
-	public boolean delete() {
-		return Conexion.delete(this);
-	}
-
-	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
-
-	public int getId() {
-		return this.id;
-	}
-
 	/*-------------------------------------- Conversiones ---------------------------------------------*/
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
 
 	public String toJson() {
 		JSONObject json = new JSONObject();
+
+		json.put("id", this.id);
+		json.put("nombre", this.nombre);
+		json.put("cedula", this.cedula);
+		json.put("telefono", this.telefono);
+		json.put("rol", this.rol.getNombre());
+		json.put("activo", this.activo);
+		json.put("fecha_registro", this.fechaRegistro);
 
 		return json.toString();
 	}
