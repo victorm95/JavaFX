@@ -1,7 +1,6 @@
 package sipcoffee.models;
 
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
-import jdk.nashorn.internal.parser.JSONParser;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,7 +26,7 @@ public class Rol {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_rol")
+	@Column(name = "id_rol", nullable = false)
 	private int id;
 
 	@Column(name = "nombre")
@@ -44,20 +40,19 @@ public class Rol {
 
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
-		
+
 		List<Object> list = Conexion.namedQuery("all-Rol");
-		
-		for( Object rol : list ){
-			jsonArray.put( ((Rol)rol).toJson() );
+
+		for (Object rol : list) {
+			jsonArray.put(((Rol) rol).toJson());
 		}
-		
+
 		return jsonArray.toString();
 	}
 
 	public boolean delete() {
 		return Conexion.delete(this);
 	}
-	
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 

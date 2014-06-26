@@ -21,10 +21,10 @@ public class RolTest {
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void test(){
-		assertTrue("Insertando Administrador",Conexion.persist(admin));
-		assertTrue("Insertando Cosechador	",Conexion.persist(cosecha));
+		assertTrue("Insertando Administrador",admin.save());
+		assertTrue("Insertando Cosechador	",cosecha.save());
 	
 		assertTrue("Eliminando Administrador",Conexion.delete(admin));
 		assertTrue("Eliminando Cosechador	",Conexion.delete(cosecha));
