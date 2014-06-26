@@ -1,4 +1,4 @@
-JavaFX
+Proyecto
 ======
 
-Investifacion JavaFX
+Proyecto de formación hecho con JavaFX.
