@@ -1,19 +1,25 @@
 package sipcoffee.models;
 
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Entity
 @Table(name = "Roles")
-@NamedQuery(name = "all-Rol", query = "SELECT rol FROM Rol as rol")
+@NamedQueries({
+	@NamedQuery(name = "all-Rol", query = "SELECT rol FROM Rol as rol"),
+	@NamedQuery(name = "findById-Rol", query="SELECT rol FROM Rol as rol WHERE rol.id = :id")
+})
 public class Rol {
 
 	// Constructores
@@ -38,6 +44,11 @@ public class Rol {
 		return Conexion.persist(this);
 	}
 
+	public Rol find(int id){
+		Conexion.init();
+		return (Rol) Conexion.manager.createNamedQuery("findById-Rol").setParameter("id", id).getSingleResult();
+	}
+	
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
 

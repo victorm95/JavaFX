@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -33,7 +34,7 @@ public class UsuarioTest {
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void test(){
 		assertTrue("Insertando User",user1.save());		
 		//assertTrue("Eliminando User",user1.);

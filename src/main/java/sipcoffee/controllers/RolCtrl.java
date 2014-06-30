@@ -22,6 +22,9 @@ public class RolCtrl {
 		}
 	}
 	
+	public Rol findById(int id){
+		return new Rol().find(id);
+	}
 	
 	public String all(){
 		return new Rol().all();

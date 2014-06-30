@@ -18,7 +18,7 @@ public class Conexion {
 	private Conexion() {
 	}
 
-	private static void init() {
+	public static void init() {
 		if (factory == null) {
 			factory = Persistence
 					.createEntityManagerFactory(Conexion.PERSISTENCE_UNIT_DEV);
