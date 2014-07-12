@@ -7,11 +7,13 @@ version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>sipcoffee.models.Rol</class>
 		<class>sipcoffee.models.Usuario</class>
+		<class>sipcoffee.models.Departamento</class>
+		<class>sipcoffee.models.Municipio</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
-			value="jdbc:mysql://localhost:3306/test" />
-			<property name="javax.persistence.jdbc.user" value="dev" />
+			value="jdbc:mysql://localhost:3306/sipcoffee_dev" />
+			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 		</properties>

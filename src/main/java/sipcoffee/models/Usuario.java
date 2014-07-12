@@ -30,13 +30,19 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_usuario")
+	@Column(name = "idUsuario")
 	private int id;
 
 	@Column(name = "nombre", length = 30)
 	private String nombre;
 
-	@Column(name = "cedula")
+	@Column(name = "usuario", length = 30, nullable = false)
+	private String usuario;
+
+	@Column(name = "clave", nullable = false)
+	private String clave;
+
+	@Column(name = "cedula", nullable = false)
 	private long cedula;
 
 	@Column(name = "direccion")
@@ -45,26 +51,30 @@ public class Usuario {
 	@Column(name = "telefono")
 	private long telefono;
 
-	@Column(name = "activo")
+	@Column(name = "activo", nullable = false)
 	private boolean activo;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "fecha_registro")
+	@Column(name = "fechaRegistro")
 	private Date fechaRegistro;
 
-	@JoinColumn(name = "rol", referencedColumnName = "id_rol", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "expedicionDocumento", nullable = false)
+	private Date expedicionDocumento;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "ultimaSesion")
+	private Date ultimaSesion;
+
+	@JoinColumn(name = "idRol", referencedColumnName = "idRol", nullable = false)
 	@OneToOne
 	private Rol rol;
+	
+	@JoinColumn(name = "idMunicipio", referencedColumnName = "idMunicipio", nullable = false)
+	@OneToOne
+	private Municipio municipio;
 
 	/*-------------------------------------- Acciones DB ---------------------------------------------*/
-
-	public Date getFechaRegistro() {
-		return fechaRegistro;
-	}
-
-	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
-	}
 
 	public boolean save() {
 		return Conexion.persist(this);
@@ -72,11 +82,12 @@ public class Usuario {
 
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
+		Conexion.init();
+		List<Usuario> listUsuario = Conexion.manager.createNamedQuery(
+				"all-Usuarios", Usuario.class).getResultList();
 
-		List<Object> list = Conexion.namedQuery("all-Rol");
-
-		for (Object rol : list) {
-			jsonArray.put(((Rol) rol).toJson());
+		for (Usuario usuario : listUsuario) {
+			jsonArray.put(usuario.toJson());
 		}
 
 		return jsonArray.toString();
@@ -132,7 +143,37 @@ public class Usuario {
 		this.activo = activo;
 	}
 
-	/*-------------------------------------- Conversiones ---------------------------------------------*/
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
+	public Date getExpedicionDocumento() {
+		return expedicionDocumento;
+	}
+
+	public void setExpedicionDocumento(Date expedicionDocumento) {
+		this.expedicionDocumento = expedicionDocumento;
+	}
+
+	public Date getUltimaSesion() {
+		return ultimaSesion;
+	}
+
+	public void setUltimaSesion(Date ultimaSesion) {
+		this.ultimaSesion = ultimaSesion;
+	}
 
 	public Rol getRol() {
 		return rol;
@@ -141,6 +182,16 @@ public class Usuario {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
+
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	/*-------------------------------------- Conversiones ---------------------------------------------*/
 
 	public String toJson() {
 		JSONObject json = new JSONObject();

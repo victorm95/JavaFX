@@ -19,7 +19,7 @@ public class UsuarioTest {
 	public void config(){
 		
 		admin = new Rol("Admin");
-		admin.save();
+		//admin.save();
 		
 		user1 = new Usuario();
 		user1.setNombre("User");
@@ -30,19 +30,21 @@ public class UsuarioTest {
 		user1.setFechaRegistro( new Date() );
 		user1.setRol( admin );
 		
-		System.out.println( user1.toJson() );
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void test(){
-		assertTrue("Insertando User",user1.save());		
-		//assertTrue("Eliminando User",user1.);
+		//assertTrue("Insertando User", user1.save());		
+		//assertTrue("Eliminando User", user1.delete());
+		//assertTrue("Eliminando Rol", admin.delete());
 	}
 	
 	@After
 	public void exit(){
-		user1 = null;
+		/*admin.delete();
+		user1.delete();
+		user1 = null;*/
 	}
 	
 	

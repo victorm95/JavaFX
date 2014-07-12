@@ -32,7 +32,7 @@ public class Rol {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_rol", nullable = false)
+	@Column(name = "idRol", nullable = false)
 	private int id;
 
 	@Column(name = "nombre")

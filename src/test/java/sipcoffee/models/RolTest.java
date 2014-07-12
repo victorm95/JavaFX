@@ -18,21 +18,16 @@ public class RolTest {
 		admin.setNombre("Administrador");
 		
 		cosecha = new Rol("Cosechador");
-		
-		update = new Rol().find(1);
-		update.setNombre("Updated");
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void test(){
-		assertTrue("Insertando Administrador",admin.save());
-		assertTrue("Insertando Cosechador	",cosecha.save());
+		assertTrue("Insertando Administrador", admin.save());
+		assertTrue("Insertando Cosechador	", cosecha.save());
 		
-		assertTrue("Actualizando", update.save());
-	
-		assertTrue("Eliminando Administrador",Conexion.delete(admin));
-		assertTrue("Eliminando Cosechador	",Conexion.delete(cosecha));
+		assertTrue("Eliminando Administrador", admin.delete());
+		assertTrue("Eliminando Cosechador	", cosecha.delete());
 	}
 	
 	@After
