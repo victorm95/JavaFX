@@ -4,8 +4,8 @@ rol.controller('rolController', ['$scope',
 function($scope) {
 
 	$scope.mensaje = "";
-	$scope.roles = JSON.parse(Rol.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
-	/*$scope.roles = [{
+	//$scope.roles = JSON.parse(Rol.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
+	$scope.roles = [{
 		id : 1,
 		nombre : 'Admin'
 	}, {
@@ -14,7 +14,7 @@ function($scope) {
 	}, {
 		id : 3,
 		nombre : 'Fumigador'
-	}];*/
+	}];
 	$scope.selected = new Object();
 
 	$scope.guardar = function() {

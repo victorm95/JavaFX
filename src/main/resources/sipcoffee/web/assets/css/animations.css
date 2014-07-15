@@ -1,0 +1,27 @@
+/*---------------------------------- Animaciones de Vistas ----------------------------------*/
+
+.view-animation.ng-enter,
+.view-animation.ng-leave{
+    -webkit-transition:1s linear all;
+    -moz-transition:1s linear all;
+    transition:1s linear all;
+}
+
+
+.view-animation.ng-enter{
+    opacity: 0;
+    /*height: 0px;*/
+}
+.view-animation.ng-enter-active{
+    opacity: 1;
+    /*height: auto;*/
+}
+
+.view-animation.mg-leave{
+	 opacity: 1;
+	 /*height: auto;*/
+}
+.view-animation.ng-leave-active{
+	opacity: 0;
+	/*height: 0px;*/
+}

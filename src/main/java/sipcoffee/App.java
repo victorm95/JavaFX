@@ -32,7 +32,7 @@ public class App extends Application {
 
 		//engine.load(getClass().getResource("web/views/roles.html").toExternalForm());
 
-		load("web/views/roles.html");
+		load("web/views/index.html");
 
 		stage.setTitle("Sipcoffee");
 		stage.setScene(new Scene(webView));
