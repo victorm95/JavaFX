@@ -1,4 +1,4 @@
-var main = angular.module('main', [ 'ngRoute', 'rol' ]);
+var main = angular.module('main', [ 'ngRoute', 'rol', 'usuario' ]);
 
 main.config([ '$routeProvider', function($routeProvider) {
 
@@ -6,6 +6,10 @@ main.config([ '$routeProvider', function($routeProvider) {
 	when('/roles', {
 		templateUrl: 'roles.html',
 		controller: 'rolController'
+	})
+	.when('/usuarios', {
+		templateUrl: 'usuarios.html',
+		controller: 'usuarioController'
 	});
 	
 } ]);

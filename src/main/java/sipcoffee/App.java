@@ -7,6 +7,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 import sipcoffee.controllers.RolCtrl;
+import sipcoffee.controllers.UsuarioCtrl;
 
 public class App extends Application {
 
@@ -27,6 +28,7 @@ public class App extends Application {
 
 		/*-------------------------------  Agragar los modelos al webView --------------------------------*/
 		windowJS.setMember("Rol", new RolCtrl());
+		windowJS.setMember("Usuario", new UsuarioCtrl());
 
 		/*------------------------------------------------------------------------------------------------*/
 

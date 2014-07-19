@@ -17,9 +17,9 @@ import org.json.JSONObject;
 @Entity
 @Table(name = "Roles")
 @NamedQueries({
-	@NamedQuery(name = "all-Rol", query = "SELECT rol FROM Rol as rol"),
-	@NamedQuery(name = "findById-Rol", query="SELECT rol FROM Rol as rol WHERE rol.id = :id")
-})
+		@NamedQuery(name = "all-Rol", query = "SELECT rol FROM Rol as rol"),
+		@NamedQuery(name = "findById-Rol", query = "SELECT rol FROM Rol as rol WHERE rol.id = :id"),
+		@NamedQuery(name = "findByName-Rol", query = "SELECT rol FROM Rol as rol WHERE rol.nombre = :nombre") })
 public class Rol {
 
 	// Constructores
@@ -44,11 +44,18 @@ public class Rol {
 		return Conexion.persist(this);
 	}
 
-	public Rol find(int id){
+	public Rol find(int id) {
 		Conexion.init();
-		return (Rol) Conexion.manager.createNamedQuery("findById-Rol").setParameter("id", id).getSingleResult();
+		return (Rol) Conexion.manager.createNamedQuery("findById-Rol")
+				.setParameter("id", id).getSingleResult();
 	}
 	
+	public Rol find(String nombre) {
+		Conexion.init();
+		return (Rol) Conexion.manager.createNamedQuery("findByName-Rol")
+				.setParameter("nombre", nombre).getSingleResult();
+	}
+
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
 

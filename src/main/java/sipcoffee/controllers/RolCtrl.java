@@ -22,7 +22,7 @@ public class RolCtrl {
 		}
 	}
 	
-	public Rol findById(int id){
+	public Rol find(int id){
 		return new Rol().find(id);
 	}
 	
