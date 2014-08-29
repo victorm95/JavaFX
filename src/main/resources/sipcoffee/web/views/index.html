@@ -4,16 +4,24 @@
    <head>
       <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width , initial-scale=1"/>
-
+      
+      <!-- Bootstrap -->
       <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css" />
-      <link rel="stylesheet" href="../assets/css/animations.css" />
       <script src="../assets/js/jquery/jquery-2.1.1.min.js"></script>
       <script src="../assets/js/bootstrap/bootstrap.min.js"></script>
+      
+      <!-- AngularJS -->
       <script src="../assets/js/angularjs/angular.min.js"></script>
       <script src="../assets/js/angularjs/angular-route.min.js"></script>
       
+      <!-- Modules -->
       <script src="../assets/js/controllers/mainController.js"></script>
       <script src="../assets/js/controllers/rolController.js"></script>
+      <link rel="stylesheet" href="../assets/css/animations.css" />
+      
+      <!-- Polymer -->
+      <script src="../assets/components/platform/platform.js"></script>
+      <link rel="import" href="../assets/components/paper-toast/paper-toast.html"/>
 
    </head>
 
@@ -58,6 +66,7 @@
       <section class="container">
          <article class="view-animation" ng-view></article>
       </section>
+      
 
    </body>
 </html>

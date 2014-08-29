@@ -33,7 +33,7 @@ public class UsuarioTest {
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void test(){
 		//assertTrue("Insertando User", user1.save());		
 		//assertTrue("Eliminando User", user1.delete());

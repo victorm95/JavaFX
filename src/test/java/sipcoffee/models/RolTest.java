@@ -21,7 +21,7 @@ public class RolTest {
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void test(){
 		assertTrue("Insertando Administrador", admin.save());
 		assertTrue("Insertando Cosechador	", cosecha.save());
