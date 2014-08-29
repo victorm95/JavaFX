@@ -1,5 +1,8 @@
 package sipcoffee;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
@@ -7,6 +10,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 import sipcoffee.controllers.RolCtrl;
+import sipcoffee.controllers.UsuarioCtrl;
 
 public class App extends Application {
 
@@ -27,6 +31,7 @@ public class App extends Application {
 
 		/*-------------------------------  Agragar los modelos al webView --------------------------------*/
 		windowJS.setMember("Rol", new RolCtrl());
+		windowJS.setMember("Usuario", new UsuarioCtrl());
 
 		/*------------------------------------------------------------------------------------------------*/
 
@@ -44,14 +49,32 @@ public class App extends Application {
 	}
 
 	public void load(String url) {
-		System.out.println("Reload: " + url);
-		System.out.println("Location: " + engine.getLocation());
-		System.out.println("Load: "
-				+ getClass().getResource(url).toExternalForm());
 		engine.load(getClass().getResource(url).toExternalForm());
 	}
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public static String hash(Object text){
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			
+			md.update(text.toString().getBytes());
+			
+			//return new String( md.digest() );			
+
+	        byte byteData[] = md.digest();
+	 
+	        StringBuffer sb = new StringBuffer();
+	        for (int i = 0; i < byteData.length; i++) {
+	         sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+	        }
+			
+			return sb.toString();		
+		} catch (NoSuchAlgorithmException e) {
+			System.out.println("HashError: " + e.toString());
+			return null;
+		}
 	}
 }

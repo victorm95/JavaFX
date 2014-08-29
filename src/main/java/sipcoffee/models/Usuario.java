@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,9 +19,14 @@ import javax.persistence.TemporalType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import sipcoffee.App;
+
 @Entity
 @Table(name = "Usuarios")
-@NamedQuery(name = "all-Usuarios", query = "SELECT user FROM Usuario as user")
+@NamedQueries({
+		@NamedQuery(name = "all-Usuarios", query = "SELECT user FROM Usuario as user"),
+		@NamedQuery(name = "findById-Usuario", query = "SELECT user FROM Usuario as user WHERE user.id=:id"),
+		@NamedQuery(name = "login-Usuario", query = "SELECT user FROM Usuario as user WHERE user.usuario=:usuario AND user.clave=:clave") })
 public class Usuario {
 
 	// Constructores
@@ -36,7 +42,7 @@ public class Usuario {
 	@Column(name = "nombre", length = 30)
 	private String nombre;
 
-	@Column(name = "usuario", length = 30, nullable = false)
+	@Column(name = "usuario", length = 30, nullable = false, unique = true)
 	private String usuario;
 
 	@Column(name = "clave", nullable = false)
@@ -58,7 +64,7 @@ public class Usuario {
 	@Column(name = "fechaRegistro")
 	private Date fechaRegistro;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name = "expedicionDocumento", nullable = false)
 	private Date expedicionDocumento;
 
@@ -69,8 +75,8 @@ public class Usuario {
 	@JoinColumn(name = "idRol", referencedColumnName = "idRol", nullable = false)
 	@OneToOne
 	private Rol rol;
-	
-	@JoinColumn(name = "idMunicipio", referencedColumnName = "idMunicipio", nullable = false)
+
+	@JoinColumn(name = "idMunicipio", referencedColumnName = "idMunicipio", nullable = true)
 	@OneToOne
 	private Municipio municipio;
 
@@ -78,6 +84,18 @@ public class Usuario {
 
 	public boolean save() {
 		return Conexion.persist(this);
+	}
+
+	public Usuario find(int id) {
+		return (Usuario) Conexion.manager.createNamedQuery("findById-Usuario")
+				.setParameter("id", id).getSingleResult();
+	}
+
+	public Usuario login(String usuario, String clave) {
+		return Conexion.manager
+				.createNamedQuery("login-Usuario", Usuario.class)
+				.setParameter("usuario", usuario).setParameter("clave", clave)
+				.getSingleResult();
 	}
 
 	public String all() {
@@ -191,6 +209,14 @@ public class Usuario {
 		this.fechaRegistro = fechaRegistro;
 	}
 
+	public Municipio getMunicipio() {
+		return municipio;
+	}
+
+	public void setMunicipio(Municipio municipio) {
+		this.municipio = municipio;
+	}
+
 	/*-------------------------------------- Conversiones ---------------------------------------------*/
 
 	public String toJson() {
@@ -198,8 +224,10 @@ public class Usuario {
 
 		json.put("id", this.id);
 		json.put("nombre", this.nombre);
+		json.put("usuario", this.usuario);
 		json.put("cedula", this.cedula);
 		json.put("telefono", this.telefono);
+		json.put("direccion", this.direccion);
 		json.put("rol", this.rol.getNombre());
 		json.put("activo", this.activo);
 		json.put("fecha_registro", this.fechaRegistro);

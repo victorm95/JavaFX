@@ -4,8 +4,8 @@ rol.controller('rolController', ['$scope',
 function($scope) {
 
 	$scope.mensaje = "";
-	//$scope.roles = JSON.parse(Rol.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
-	$scope.roles = [{
+	$scope.roles = JSON.parse(Rol.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
+	/*$scope.roles = [{
 		id : 1,
 		nombre : 'Admin'
 	}, {
@@ -14,14 +14,14 @@ function($scope) {
 	}, {
 		id : 3,
 		nombre : 'Fumigador'
-	}];
+	}];*/
 	$scope.selected = new Object();
 
 	$scope.guardar = function() {
 		if ($scope.nombre) {
 			if( $scope.selected.id != undefined ){
 				
-				var rol = Rol.findById( $scope.selected.id );
+				var rol = Rol.find( $scope.selected.id );
 				rol.setNombre( $scope.nombre );
 
 				if (rol.save()) {
@@ -58,13 +58,12 @@ function($scope) {
 	};
 	
 	$scope.eliminar = function(elem){
-		var rol = Rol.findById( elem.id );
+		var rol = Rol.find( elem.id );
 		
 		if( rol.delete() ){
 			for(var i = 0 ; i < $scope.roles.length ; i++){
 				if( $scope.roles[i].id == rol.getId() ){
 					$scope.roles.splice(i, 1);
-					//$scope.$apply();
 					break;
 				}
 			}
