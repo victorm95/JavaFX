@@ -1,6 +1,7 @@
-angular.module('login', [])
-
-.controller('loginController', [ '$scope', function($scope) {
+angular.module('login', []).controller('loginController', ['$scope', '$route',
+function($scope, $route) {
+	
+	console.log( $route );
 
 	$scope.login = function() {
 		var toast = document.querySelector("#toast");
@@ -9,8 +10,13 @@ angular.module('login', [])
 			var usuario = Usuario.login($scope.usuario, $scope.clave);
 
 			if (usuario != null) {
-				toast.text = "User: " + usuario.getUsuario();
-				toast.show();
+				if (usuario.isActivo()) {
+					toast.text = "Has inicias sesion correctamente.";
+					toast.show();
+				} else {
+					toast.text = "El usuario esta Inactivo.";
+					toast.show();
+				}
 			} else {
 				toast.text = "El usuario y/o la contraseña con incorrectos.";
 				toast.show();
@@ -22,4 +28,4 @@ angular.module('login', [])
 		}
 	};
 
-} ]);
+}]);

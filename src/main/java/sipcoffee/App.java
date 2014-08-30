@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 import sipcoffee.controllers.RolCtrl;
 import sipcoffee.controllers.UsuarioCtrl;
+import sipcoffee.models.Conexion;
 
 public class App extends Application {
 
@@ -35,13 +36,17 @@ public class App extends Application {
 
 		/*------------------------------------------------------------------------------------------------*/
 
-		//engine.load(getClass().getResource("web/views/roles.html").toExternalForm());
+		// engine.load(getClass().getResource("web/views/roles.html").toExternalForm());
 
 		load("web/views/index.html");
 
 		stage.setTitle("Sipcoffee");
 		stage.setScene(new Scene(webView));
 		stage.show();
+
+		// Iniciarlizar los Objetos para consular la DB
+		Runnable initDB = () -> Conexion.init();
+		initDB.run();
 	}
 
 	public void print(Object obj) {
@@ -55,23 +60,24 @@ public class App extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	public static String hash(Object text){
+
+	public static String hash(Object text) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
-			
-			md.update(text.toString().getBytes());
-			
-			//return new String( md.digest() );			
 
-	        byte byteData[] = md.digest();
-	 
-	        StringBuffer sb = new StringBuffer();
-	        for (int i = 0; i < byteData.length; i++) {
-	         sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-	        }
-			
-			return sb.toString();		
+			md.update(text.toString().getBytes());
+
+			// return new String( md.digest() );
+
+			byte byteData[] = md.digest();
+
+			StringBuffer sb = new StringBuffer();
+			for (int i = 0; i < byteData.length; i++) {
+				sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16)
+						.substring(1));
+			}
+
+			return sb.toString();
 		} catch (NoSuchAlgorithmException e) {
 			System.out.println("HashError: " + e.toString());
 			return null;

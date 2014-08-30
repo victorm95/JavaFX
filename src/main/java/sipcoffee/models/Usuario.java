@@ -87,11 +87,13 @@ public class Usuario {
 	}
 
 	public Usuario find(int id) {
+		Conexion.init();
 		return (Usuario) Conexion.manager.createNamedQuery("findById-Usuario")
 				.setParameter("id", id).getSingleResult();
 	}
 
 	public Usuario login(String usuario, String clave) {
+		Conexion.init();
 		return Conexion.manager
 				.createNamedQuery("login-Usuario", Usuario.class)
 				.setParameter("usuario", usuario).setParameter("clave", clave)
