@@ -45,8 +45,7 @@ public class App extends Application {
 		stage.show();
 
 		// Iniciarlizar los Objetos para consular la DB
-		Runnable initDB = () -> Conexion.init();
-		initDB.run();
+		new Thread( () -> Conexion.init() ).start();
 	}
 
 	public void print(Object obj) {

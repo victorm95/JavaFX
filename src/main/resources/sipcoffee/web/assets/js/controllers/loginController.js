@@ -1,8 +1,6 @@
-angular.module('login', []).controller('loginController', ['$scope', '$route',
-function($scope, $route) {
+angular.module('login', []).controller('loginController', ['$scope', '$location',
+function($scope, $location) {
 	
-	console.log( $route );
-
 	$scope.login = function() {
 		var toast = document.querySelector("#toast");
 
@@ -13,6 +11,11 @@ function($scope, $route) {
 				if (usuario.isActivo()) {
 					toast.text = "Has inicias sesion correctamente.";
 					toast.show();
+					
+					setTimeout(function(){
+						$location.path('/roles');						
+					}, 2000);
+					
 				} else {
 					toast.text = "El usuario esta Inactivo.";
 					toast.show();

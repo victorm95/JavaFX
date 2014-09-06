@@ -2,6 +2,8 @@ var rol = angular.module('rol', []);
 
 rol.controller('rolController', ['$scope',
 function($scope) {
+	
+	var toast = document.querySelector('#toast');
 
 	$scope.mensaje = "";
 	$scope.roles = JSON.parse(Rol.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
@@ -28,27 +30,31 @@ function($scope) {
 					for(var i = 0 ; i < $scope.roles.length ; i++){
 						if( $scope.roles[i].id == rol.getId() ){
 							$scope.roles[i] = JSON.parse(rol.toJson());
-							//$scope.$apply();
+							
+							toast.text = 'Se ha actualizado el rol ' + $scope.roles[i].nombre + '.';
+							toast.show();
+							
 							break;
 						}
 					}
 				}
 				
 			}else{
-				try {
-					var rol = Rol.create(JSON.stringify({
-						nombre : $scope.nombre
-					}));
-	
-	
-					if (rol.save()) {
-						$scope.mensaje = "Se ha creado el Rol " + name + " exitosamente.";
-						$scope.roles.push(JSON.parse(rol.toJson()));
-					} else {
-						$scope.mensaje = "Ocurrio un error al guradar el Rol " + name + ".";
-					}
-				} catch(error) {
-					console.log(error);
+				var rol = Rol.create(JSON.stringify({
+					nombre : $scope.nombre
+				}));
+
+
+				if (rol.save()) {
+					$scope.mensaje = "Se ha creado el Rol " + name + " exitosamente.";
+					$scope.roles.push(JSON.parse(rol.toJson()));
+					
+					toast.text = 'Se ha creado correctamente el rol ' + $scope.nombre + '.';
+					toast.show();
+					
+				} else {
+					toast.text = 'Ocurrio un error al guardar el rol.';
+					toast.show();
 				}
 			}
 		}
@@ -62,8 +68,11 @@ function($scope) {
 		
 		if( rol.delete() ){
 			for(var i = 0 ; i < $scope.roles.length ; i++){
-				if( $scope.roles[i].id == rol.getId() ){
+				if( $scope.roles[i].id == rol.getId() ){					
+					toast.text = 'Se ha eliminado el rol ' + $scope.roles[i].nombre + '.';
+					toast.show();
 					$scope.roles.splice(i, 1);
+					
 					break;
 				}
 			}
