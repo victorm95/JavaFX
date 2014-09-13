@@ -12,9 +12,9 @@ function($scope, $location) {
 					toast.text = "Has inicias sesion correctamente.";
 					toast.show();
 					
-					setTimeout(function(){
-						$location.path('/roles');						
-					}, 2000);
+					sessionStorage.setItem('usuario', usuario.toJson());
+					
+					$location.path('/roles');
 					
 				} else {
 					toast.text = "El usuario esta Inactivo.";

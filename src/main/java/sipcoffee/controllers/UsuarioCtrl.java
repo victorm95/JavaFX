@@ -6,7 +6,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import sipcoffee.App;
-import sipcoffee.models.Municipio;
 import sipcoffee.models.Rol;
 import sipcoffee.models.Usuario;
 

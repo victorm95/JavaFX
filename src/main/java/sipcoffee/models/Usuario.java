@@ -19,8 +19,6 @@ import javax.persistence.TemporalType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import sipcoffee.App;
-
 @Entity
 @Table(name = "Usuarios")
 @NamedQueries({
@@ -186,6 +184,10 @@ public class Usuario {
 	public void setExpedicionDocumento(Date expedicionDocumento) {
 		this.expedicionDocumento = expedicionDocumento;
 	}
+	
+	public void setExpedicionDocumento(long expedicionDocumento) {
+		this.expedicionDocumento = new Date(expedicionDocumento);
+	}
 
 	public Date getUltimaSesion() {
 		return ultimaSesion;
@@ -230,9 +232,10 @@ public class Usuario {
 		json.put("cedula", this.cedula);
 		json.put("telefono", this.telefono);
 		json.put("direccion", this.direccion);
-		json.put("rol", this.rol.getNombre());
+		json.put("rol", new JSONObject(this.rol.toJson()));
 		json.put("activo", this.activo);
 		json.put("fecha_registro", this.fechaRegistro);
+		json.put("expedicion", this.expedicionDocumento);
 
 		return json.toString();
 	}

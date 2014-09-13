@@ -6,7 +6,7 @@
 			<tr class="info">
 				<th>Rol</th>
 				<th>Nombre</th>
-            <th>Usuario</th>
+            	<th>Usuario</th>
 				<th>Cedula</th>
 				<th>Direcci&oacute;n</th>
 				<th>Municipio</th>
@@ -14,10 +14,10 @@
 				<th>Activo</th>
 			</tr>
 			
-			<tr ng-repeat="usuario in usuarios">
-				<td>{{ usuario.rol }}</td>
+			<tr ng-repeat="usuario in usuarios" ng-click="seleccionar(usuario)">
+				<td>{{ usuario.rol.nombre }}</td>
 				<td>{{ usuario.nombre }}</td>
-            <td>{{ usuario.usuario }}</td>
+            	<td>{{ usuario.usuario }}</td>
 				<td>{{ usuario.cedula }}</td>
 				<td>{{ usuario.direccion }}</td>
 				<td>{{ usuario.municipio }}</td>
@@ -118,5 +118,3 @@
 	</article>
 
 </div>
-
-<paper-toast id="toast" text="" class="capsule"></paper-toast>
