@@ -1,0 +1,73 @@
+<article class="well well-lg">
+	<div class="row">
+
+		<div class="col-md-6  col-sm-6 col-xs-6">
+
+			<form name="formTerreno">
+
+				<div class="form-group">
+					<label for="munucipio">Municipio</label>
+					<select name="municipio" id="municipio" class="form-control">
+						<option>Andes</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="finca">Finca</label>
+					<input class="form-control" type="text" id="finca" name="finca" placeholder="Nombre finca"/>
+				</div>
+
+				<div class="form-group">
+					<label for="direccion">Direccion</label>
+					<input class="form-control" type="text" id="direccion" name="direccion" placeholder="Direccion"/>
+				</div>
+
+				<div class="form-group">
+					<label for="area">Area</label>
+					<div class="input-group">
+						<input class="form-control" name="area" id="area" type="text" pattern="[0-9]" required="required" placeholder="Area"/>
+						<span class="input-group-addon">Mts<sup>2</sup></span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="imagen">Imagen</label>
+					<input class="form-control" type="file" />
+				</div>
+
+				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
+				<button class="btn btn-success">
+					Editar
+				</button>
+				<button class="btn btn-success">
+					Eliminar
+				</button>
+
+			</form>
+
+		</div>
+
+		<div class="col-md-6 col-sm-6 col-xs-6" ng-controller="terrenoController">
+
+			<table class="table table-striped" >
+
+				<tr>
+					<th>Municipio</th>
+					<td>{{terreno.municipio.nombre}}</td>
+				</tr>
+				<tr>
+					<th>Finca</th>
+					<td>{{terreno.nombre}}</td>
+				</tr>
+				<tr>
+					<th>Direccion</th>
+					<td>{{terreno.direccion}}</td>
+				</tr>
+				<tr>
+					<th>Area</th>
+					<td>{{terreno.area}} mts<sup>2</sup></td>
+				</tr>
+
+			</table>
+		</div>
+</article>
