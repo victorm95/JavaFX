@@ -21,7 +21,7 @@ public class UsuarioCtrl {
 			
 			usuario.setNombre(json.getString("nombre"));
 			usuario.setUsuario(json.getString("usuario"));
-			usuario.setClave( App.hash(json.getString("clave")) );
+			usuario.setClave( json.getString("clave") );
 			usuario.setCedula(json.getLong("cedula"));
 			usuario.setDireccion(json.getString("direccion"));
 			usuario.setTelefono(json.getLong("telefono"));

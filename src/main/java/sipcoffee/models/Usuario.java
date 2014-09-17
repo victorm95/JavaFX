@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+import sipcoffee.App;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -174,7 +174,7 @@ public class Usuario {
 	}
 
 	public void setClave(String clave) {
-		this.clave = clave;
+		this.clave = App.hash(clave);
 	}
 
 	public Date getExpedicionDocumento() {
@@ -220,6 +220,12 @@ public class Usuario {
 	public void setMunicipio(Municipio municipio) {
 		this.municipio = municipio;
 	}
+
+    public boolean isEmpty(){
+        Conexion.init();
+		return Conexion.namedQuery("all-Usuarios").isEmpty();
+    }
+
 
 	/*-------------------------------------- Conversiones ---------------------------------------------*/
 

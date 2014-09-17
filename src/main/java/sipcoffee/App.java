@@ -2,7 +2,7 @@ package sipcoffee;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+import java.util.Date;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
@@ -12,6 +12,8 @@ import netscape.javascript.JSObject;
 import sipcoffee.controllers.RolCtrl;
 import sipcoffee.controllers.UsuarioCtrl;
 import sipcoffee.models.Conexion;
+import sipcoffee.models.Usuario;
+import sipcoffee.models.Rol;
 
 public class App extends Application {
 
@@ -45,7 +47,28 @@ public class App extends Application {
 		stage.show();
 
 		// Iniciarlizar los Objetos para consular la DB
-		new Thread( () -> Conexion.init() ).start();
+		new Thread( () -> {
+            Conexion.init();
+            Usuario admin = new Usuario(); 
+            
+            if( admin.isEmpty() ){
+                Rol rolAdmin = new Rol("Admin");
+                rolAdmin.save();
+
+                admin.setNombre("Admin");
+                admin.setUsuario("root");
+                admin.setClave("root");
+                admin.setExpedicionDocumento(new Date());
+                admin.setCedula(0);
+                admin.setDireccion("----");
+                admin.setTelefono(0);
+				admin.setActivo( true );
+                admin.setRol( rolAdmin );
+
+                if( admin.save() )
+                    System.out.println("User admin created correctly");
+            }
+        } ).start();
 	}
 
 	public void print(Object obj) {
