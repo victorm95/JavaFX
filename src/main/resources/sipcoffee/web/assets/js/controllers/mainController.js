@@ -14,6 +14,14 @@ main.config([ '$routeProvider', function($routeProvider) {
 	.when('/usuarios', {
 		templateUrl: 'usuarios.html',
 		controller: 'usuarioController'
+	})	
+	.when('/terreno', {
+		templateUrl: 'terreno.html',
+		controller: 'terrenoController'
+	})
+	.when('/bloque', {
+		templateUrl: 'bloque.html',
+		controller: 'bloqueController'
 	});
 	
 } ]);

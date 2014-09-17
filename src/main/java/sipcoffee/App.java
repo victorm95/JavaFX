@@ -14,6 +14,8 @@ import sipcoffee.controllers.UsuarioCtrl;
 import sipcoffee.models.Conexion;
 import sipcoffee.models.Usuario;
 import sipcoffee.models.Rol;
+import sipcoffee.models.Terreno;
+import sipcoffee.models.Bloque;
 
 public class App extends Application {
 
@@ -35,6 +37,8 @@ public class App extends Application {
 		/*-------------------------------  Agragar los modelos al webView --------------------------------*/
 		windowJS.setMember("Rol", new RolCtrl());
 		windowJS.setMember("Usuario", new UsuarioCtrl());
+		windowJS.setMember("Terreno", new TerrenoCtrl());
+		windowJS.setMember("Bloque", new BloqueCtrl());
 
 		/*------------------------------------------------------------------------------------------------*/
 
