@@ -16,7 +16,7 @@
       
       <!-- Modules -->
       <link rel="stylesheet" href="../assets/css/animations.css" />
-      <script src="../assets/js/controllers/loginController.js"></script>
+      <script src="../assets/js/controllers/sesionController.js"></script>
       <script src="../assets/js/controllers/mainController.js"></script>
       <script src="../assets/js/controllers/rolController.js"></script>
       <script src="../assets/js/controllers/usuarioController.js"></script>
@@ -31,7 +31,7 @@
 
    <body>
 
-      <nav class="navbar navbar-default" role="navigation">
+      <nav class="navbar navbar-default" role="navigation" style="visibility: hidden;">
          <div class="container-fluid">
 
             <div class="navbar-header">
@@ -40,7 +40,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="#/"><span class="glyphicon glyphicon-home"></span> Inicio</a>
+               <a class="navbar-brand" href="#/home"><span class="glyphicon glyphicon-home"></span> Inicio</a>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar">
@@ -53,10 +53,14 @@
                      <a class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> Usuarios <span class="caret"></span> </a>
                      <ul class="dropdown-menu" role="menu">
                         <li>
-                           <a href="#/roles">Procductos</a>
+                           <a href="#/roles">Roles</a>
                         </li>
                         <li>
                            <a href="#/usuarios">Usuarios</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                           <a href="#/logout"><span class="glyphicon glyphicon-off"></span> Salir </a>
                         </li>
                      </ul>
                   </li>
@@ -72,6 +76,24 @@
                         <li>
                            <a href="#/bloque">Bloque</a>
                         </li>
+                        <li>
+                           <a href="#/cafeto">Cafeto</a>
+                        </li>
+                        <li>
+                           <a href="#/siembra">Siembra</a>
+                        </li>
+                        <li>
+                           <a href="#/entradas">Entradas</a>
+                        </li>
+                        <li>
+                           <a href="#/salidas">salidas</a>
+                        </li>
+                        <li>
+                           <a href="#/cosecha">cosecha</a>
+                        </li>
+                        <li>
+                           <a href="#/parcela">parcela</a>
+                        </li>
                      </ul>
                   </li>
                </ul>
@@ -82,7 +104,7 @@
       </nav>
 
       <section class="container">
-         <article class="view-animation" ng-view></article>
+         <article ng-view></article>
       </section>
       
       

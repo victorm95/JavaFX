@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Entity
-@Table(name = "Departamento")
+@Table(name = "Departamentos")
 @NamedQueries({
 	@NamedQuery(name = "all-Departamento", query = "SELECT Departamento FROM Departamento as Departamento"),
 	@NamedQuery(name = "findById-Departamento", query="SELECT Departamento FROM Departamento as Departamento WHERE Departamento.id = :id")
@@ -63,6 +63,10 @@ public class Departamento {
 
 	public boolean delete() {
 		return Conexion.delete(this);
+	}
+	
+	public boolean isEmpty(){
+		return Conexion.namedQuery("all-Departamento").isEmpty();
 	}
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/

@@ -3,9 +3,6 @@ var rol = angular.module('rol', []);
 rol.controller('rolController', ['$scope', '$location',
 function($scope, $location) {
 	
-	if(sessionStorage.length == 0)
-		$location.path('/');
-	
 	var toast = document.querySelector('#toast');
 
 	$scope.mensaje = "";

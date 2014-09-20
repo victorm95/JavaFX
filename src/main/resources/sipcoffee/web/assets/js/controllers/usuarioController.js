@@ -3,9 +3,6 @@ var rol = angular.module('usuario', []);
 rol.controller('usuarioController', ['$scope', '$location',
 function($scope, $location) {
 
-	if (sessionStorage.length == 0)
-		$location.path('/');
-
 	$scope.roles = JSON.parse(Rol.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
 	$scope.usuarios = JSON.parse(Usuario.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
 	$scope.activo = true;

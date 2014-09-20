@@ -1,4 +1,6 @@
-angular.module('login', []).controller('loginController', ['$scope', '$location',
+angular.module('sesion', [])
+
+.controller('loginController', ['$scope', '$location',
 function($scope, $location) {
 	
 	$scope.login = function() {
@@ -14,7 +16,10 @@ function($scope, $location) {
 					
 					sessionStorage.setItem('usuario', usuario.toJson());
 					
-					$location.path('/roles');
+					
+					document.querySelector('nav').style.visibility = 'visible	';
+					
+					$location.path('/home');
 					
 				} else {
 					toast.text = "El usuario esta Inactivo.";
@@ -31,4 +36,14 @@ function($scope, $location) {
 		}
 	};
 
-}]);
+}])
+
+
+
+.controller('logoutController', ['$location', function($location){
+	sessionStorage.clear();
+	document.querySelector('nav').style.visibility = 'hidden';	
+	$location.path('/');
+}])
+
+;

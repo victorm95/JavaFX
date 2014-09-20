@@ -20,7 +20,7 @@ import org.json.JSONObject;
 		@NamedQuery(name = "all-Producto", query = "SELECT producto FROM Producto as producto"),
 		@NamedQuery(name = "findById-Producto", query = "SELECT producto FROM Producto as producto WHERE producto.id = :id"),
 		@NamedQuery(name = "findByName-Producto", query = "SELECT producto FROM Producto as producto WHERE producto.nombre = :nombre") })
-public class Rol {
+public class Producto {
 
 	// Constructores
 	public Producto() {

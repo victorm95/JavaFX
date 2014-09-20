@@ -1,12 +1,18 @@
-var main = angular.module('main', [ 'ngRoute', 'rol', 'usuario', 'login']);
+var main = angular.module('main', [ 'ngRoute', 'rol', 'usuario', 'sesion', 'terreno']);
 
 main.config([ '$routeProvider', function($routeProvider) {
 
 	$routeProvider
+	.when('/home', {
+	})
 	.when('/', {
 		templateUrl: 'login.html',
 		controller: 'loginController'
 	})	
+	.when('/logout', {
+		templateUrl: 'login.html',
+		controller: 'logoutController'
+	})
 	.when('/roles', {
 		templateUrl: 'roles.html',
 		controller: 'rolController'
@@ -22,6 +28,24 @@ main.config([ '$routeProvider', function($routeProvider) {
 	.when('/bloque', {
 		templateUrl: 'bloque.html',
 		controller: 'bloqueController'
+	})
+	.when('/cafeto', {
+		templateUrl: 'cafeto.html'
+	})
+	.when('/siembra', {
+		templateUrl: 'siembra.html'
+	})
+	.when('/entradas', {
+		templateUrl: 'entradas.html'
+	})
+	.when('/salidas', {
+		templateUrl: 'salidas.html'
+	})
+	.when('/parcela', {
+		templateUrl: 'parcela.html'
+	})
+	.when('/cosecha', {
+		templateUrl: 'cosecha.html'
 	});
 	
 } ]);

@@ -23,8 +23,8 @@ import org.json.JSONObject;
 @Table(name = "Parcelas")
 @NamedQueries({
 		@NamedQuery(name = "all-Parcelas", query = "SELECT parcela FROM Parcelas as parcela"),
-		@NamedQuery(name = "findById-Usuario", query = "SELECT parcela FROM Parcelas as parcela WHERE parcela.id=:id")
-public class Usuario {
+		@NamedQuery(name = "findById-Usuario", query = "SELECT parcela FROM Parcelas as parcela WHERE parcela.id=:id")})
+public class Parcela {
 
 	// Constructores
 	public Parcela() {
@@ -122,6 +122,10 @@ public class Usuario {
 
 	public Date getFechaRegistro() {
 		return fechaRegistro;
+	}
+	
+	public void setFechaRegistro(Date date) {
+		this.fechaRegistro = date;
 	}
 
     public boolean isEmpty(){

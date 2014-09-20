@@ -26,6 +26,8 @@ import org.json.JSONObject;
 		@NamedQuery(name = "findById-Terreno", query = "SELECT terreno FROM Terreno as terreno WHERE terreno.id = :id"),
 		@NamedQuery(name = "findByName-Terreno", query = "SELECT terreno FROM Terreno as terreno WHERE terreno.nombre = :nombre") })
 public class Terreno {
+	
+	public Terreno(){}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +51,7 @@ public class Terreno {
 	@Column(name = "rutaImagen")
 	private String rutaImagen;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name = "fechaRegistro")
 	private Date fechaRegistro;
 
@@ -79,7 +81,9 @@ public class Terreno {
 		for (Object terreno : list) {
 			jsonArray.put(((Terreno) terreno).toJson());
 		}
-
+		
+		System.out.println("Terreno.all() " + jsonArray.toString());
+		
 		return jsonArray.toString();
 	}
 
@@ -145,12 +149,12 @@ public class Terreno {
 
 	public String toJson() {
 		JSONObject json = new JSONObject();
-		json.put("idTerreno", this.id);
-		json.put("municipio", this.municipio.toJson());
+		json.put("id", this.id);
+		json.put("municipio", new JSONObject( this.municipio.toJson()) );
 		json.put("nombre", this.nombre);
 		json.put("direccion", this.direccion);
 		json.put("area", this.area);
-		json.put("rutaImagen", this.rutaImagen);
+		//json.put("rutaImagen", this.rutaImagen);
 		return json.toString();
 	}
 }

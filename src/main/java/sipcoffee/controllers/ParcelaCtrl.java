@@ -22,8 +22,8 @@ public class ParcelaCtrl {
             parcela.setNombre(json.getString("nombre"));
             parcela.setArea(json.getInt("area"));
             parcela.setFechaRegistro(new Date());
-            bloque.setRol(new Parcela().find(json.getInt("parcela")) );
-            bloque.setActivo(json.getBoolean("activo"));
+            parcela.setBloque(new Bloque().find(json.getInt("bloque")) );
+            parcela.setActivo(json.getBoolean("activo"));
          
             return parcela;
         } catch (JSONException e) {

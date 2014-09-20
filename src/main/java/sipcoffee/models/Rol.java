@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Entity
-@Table(name = "Procductos")
+@Table(name = "Roles")
 @NamedQueries({
 		@NamedQuery(name = "all-Rol", query = "SELECT rol FROM Rol as rol"),
 		@NamedQuery(name = "findById-Rol", query = "SELECT rol FROM Rol as rol WHERE rol.id = :id"),

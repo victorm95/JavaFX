@@ -20,7 +20,7 @@ import org.json.JSONObject;
 		@NamedQuery(name = "all-Proceso", query = "SELECT proceso FROM Proceso as proceso"),
 		@NamedQuery(name = "findById-Proceso", query = "SELECT proceso FROM Proceso as proceso WHERE proceso.id = :id"),
 		@NamedQuery(name = "findByName-Proceso", query = "SELECT proceso FROM Proceso as proceso WHERE proceso.nombre = :nombre") })
-public class Rol {
+public class Proceso {
 
 	// Constructores
 	public Proceso() {

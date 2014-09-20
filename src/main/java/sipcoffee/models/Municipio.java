@@ -17,7 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Entity
-@Table(name = "Municipio")
+@Table(name = "Municipios")
 @NamedQueries({
 		@NamedQuery(name = "all-Municipio", query = "SELECT Municipio FROM Municipio as Municipio"),
 		@NamedQuery(name = "findById-Municipio", query = "SELECT Municipio FROM Municipio as Municipio WHERE Municipio.id = :id") })
@@ -27,8 +27,9 @@ public class Municipio {
 	public Municipio() {
 	}
 
-	public Municipio(String nombre) {
+	public Municipio(String nombre, Departamento departamento) {
 		this.nombre = nombre;
+		this.departamento = departamento;
 	}
 
 	@Id
@@ -94,9 +95,9 @@ public class Municipio {
 
 	public String toJson() {
 		JSONObject json = new JSONObject();
-		json.put("idMunicipio", this.id);
+		json.put("id", this.id);
 		json.put("nombre", this.nombre);
-		json.put("departamento", this.departamento);
+		json.put("departamento", new JSONObject( this.departamento.toJson() ));
 		return json.toString();
 	}
 
