@@ -15,24 +15,24 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Entity
-@Table(name = "Procductos")
+@Table(name = "Productos")
 @NamedQueries({
-		@NamedQuery(name = "all-Rol", query = "SELECT rol FROM Rol as rol"),
-		@NamedQuery(name = "findById-Rol", query = "SELECT rol FROM Rol as rol WHERE rol.id = :id"),
-		@NamedQuery(name = "findByName-Rol", query = "SELECT rol FROM Rol as rol WHERE rol.nombre = :nombre") })
+		@NamedQuery(name = "all-Producto", query = "SELECT producto FROM Producto as producto"),
+		@NamedQuery(name = "findById-Producto", query = "SELECT producto FROM Producto as producto WHERE producto.id = :id"),
+		@NamedQuery(name = "findByName-Producto", query = "SELECT producto FROM Producto as producto WHERE producto.nombre = :nombre") })
 public class Rol {
 
 	// Constructores
-	public Rol() {
+	public Producto() {
 	}
 
-	public Rol(String nombre) {
+	public Producto(String nombre) {
 		this.nombre = nombre;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idRol", nullable = false)
+	@Column(name = "idProducto", nullable = false)
 	private int id;
 
 	@Column(name = "nombre")
@@ -44,25 +44,25 @@ public class Rol {
 		return Conexion.persist(this);
 	}
 
-	public Rol find(int id) {
+	public Producto find(int id) {
 		Conexion.init();
-		return (Rol) Conexion.manager.createNamedQuery("findById-Rol")
+		return (Producto) Conexion.manager.createNamedQuery("findById-Producto")
 				.setParameter("id", id).getSingleResult();
 	}
 	
-	public Rol find(String nombre) {
+	public Producto find(String nombre) {
 		Conexion.init();
-		return (Rol) Conexion.manager.createNamedQuery("findByName-Rol")
+		return (Producto) Conexion.manager.createNamedQuery("findByName-Producto")
 				.setParameter("nombre", nombre).getSingleResult();
 	}
 
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
 
-		List<Object> list = Conexion.namedQuery("all-Rol");
+		List<Object> list = Conexion.namedQuery("all-Producto");
 
-		for (Object rol : list) {
-			jsonArray.put(((Rol) rol).toJson());
+		for (Object producto : list) {
+			jsonArray.put(((Producto) producto).toJson());
 		}
 
 		return jsonArray.toString();

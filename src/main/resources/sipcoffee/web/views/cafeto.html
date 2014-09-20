@@ -1,0 +1,113 @@
+<article class="well well-lg">
+
+		<article>
+			<div class="page-header">
+				<h3>Cafeto</h3>
+			</div>
+			<form name="formCafeto">
+
+				<div class="form-group">
+					<label for="nombre">Nombre</label>
+                    <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre de la variedad"/>
+				</div>
+
+				<div class="form-group">
+					<label for="abono">Cantidad Abono</label>
+					<input class="form-control" type="text" id="abono" name="abono" placeholder="Cantidad Abono"/>
+				</div>
+
+				<div class="form-group">
+					<label for="pesticida">Cantidad Pesticida</label>
+					<input class="form-control" type="text" id="pesticida" name="pesticida" placeholder="Cantidad Pesticida"/>
+				</div>
+
+				<div class="form-group">
+					<label for="distSurco">Distancia Surco</label>
+					<input class="form-control" type="text" id="distSurco" name="distSurco" placeholder="Distancia"/>
+				</div>
+
+				<div class="form-group">
+					<label for="distCafeto">Distancia Cafeto</label>
+					<input class="form-control" type="text" id="distCafeto" name="distCafeto" placeholder="Distancia"/>
+				</div>
+
+				<div class="form-group">
+					<label for="tiempoSemillero">Tiempo Semillero</label>
+					<div class="input-group">
+					    <input class="form-control" type="text" id="tiempoSemillero" name="tiempoSemillero" placeholder="Cantidad"/>
+						<span class="input-group-addon">Dias</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="tiempoAlmacigo">Tiempo Almacigo</label>
+					<div class="input-group">
+						<input class="form-control" name="tiempoAlmacigo" id="tiempoAlmacigo" type="text" placeholder="Cantidad"/>
+						<span class="input-group-addon">Dias</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="tiempoGraneo">Tiempo Graneo</label>
+					<div class="input-group">
+						<input class="form-control" name="tiempoGraneo" id="tiempoGraneo" type="text" placeholder="Cantidad"/>
+						<span class="input-group-addon">Dias</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="tiempoSoca">Tiempo Soca</label>
+					<div class="input-group">
+						<input class="form-control" name="tiempoSoca" id="tiempoSoca" type="text" placeholder="Cantidad"/>
+						<span class="input-group-addon">Dias</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="primeraCosecha">Primera Cosecha</label>
+					<div class="input-group">
+						<input class="form-control" name="primeraCosecha" id="primeraCosecha" type="text" placeholder="Cantidad"/>
+						<span class="input-group-addon">Dias</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="proveedor">Proveedor</label>
+                    <input class="form-control" type="text" id="proveedor" name="proveedor" placeholder="Nombre"/>
+				</div>
+
+				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
+				<button class="btn btn-success">
+					Editar
+				</button>
+				<button class="btn btn-success">
+					Eliminar
+				</button>
+
+			</form>
+
+		</article>
+
+		<article  ng-controller="cafetoController">
+
+			<table class="table table-striped" >
+
+				<tr class="info">
+    				<th>Nombre</th>
+                	<th>Cant. Abono</th>
+    				<th>Cant. Pesticidad</th>
+    				<th>Dist. Surco</th>
+    				<th>Dist. Cafeto</th>
+    				<th>Tiempo Semillero</th>
+    				<th>Tiempo Almacigo</th>
+    				<th>Tiempo Graneo</th>
+    				<th>Tiempo Soca</th>
+    				<th>Primera Cosecha</th>
+    				<th>Proveedor</th>
+    				<th>Fecha</th>
+    			</tr>
+
+			</table>
+		</article>
+		
+</article>

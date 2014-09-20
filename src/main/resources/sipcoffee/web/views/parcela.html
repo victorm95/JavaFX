@@ -1,0 +1,58 @@
+<article class="well well-lg">
+
+		<article>
+			<div class="page-header">
+				<h3>Parcela</h3>
+			</div>
+			<form name="formParcela">
+		
+				<div class="form-group">
+					<label for="nombre">Nombre Parcela</label>
+                    <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre"/>
+				</div>
+
+				<div class="form-group">
+					<label for="area">Area</label>
+					<div class="input-group">
+					    <input class="form-control" type="text" id="area" name="area" placeholder="Cantidad"/>
+						<span class="input-group-addon">Mts<sup>2</sup></span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="bloque">Bloque</label>
+					<select class="form-control" id="bloque" name="bloque"></select>
+				</div>
+	
+				<div class="form-group">
+					<input type="checkbox" ng-model="activo" name="activo" id="activo" checked/>
+					<label for="activo">Activo</label>	
+				</div>
+
+				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
+				<button class="btn btn-success">
+					Editar
+				</button>
+				<button class="btn btn-success">
+					Eliminar
+				</button>
+
+			</form>
+
+		</article>
+
+		<article  ng-controller="parcelaController">
+
+			<table class="table table-striped" >
+
+				<tr class="info">
+    				<th>Nombre</th>
+                	<th>Area</th>
+    				<th>Bloque</th>
+    				<th>Activo</th>
+    			</tr>
+
+			</table>
+		</article>
+		
+</article>

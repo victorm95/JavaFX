@@ -11,11 +11,11 @@ import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 import sipcoffee.controllers.RolCtrl;
 import sipcoffee.controllers.UsuarioCtrl;
+import sipcoffee.controllers.TerrenoCtrl;
+import sipcoffee.controllers.BloqueCtrl;
 import sipcoffee.models.Conexion;
 import sipcoffee.models.Usuario;
 import sipcoffee.models.Rol;
-import sipcoffee.models.Terreno;
-import sipcoffee.models.Bloque;
 
 public class App extends Application {
 

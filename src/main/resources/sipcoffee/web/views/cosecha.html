@@ -1,0 +1,50 @@
+<article class="well well-lg">
+
+		<article>
+			<div class="page-header">
+				<h3>Cosecha</h3>
+			</div>
+			<form name="formCosecha">
+		
+				<div class="form-group">
+					<label for="cantidad">Cantidad Cosechada</label>
+                    <input class="form-control" type="text" id="cantidad" name="cantidad" placeholder="Cantidad"/>
+				</div>
+
+				<div class="form-group">
+					<label for="parcela">Parcela</label>
+					<select class="form-control" id="parcela" name="parcela"></select>
+				</div>
+
+				<div class="form-group">
+					<label for="usuario">Usuario</label>
+					<select class="form-control" id="usuario" name="usuario"></select>
+				</div>
+
+				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
+				<button class="btn btn-success">
+					Editar
+				</button>
+				<button class="btn btn-success">
+					Eliminar
+				</button>
+
+			</form>
+
+		</article>
+
+		<article  ng-controller="cosechaController">
+
+			<table class="table table-striped" >
+
+				<tr class="info">
+    				<th>Cantidad</th>
+    				<th>Parcela</th>
+    				<th>Usuario</th>
+    				<th>Fecha</th>
+    			</tr>
+
+			</table>
+		</article>
+		
+</article>

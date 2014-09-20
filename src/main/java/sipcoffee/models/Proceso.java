@@ -15,24 +15,24 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Entity
-@Table(name = "Procductos")
+@Table(name = "Procesos")
 @NamedQueries({
-		@NamedQuery(name = "all-Rol", query = "SELECT rol FROM Rol as rol"),
-		@NamedQuery(name = "findById-Rol", query = "SELECT rol FROM Rol as rol WHERE rol.id = :id"),
-		@NamedQuery(name = "findByName-Rol", query = "SELECT rol FROM Rol as rol WHERE rol.nombre = :nombre") })
+		@NamedQuery(name = "all-Proceso", query = "SELECT proceso FROM Proceso as proceso"),
+		@NamedQuery(name = "findById-Proceso", query = "SELECT proceso FROM Proceso as proceso WHERE proceso.id = :id"),
+		@NamedQuery(name = "findByName-Proceso", query = "SELECT proceso FROM Proceso as proceso WHERE proceso.nombre = :nombre") })
 public class Rol {
 
 	// Constructores
-	public Rol() {
+	public Proceso() {
 	}
 
-	public Rol(String nombre) {
+	public Proceso(String nombre) {
 		this.nombre = nombre;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idRol", nullable = false)
+	@Column(name = "idProceso", nullable = false)
 	private int id;
 
 	@Column(name = "nombre")
@@ -44,25 +44,25 @@ public class Rol {
 		return Conexion.persist(this);
 	}
 
-	public Rol find(int id) {
+	public Proceso find(int id) {
 		Conexion.init();
-		return (Rol) Conexion.manager.createNamedQuery("findById-Rol")
+		return (Proceso) Conexion.manager.createNamedQuery("findById-Proceso")
 				.setParameter("id", id).getSingleResult();
 	}
 	
-	public Rol find(String nombre) {
+	public Proceso find(String nombre) {
 		Conexion.init();
-		return (Rol) Conexion.manager.createNamedQuery("findByName-Rol")
+		return (Proceso) Conexion.manager.createNamedQuery("findByName-Proceso")
 				.setParameter("nombre", nombre).getSingleResult();
 	}
 
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
 
-		List<Object> list = Conexion.namedQuery("all-Rol");
+		List<Object> list = Conexion.namedQuery("all-Proceso");
 
-		for (Object rol : list) {
-			jsonArray.put(((Rol) rol).toJson());
+		for (Object proceso : list) {
+			jsonArray.put(((Proceso) proceso).toJson());
 		}
 
 		return jsonArray.toString();
