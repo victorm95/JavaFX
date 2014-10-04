@@ -5,3 +5,7 @@ target/*
 *.py
 *.sh
 *~
+.project
+.classpath
+*.iml
+.idea/

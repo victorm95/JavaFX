@@ -3,12 +3,7 @@ var main = angular.module('main', [ 'ngRoute', 'rol', 'usuario', 'sesion', 'terr
 main.config([ '$routeProvider', function($routeProvider) {
 
 	$routeProvider
-	.when('/home', {
-	})
-	.when('/', {
-		templateUrl: 'login.html',
-		controller: 'loginController'
-	})	
+	.when('/', { })
 	.when('/logout', {
 		templateUrl: 'login.html',
 		controller: 'logoutController'

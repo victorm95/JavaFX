@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Imports -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+	fx:controller="sipcoffee.Splash" styleClass="box">
+
+	<stylesheets>
+		<URL value="@splash.css"/>
+	</stylesheets>
+
+	<HBox styleClass="box">
+		<Label text="Usuario"/>
+		<TextField fx:id="usuarioField"/>
+	</HBox>
+
+	<HBox styleClass="box">
+		<Label text="Contraseña"/>
+		<PasswordField fx:id="passwordField"/>
+	</HBox>
+
+	<HBox styleClass="box">
+		<Button text="Iniciar Sesion" fx:id="btnLogin"/>
+		<Button text="Cancelar" fx:id="btnCancel"/>
+	</HBox>
+
+	<HBox styleClass="box">
+		<Label fx:id="msgLabel" styleClass="msg-error"/>
+	</HBox>
+
+</VBox>

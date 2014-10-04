@@ -92,10 +92,14 @@ public class Usuario {
 
 	public Usuario login(String usuario, String clave) {
 		Conexion.init();
-		return Conexion.manager
-				.createNamedQuery("login-Usuario", Usuario.class)
-				.setParameter("usuario", usuario).setParameter("clave", clave)
-				.getSingleResult();
+        try{
+            return Conexion.manager
+                    .createNamedQuery("login-Usuario", Usuario.class)
+                    .setParameter("usuario", usuario).setParameter("clave", clave)
+                    .getSingleResult();
+        }catch(Exception e){
+            return null;
+        }
 	}
 
 	public String all() {

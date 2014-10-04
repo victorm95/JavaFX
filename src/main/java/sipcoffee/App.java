@@ -2,7 +2,6 @@ package sipcoffee;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
@@ -16,6 +15,10 @@ import sipcoffee.controllers.RolCtrl;
 import sipcoffee.controllers.TerrenoCtrl;
 import sipcoffee.controllers.UsuarioCtrl;
 import sipcoffee.models.Scripts;
+import javafx.scene.Parent;
+import javafx.stage.StageStyle;
+import javafx.fxml.FXMLLoader;
+import java.io.IOException;
 
 public class App extends Application {
 
@@ -24,8 +27,19 @@ public class App extends Application {
 	private JSObject windowJS;
 
 	@Override
-	public void start(Stage stage) {
+	public void start(Stage stage) throws IOException {
 
+
+        // Iniciarlizar los Objetos para consular la DB
+        new Scripts().start();
+
+		Parent splash = FXMLLoader.load(getClass().getResource("splash.fxml"));
+		stage.setScene(new Scene(splash));
+		//stage.initStyle(StageStyle.UNDECORATED);
+		stage.setTitle("Sipcoffee");
+        stage.show();
+
+		/*
 		webView = new WebView();
 		engine = webView.getEngine();
 		windowJS = (JSObject) engine.executeScript("window");
@@ -34,7 +48,7 @@ public class App extends Application {
 		engine.executeScript("window.console.log = function(obj){ javaMain.print(obj); };");
 		engine.executeScript("window.load = function(url){ javaMain.load(url); };");
 
-		/*-------------------------------  Agragar los modelos al webView --------------------------------*/
+		/*-------------------------------  Agragar los modelos al webView --------------------------------
 		windowJS.setMember("Rol", new RolCtrl());
 		windowJS.setMember("Usuario", new UsuarioCtrl());
 		windowJS.setMember("Terreno", new TerrenoCtrl());
@@ -42,7 +56,7 @@ public class App extends Application {
 		windowJS.setMember("Municipio", new MunicipioCtrl());
 		windowJS.setMember("Departamento", new DepartamentoCtrl());
 
-		/*------------------------------------------------------------------------------------------------*/
+		/*------------------------------------------------------------------------------------------------
 
 		// engine.load(getClass().getResource("web/views/roles.html").toExternalForm());
 
@@ -54,6 +68,9 @@ public class App extends Application {
 
 		// Iniciarlizar los Objetos para consular la DB
 		new Scripts().start();
+		*/
+        
+		
 	}
 
 	public void print(Object obj) {
