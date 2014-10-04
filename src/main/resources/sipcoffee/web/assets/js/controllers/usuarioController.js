@@ -1,6 +1,6 @@
-var rol = angular.module('usuario', []);
+var u = angular.module('usuario', []);
 
-rol.controller('usuarioController', ['$scope', '$location',
+u.controller('usuarioController', ['$scope', '$location',
 function($scope, $location) {
 
 	$scope.roles = JSON.parse(Rol.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));

@@ -1,44 +1,33 @@
 var parcela = angular.module('parcela', []);
 
-parcela.controller('bloqueController', ['$scope',
+parcela.controller('parcelaController', ['$scope',
 function($scope) {
 
-	$scope.mensaje = "";
+    var toast = document.querySelector("#toast");
+
 	$scope.parcelas = JSON.parse(Parcela.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
-	/*$scope.bloques = {
-		id : 1,
-		nombre : 'la bonita',
-		direccion : 'Avenida el morro',
-		area : '11500',
-		municipio : {
-			nombre : 'andes'
-		}
-	}, {
-	 id : 2,
-	 nombre : 'Cosechador'
-	 }, {
-	 id : 3,
-	 nombre : 'Fumigador'
-	 };*/
+	$scope.bloques = JSON.parse(Bloque.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
+
 	$scope.selected = new Object();
 
 	$scope.guardar = function() {
+
 		if ($scope.nombre) {
 
 			var parcela = Parcela.create(JSON.stringify({
 				nombre : $scope.nombre,		
 				area : $scope.area,
 				activo : $scope.activo,
-				bloque : $scope.bloque
+				bloque : parseInt($scope.bloque)
 			}));
 
-			if (bloque.save()) {
-				$scope.mensaje = "Se ha creado la parcela exitosamente.";
+			if (parcela.save()) {
+				toast.text = "Se ha creado la parcela exitosamente.";
 				$scope.parcelas.push(JSON.parse(parcela.toJson()));
 			} else {
-				$scope.mensaje = "Ocurrio un error al guardar la parcela.";
+				toast.text = "Ocurrio un error al guardar la parcela.";
 			}
-
+            toast.show();
 		}
 
 		$scope.nombre = '';

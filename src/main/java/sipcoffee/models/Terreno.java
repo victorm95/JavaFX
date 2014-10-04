@@ -80,9 +80,6 @@ public class Terreno {
 		for (Object terreno : list) {
 			jsonArray.put(((Terreno) terreno).toJson());
 		}
-		
-		System.out.println("Terreno.all() " + jsonArray.toString());
-		
 		return jsonArray.toString();
 	}
 

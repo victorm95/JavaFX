@@ -6,22 +6,10 @@ function($scope) {
 	$scope.terrenos = JSON.parse(Terreno.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
 	$scope.municipios = JSON.parse(Municipio.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
 
-	/*$scope.terreno = {
-		id : 1,
-		nombre : 'la bonita',
-		direccion:'Avenida el morro',
-		area:'11500',
-		municipio:{ nombre:'andes'}
-	}, {
-		id : 2,
-		nombre : 'Cosechador'
-	}, {
-		id : 3,
-		nombre : 'Fumigador'
-	};*/
 	$scope.selected = new Object();
 
 	$scope.guardar = function() {
+
 		var toast = document.querySelector('#toast');
 		
 		if ($scope.nombre) {
@@ -49,18 +37,18 @@ function($scope) {
 						//imagen: $scope.imagen
 					}));
 						
-					console.log("imagen: " + $scope.imagen);
+					//console.log("imagen: " + $scope.imagen);
 	
 					if (terreno.save()) {
 						toast.text = "Se ha creado el terreno " + $scope.nombre + " exitosamente.";
 						$scope.terrenos.push( JSON.parse(terreno.toJson()) );
 					} else {
-						toast.text = "Ocurrio un error al guradar el terreno " + $scope.nombre + ".";
+						toast.text = "Ocurrio un error al guardar el terreno " + $scope.nombre + ".";
 					}
 					
 					toast.show();
 				} catch(error) {
-					console.log(error);
+					console.log("Error: " + error);
 				}
 			}
 		}

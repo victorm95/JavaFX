@@ -20,6 +20,7 @@ function($scope, $location) {
 	$scope.selected = new Object();
 
 	$scope.guardar = function() {
+
 		if ($scope.nombre) {
 			if( $scope.selected.id != undefined ){
 				

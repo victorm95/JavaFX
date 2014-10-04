@@ -136,7 +136,7 @@ public class Bloque {
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put("id", this.id);	
-		json.put("terreno", new JSONObject(this.terreno.json()));
+		json.put("terreno", new JSONObject(this.terreno.toJson()));
 		json.put("nombre", this.nombre);
 		json.put("area", this.area);
 		json.put("ubicacion", this.ubicacion);

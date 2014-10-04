@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import sipcoffee.models.Bloque;
 import sipcoffee.models.Rol;
+import sipcoffee.models.Terreno;
 
 public class BloqueCtrl {
 
@@ -23,7 +24,7 @@ public class BloqueCtrl {
             bloque.setArea(json.getInt("area"));
             bloque.setUbicacion(json.getString("ubicacion"));
             bloque.setFechaRegistro(new Date());
-            bloque.setBloque( new Bloque().find(json.getInt("bloque")));
+            bloque.setTerreno(new Terreno().find(json.getInt("terreno")));
             
             return bloque;
         } catch (JSONException e) {

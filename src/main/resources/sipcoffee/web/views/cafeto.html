@@ -4,37 +4,37 @@
 			<div class="page-header">
 				<h3>Cafeto</h3>
 			</div>
-			<form name="formCafeto">
+			<form name="formCafeto" ng-submit="guardar()">
 
 				<div class="form-group">
 					<label for="nombre">Nombre</label>
-                    <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre de la variedad"/>
+                    <input class="form-control" type="text" id="nombre" name="nombre" ng-model="nombre" placeholder="Nombre de la variedad"/>
 				</div>
 
 				<div class="form-group">
 					<label for="abono">Cantidad Abono</label>
-					<input class="form-control" type="text" id="abono" name="abono" placeholder="Cantidad Abono"/>
+					<input class="form-control" type="text" id="abono" name="abono" ng-model="cantidadAbono" placeholder="Cantidad Abono"/>
 				</div>
 
 				<div class="form-group">
 					<label for="pesticida">Cantidad Pesticida</label>
-					<input class="form-control" type="text" id="pesticida" name="pesticida" placeholder="Cantidad Pesticida"/>
+					<input class="form-control" type="text" id="pesticida" name="pesticida" ng-model="cantidadPesticida" placeholder="Cantidad Pesticida"/>
 				</div>
 
 				<div class="form-group">
 					<label for="distSurco">Distancia Surco</label>
-					<input class="form-control" type="text" id="distSurco" name="distSurco" placeholder="Distancia"/>
+					<input class="form-control" type="text" id="distSurco" name="distSurco" ng-model="distanciaSurco" placeholder="Distancia"/>
 				</div>
 
 				<div class="form-group">
 					<label for="distCafeto">Distancia Cafeto</label>
-					<input class="form-control" type="text" id="distCafeto" name="distCafeto" placeholder="Distancia"/>
+					<input class="form-control" type="text" id="distCafeto" name="distCafeto" ng-model="distanciaCafeto" placeholder="Distancia"/>
 				</div>
 
 				<div class="form-group">
 					<label for="tiempoSemillero">Tiempo Semillero</label>
 					<div class="input-group">
-					    <input class="form-control" type="text" id="tiempoSemillero" name="tiempoSemillero" placeholder="Cantidad"/>
+					    <input class="form-control" type="text" id="tiempoSemillero" name="tiempoSemillero" ng-model="tiempoSemillero" placeholder="Cantidad"/>
 						<span class="input-group-addon">Dias</span>
 					</div>
 				</div>
@@ -42,7 +42,7 @@
 				<div class="form-group">
 					<label for="tiempoAlmacigo">Tiempo Almacigo</label>
 					<div class="input-group">
-						<input class="form-control" name="tiempoAlmacigo" id="tiempoAlmacigo" type="text" placeholder="Cantidad"/>
+						<input class="form-control" name="tiempoAlmacigo" id="tiempoAlmacigo" ng-model="tiempoAlmacigo" type="text" placeholder="Cantidad"/>
 						<span class="input-group-addon">Dias</span>
 					</div>
 				</div>
@@ -50,7 +50,7 @@
 				<div class="form-group">
 					<label for="tiempoGraneo">Tiempo Graneo</label>
 					<div class="input-group">
-						<input class="form-control" name="tiempoGraneo" id="tiempoGraneo" type="text" placeholder="Cantidad"/>
+						<input class="form-control" name="tiempoGraneo" id="tiempoGraneo" ng-model="tiempoGraneo" type="text" placeholder="Cantidad"/>
 						<span class="input-group-addon">Dias</span>
 					</div>
 				</div>
@@ -58,7 +58,7 @@
 				<div class="form-group">
 					<label for="tiempoSoca">Tiempo Soca</label>
 					<div class="input-group">
-						<input class="form-control" name="tiempoSoca" id="tiempoSoca" type="text" placeholder="Cantidad"/>
+						<input class="form-control" name="tiempoSoca" id="tiempoSoca" ng-model="tiempoSoca" type="text" placeholder="Cantidad"/>
 						<span class="input-group-addon">Dias</span>
 					</div>
 				</div>
@@ -66,14 +66,14 @@
 				<div class="form-group">
 					<label for="primeraCosecha">Primera Cosecha</label>
 					<div class="input-group">
-						<input class="form-control" name="primeraCosecha" id="primeraCosecha" type="text" placeholder="Cantidad"/>
+						<input class="form-control" name="primeraCosecha" id="primeraCosecha" ng-model="primeraCosecha" type="text" placeholder="Cantidad"/>
 						<span class="input-group-addon">Dias</span>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="proveedor">Proveedor</label>
-                    <input class="form-control" type="text" id="proveedor" name="proveedor" placeholder="Nombre"/>
+                    <input class="form-control" type="text" id="proveedor" name="proveedor" ng-model="proveedor" placeholder="Nombre"/>
 				</div>
 
 				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
@@ -88,7 +88,7 @@
 
 		</article>
 
-		<article  ng-controller="cafetoController">
+		<article>
 
 			<table class="table table-striped" >
 

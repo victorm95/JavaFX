@@ -22,8 +22,8 @@ import org.json.JSONObject;
 @Entity
 @Table(name = "Parcelas")
 @NamedQueries({
-		@NamedQuery(name = "all-Parcelas", query = "SELECT parcela FROM Parcelas as parcela"),
-		@NamedQuery(name = "findById-Parcela", query = "SELECT parcela FROM Parcelas as parcela WHERE parcela.id=:id")})
+		@NamedQuery(name = "all-Parcelas", query = "SELECT parcela FROM Parcela as parcela"),
+		@NamedQuery(name = "findById-Parcela", query = "SELECT parcela FROM Parcela as parcela WHERE parcela.id=:id")})
 public class Parcela {
 
 	// Constructores
@@ -45,7 +45,7 @@ public class Parcela {
 	@Column(name = "activo", nullable = false)
 	private boolean activo;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name = "fechaRegistro")
 	private Date fechaRegistro;
 

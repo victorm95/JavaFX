@@ -3,7 +3,8 @@ var cafeto = angular.module('cafeto', []);
 cafeto.controller('cafetoController', ['$scope',
 function($scope) {
 
-	$scope.mensaje = "";
+	var toast = document.querySelector("#toast");
+
 	$scope.cafetos = JSON.parse(Cafeto.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
 
 	$scope.selected = new Object();
@@ -13,25 +14,33 @@ function($scope) {
 
 			var cafeto = Cafeto.create(JSON.stringify({
 				nombre : $scope.nombre,		
-				cantidadAbono : $scope.cantidadAbono,
-				cantidadPesticida : $scope.cantidadPesticida,
-				distanciaCafeto : $scope.distanciaCafeto,
-				distanciaSurco : $scope.distanciaSurco,
-				tiempoSemillero : $scope.tiempoSemillero,
-				tiempoAlmacigo : $scope.tiempoAlmacigo,
-				tiempoGraneo : $scope.tiempoGraneo,
-				tiempoSoca : $scope.tiempoSoca,
-				primeraCosecha : $scope.primeraCosecha,
+				cantidadAbono : parseInt($scope.cantidadAbono),
+				cantidadPesticida : parseInt($scope.cantidadPesticida),
+				distanciaCafeto : parseInt($scope.distanciaCafeto),
+				distanciaSurco : parseInt($scope.distanciaSurco),
+				tiempoSemillero : parseInt($scope.tiempoSemillero),
+				tiempoAlmacigo : parseInt($scope.tiempoAlmacigo),
+				tiempoGraneo : parseInt($scope.tiempoGraneo),
+				tiempoSoca : parseInt($scope.tiempoSoca),
+				primeraCosecha : parseInt($scope.primeraCosecha),
 				proveedor : $scope.proveedor
 			}));
 
-			if (bloque.save()) {
-				$scope.mensaje = "Se ha creado el cafeto " + name + " exitosamente.";
-				$scope.cafetos.push(JSON.parse(cafeto.toJson()));
-			} else {
-				$scope.mensaje = "Ocurrio un error al guardar el cafeto " + name + ".";
-			}
+			//console.log("Cafeto: " + cafeto.toJson());
 
+            try{
+                if (cafeto.save()) {
+                    toast.text = "Se ha creado el cafeto " + $scope.nombre + " exitosamente.";
+                    $scope.cafetos.push(JSON.parse(cafeto.toJson()));
+                } else {
+                    console.log("Error guardando: " + error);
+                    toast.text = "Ocurrio un error al guardar el cafeto " + $scope.nombre + ".";
+                }
+			}catch(error){
+			    console.log("Catch "+ error);
+			    toast.text = "Ocurrio un error al guardar el cafeto " + $scope.nombre + ".";
+			}
+            toast.show();
 		}
 
 		$scope.nombre = '';

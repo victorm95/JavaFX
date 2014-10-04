@@ -11,7 +11,9 @@ version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 		<class>sipcoffee.models.Municipio</class>
 		<class>sipcoffee.models.Terreno</class>
 		<class>sipcoffee.models.Bloque</class>
-		<class>sipcoffee.models.Producto</class>
+        <class>sipcoffee.models.Producto</class>
+        <class>sipcoffee.models.Cafeto</class>
+        <class>sipcoffee.models.Parcela</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"

@@ -7,9 +7,9 @@
 
 				<div class="form-group">
 					<label for="terreno">Terreno</label>
-					<select class="form-control">
-						<option>La bonita</option>
-					</select>
+                    <select name="terreno" id="terreno" ng-model="terreno" class="form-control">
+                        <option ng-repeat="terreno in terrenos" ng-value="terreno.id">{{ terreno.nombre }}</option>
+                    </select>
 				</div>
 
 				<div class="form-group">
@@ -46,16 +46,12 @@
 			<table class="table table-striped">
 
 				<tr>
-					<th>&nbsp;</th>
 					<th>Terreno</th>
 					<th>Nombre</th>
 					<th>Area</th>
 					<th>Ubicacion</th>
 				</tr>
 				<tr ng-repeat="bloque in bloques">
-					<td>
-					<input type="radio" name="selection" />
-					</td>
 					<td>{{bloque.terreno.nombre}}</td>
 					<td>{{bloque.nombre}}</td>
 					<td>{{bloque.area}} mts<sup>2</sup></td>

@@ -22,8 +22,8 @@ import org.json.JSONObject;
 @Entity
 @Table(name = "Cafetos")
 @NamedQueries({
-		@NamedQuery(name = "all-Cafeto", query = "SELECT cafeto FROM Cafetos as cafeto"),
-		@NamedQuery(name = "findById-Cafeto", query = "SELECT cafeto FROM Cafetos as user WHERE cafeto.id=:id")})
+		@NamedQuery(name = "all-Cafeto", query = "SELECT cafeto FROM Cafeto as cafeto"),
+		@NamedQuery(name = "findById-Cafeto", query = "SELECT cafeto FROM Cafeto as cafeto WHERE cafeto.id=:id")})
 public class Cafeto {
 
 	// Constructores
@@ -69,7 +69,7 @@ public class Cafeto {
 	@Column(name = "proveedor", length = 30)
 	private String proveedor;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name = "fechaRegistro")
 	private Date fechaRegistro;
 

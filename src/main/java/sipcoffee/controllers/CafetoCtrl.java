@@ -1,9 +1,8 @@
 package sipcoffee.controllers;
 
-import java.util.Date;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+import sipcoffee.models.Cafeto;
 
 public class CafetoCtrl {
 
@@ -15,19 +14,19 @@ public class CafetoCtrl {
         try {
             json = new JSONObject(obj.toString());
             Cafeto cafeto = new Cafeto();
-            
-            parcela.setNombre(json.getString("nombre"));
-            parcela.setCantidadAbono(json.getInt("cantidadAbono"));
-            parcela.setCantidadPesticida(json.getInt("cantidadPesticida"));
-            parcela.setDistanciaCafeto(json.getInt("distanciaCafeto"));
-            parcela.setDistanciaSurco(json.getInt("distanciaSurco"));
-            parcela.setTiempoSemillero(json.getInt("tiempoSemillero"));
-            parcela.setTiempoAlmacigo(json.getInt("tiempoAlmacigo"));
-            parcela.setTiempoGraneo(json.getInt("tiempoGraneo"));
-            parcela.setTiempoSoca(json.getInt("tiempoSoca"));
-            parcela.setPrimeraCosecha(json.getInt("primeraCosecha"));
-            parcela.setProveedor(json.getString("proveedor"));
-            parcela.setFechaRegistro(new Date());
+
+            cafeto.setNombre(json.getString("nombre"));
+            cafeto.setCantidadAbono(json.getInt("cantidadAbono"));
+            cafeto.setCantidadPesticida(json.getInt("cantidadPesticida"));
+            cafeto.setDistanciaCafeto(json.getInt("distanciaCafeto"));
+            cafeto.setDistanciaSurco(json.getInt("distanciaSurco"));
+            cafeto.setTiempoSemillero(json.getInt("tiempoSemillero"));
+            cafeto.setTiempoAlmacigo(json.getInt("tiempoAlmacigo"));
+            cafeto.setTiempoGraneo(json.getInt("tiempoGraneo"));
+            cafeto.setTiempoSoca(json.getInt("tiempoSoca"));
+            cafeto.setPrimeraCosecha(json.getInt("primeraCosecha"));
+            cafeto.setProveedor(json.getString("proveedor"));
+            cafeto.setFechaRegistro();
 
             return cafeto;
         } catch (JSONException e) {

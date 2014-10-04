@@ -4,24 +4,26 @@
 			<div class="page-header">
 				<h3>Parcela</h3>
 			</div>
-			<form name="formParcela">
+			<form name="formParcela" ng-submit="guardar()">
 		
 				<div class="form-group">
 					<label for="nombre">Nombre Parcela</label>
-                    <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre"/>
+                    <input class="form-control" type="text" id="nombre" name="nombre" ng-model="nombre" placeholder="Nombre"/>
 				</div>
 
 				<div class="form-group">
 					<label for="area">Area</label>
 					<div class="input-group">
-					    <input class="form-control" type="text" id="area" name="area" placeholder="Cantidad"/>
+					    <input class="form-control" type="text" id="area" name="area" ng-model="area" placeholder="Cantidad"/>
 						<span class="input-group-addon">Mts<sup>2</sup></span>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="bloque">Bloque</label>
-					<select class="form-control" id="bloque" name="bloque"></select>
+                    <select name="bloque" id="bloque" ng-model="bloque" class="form-control">
+                        <option ng-repeat="bloque in bloques" ng-value="bloque.id">{{ bloque.nombre }}</option>
+                    </select>
 				</div>
 	
 				<div class="form-group">
@@ -41,7 +43,7 @@
 
 		</article>
 
-		<article  ng-controller="parcelaController">
+		<article>
 
 			<table class="table table-striped" >
 
@@ -51,6 +53,13 @@
     				<th>Bloque</th>
     				<th>Activo</th>
     			</tr>
+
+                <tr ng-repeat="parcela in parcelas">
+                    <td>{{ parcela.nombre }}</td>
+                    <td>{{ parcela.area }}</td>
+                    <td>{{ parcela.bloque.nombre }}</td>
+                    <td><input type="checkbox" ng-model="parcela.activo"/></td>
+                </tr>
 
 			</table>
 		</article>

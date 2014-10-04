@@ -2,8 +2,11 @@ package sipcoffee;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
@@ -13,12 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import netscape.javascript.JSObject;
-import sipcoffee.controllers.BloqueCtrl;
-import sipcoffee.controllers.DepartamentoCtrl;
-import sipcoffee.controllers.MunicipioCtrl;
-import sipcoffee.controllers.RolCtrl;
-import sipcoffee.controllers.TerrenoCtrl;
-import sipcoffee.controllers.UsuarioCtrl;
+import sipcoffee.controllers.*;
 import sipcoffee.models.Usuario;
 
 public class Splash implements Initializable {
@@ -34,13 +32,13 @@ public class Splash implements Initializable {
 	/* Init */
 	public void initialize(URL url, ResourceBundle resources){
 
-        this.passwordField.setOnAction(e -> this.login());
-		this.btnLogin.setOnAction(e -> this.login());
+        this.passwordField.setOnAction(e -> this.login(e));
+		this.btnLogin.setOnAction(e -> this.login(e));
 		this.btnCancel.setOnAction( e -> System.exit(0) );
 
     }
 
-    private void login(){
+    private void login(ActionEvent e){
 
 		UsuarioCtrl userCtrl = new UsuarioCtrl();
 
@@ -56,7 +54,7 @@ public class Splash implements Initializable {
 
                     windowJS.setMember("javaMain", this);
                     engine.executeScript("window.console.log = function(obj){ javaMain.print(obj); };");
-                    engine.executeScript("window.load = function(url){ javaMain.load(url); };");
+                    //engine.executeScript("window.load = function(url){ javaMain.load(url); };");
 
                     //System.out.println("[Session:] " + "sessionStorage.setItem('usuario', "+ user.toJson() +");");
                     //engine.executeScript("sessionStorage.setItem('usuario', "+ user.toJson() +");");
@@ -68,6 +66,8 @@ public class Splash implements Initializable {
                     windowJS.setMember("Bloque", new BloqueCtrl());
                     windowJS.setMember("Municipio", new MunicipioCtrl());
                     windowJS.setMember("Departamento", new DepartamentoCtrl());
+                    windowJS.setMember("Parcela", new ParcelaCtrl());
+                    windowJS.setMember("Cafeto", new CafetoCtrl());
 
 			/*------------------------------------------------------------------------------------------------*/
 
@@ -75,6 +75,9 @@ public class Splash implements Initializable {
                     stage.setTitle("Sipcoffee");
                     stage.setScene(new Scene(webView));
                     stage.show();
+
+                    // Close Login
+                    ((Stage)(((Node)e.getSource()).getScene().getWindow())).close();
                 }else{
                     this.msgLabel.setText("Es usuario no esta activo.");
                 }
@@ -84,6 +87,10 @@ public class Splash implements Initializable {
         }else{
             this.msgLabel.setText("Todos los campos son obligatorios.");
         }
+    }
+
+    public void print(Object obj) {
+        System.out.println(obj);
     }
 	
 

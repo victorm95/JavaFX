@@ -1,13 +1,9 @@
-var main = angular.module('main', [ 'ngRoute', 'rol', 'usuario', 'sesion', 'terreno']);
+var main = angular.module('main', [ 'ngRoute', 'rol', 'usuario', 'bloque', 'terreno', 'parcela', 'cafeto']);
 
 main.config([ '$routeProvider', function($routeProvider) {
 
 	$routeProvider
 	.when('/', { })
-	.when('/logout', {
-		templateUrl: 'login.html',
-		controller: 'logoutController'
-	})
 	.when('/roles', {
 		templateUrl: 'roles.html',
 		controller: 'rolController'
@@ -25,7 +21,8 @@ main.config([ '$routeProvider', function($routeProvider) {
 		controller: 'bloqueController'
 	})
 	.when('/cafeto', {
-		templateUrl: 'cafeto.html'
+		templateUrl: 'cafeto.html',
+		controller: 'cafetoController'
 	})
 	.when('/siembra', {
 		templateUrl: 'siembra.html'
@@ -37,7 +34,8 @@ main.config([ '$routeProvider', function($routeProvider) {
 		templateUrl: 'salidas.html'
 	})
 	.when('/parcela', {
-		templateUrl: 'parcela.html'
+		templateUrl: 'parcela.html',
+		controller: 'parcelaController'
 	})
 	.when('/cosecha', {
 		templateUrl: 'cosecha.html'

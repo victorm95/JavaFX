@@ -3,8 +3,10 @@ var bloque = angular.module('bloque', []);
 bloque.controller('bloqueController', ['$scope',
 function($scope) {
 
-	$scope.mensaje = "";
+    var toast = document.querySelector("#paper-toast");
+
 	$scope.bloques = JSON.parse(Bloque.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
+	$scope.terrenos = JSON.parse(Terreno.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
 
 	$scope.selected = new Object();
 
@@ -14,14 +16,16 @@ function($scope) {
 			var bloque = Bloque.create(JSON.stringify({
 				nombre : $scope.nombre,		
 				area : $scope.area,
-				ubicacion : $scope.ubicacion
+				ubicacion : $scope.ubicacion,
+				terreno: parseInt($scope.terreno)
 			}));
 
 			if (bloque.save()) {
 				$scope.mensaje = "Se ha creado el bloque " + name + " exitosamente.";
 				$scope.bloques.push(JSON.parse(bloque.toJson()));
 			} else {
-				$scope.mensaje = "Ocurrio un error al guardar el bloque " + name + ".";
+				toast.text = "Ocurrio un error al guardar el bloque " + name + ".";
+				toast.show();
 			}
 
 		}

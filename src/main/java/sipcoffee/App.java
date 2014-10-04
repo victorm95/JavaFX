@@ -73,10 +73,6 @@ public class App extends Application {
 		
 	}
 
-	public void print(Object obj) {
-		System.out.println(obj);
-	}
-
 	public void load(String url) {
 		engine.load(getClass().getResource(url).toExternalForm());
 	}
