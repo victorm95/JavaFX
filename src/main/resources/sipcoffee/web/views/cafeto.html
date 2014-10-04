@@ -106,6 +106,20 @@
     				<th>Proveedor</th>
     				<th>Fecha</th>
     			</tr>
+				<tr ng-repeat="cafeto in cafetos">
+					<td>{{cafeto.nombre}}</td>
+					<td>{{cafeto.cantidadAbono}}</td>
+					<td>{{cafeto.cantidadPesticida}}</td>
+					<td>{{cafeto.distanciaCafeto}}</td>
+					<td>{{cafeto.distanciaSurco}}</td>
+					<td>{{cafeto.tiempoSemillero}}</td>
+					<td>{{cafeto.tiempoAlmacigo}}</td>
+					<td>{{cafeto.tiempoGraneo}}</td>
+					<td>{{cafeto.tiempoSoca}}</td>
+					<td>{{cafeto.primeraCosecha}}</td>
+					<td>{{cafeto.proveedor}}</td>
+					<td>{{cafeto.fechaRegistro}}</td>
+				</tr>
 
 			</table>
 		</article>

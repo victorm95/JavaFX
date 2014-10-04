@@ -58,11 +58,11 @@
 					<th>Area</th>
 				</tr>
 				
-				<tr ng-repeat="t in terrenos">
-					<td>{{t.municipio.nombre}}</td>
-					<td>{{t.nombre}}</td>
-					<td>{{t.direccion}}</td>
-					<td>{{t.area}} <span>M<sup>2</sup></span></td>
+				<tr ng-repeat="terreno in terrenos">
+					<td>{{terreno.municipio.nombre}}</td>
+					<td>{{terreno.nombre}}</td>
+					<td>{{terreno.direccion}}</td>
+					<td>{{terreno.area}} <span>M<sup>2</sup></span></td>
 				</tr>
 
 			</table>

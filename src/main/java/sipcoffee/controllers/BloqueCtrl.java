@@ -23,10 +23,7 @@ public class BloqueCtrl {
             bloque.setArea(json.getInt("area"));
             bloque.setUbicacion(json.getString("ubicacion"));
             bloque.setFechaRegistro(new Date());
-            //bloque.setRol( new Rol().find(json.getString("rol")) );
-            //bloque.setMunicipio( new Municipio() );
-            
-            
+            bloque.setBloque( new Bloque().find(json.getInt("bloque")));
             
             return bloque;
         } catch (JSONException e) {

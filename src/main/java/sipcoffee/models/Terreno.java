@@ -33,7 +33,6 @@ public class Terreno {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idTerreno")
 	private int id;
-
 	
 	@JoinColumn(name = "idMunicipio", referencedColumnName = "idMunicipio", nullable = false)
 	@OneToOne
@@ -150,7 +149,7 @@ public class Terreno {
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put("id", this.id);
-		json.put("municipio", new JSONObject( this.municipio.toJson()) );
+		json.put("municipio", new JSONObject(this.municipio.toJson()));
 		json.put("nombre", this.nombre);
 		json.put("direccion", this.direccion);
 		json.put("area", this.area);

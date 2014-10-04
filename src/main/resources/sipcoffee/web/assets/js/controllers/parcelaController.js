@@ -36,7 +36,7 @@ function($scope) {
 				$scope.mensaje = "Se ha creado la parcela exitosamente.";
 				$scope.parcelas.push(JSON.parse(parcela.toJson()));
 			} else {
-				$scope.mensaje = "Ocurrio un error al guradar la parcela.";
+				$scope.mensaje = "Ocurrio un error al guardar la parcela.";
 			}
 
 		}

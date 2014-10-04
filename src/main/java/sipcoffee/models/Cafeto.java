@@ -22,8 +22,8 @@ import org.json.JSONObject;
 @Entity
 @Table(name = "Cafetos")
 @NamedQueries({
-		@NamedQuery(name = "all-Cafeto", query = "SELECT cafeto FROM Cafeto as cafeto"),
-		@NamedQuery(name = "findById-Cafeto", query = "SELECT cafeto FROM Cafeto as user WHERE cafeto.id=:id")})
+		@NamedQuery(name = "all-Cafeto", query = "SELECT cafeto FROM Cafetos as cafeto"),
+		@NamedQuery(name = "findById-Cafeto", query = "SELECT cafeto FROM Cafetos as user WHERE cafeto.id=:id")})
 public class Cafeto {
 
 	// Constructores
