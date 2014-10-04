@@ -50,14 +50,16 @@
 					<th>Terreno</th>
 					<th>Nombre</th>
 					<th>Area</th>
+					<th>Ubicacion</th>
 				</tr>
 				<tr ng-repeat="bloque in bloques">
 					<td>
 					<input type="radio" name="selection" />
 					</td>
-					<td></td>
+					<td>{{bloque.terreno.nombre}}</td>
 					<td>{{bloque.nombre}}</td>
 					<td>{{bloque.area}} mts<sup>2</sup></td>
+					<td>{{bloque.ubicacion}}</td>
 				</tr>
 
 			</table>

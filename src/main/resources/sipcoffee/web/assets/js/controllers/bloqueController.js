@@ -5,21 +5,7 @@ function($scope) {
 
 	$scope.mensaje = "";
 	$scope.bloques = JSON.parse(Bloque.all().toString().replace(/\"/g, "").replace(/\\/g, '"'));
-	/*$scope.bloques = {
-		id : 1,
-		nombre : 'la bonita',
-		direccion : 'Avenida el morro',
-		area : '11500',
-		municipio : {
-			nombre : 'andes'
-		}
-	}/*, {
-	 id : 2,
-	 nombre : 'Cosechador'
-	 }, {
-	 id : 3,
-	 nombre : 'Fumigador'
-	 }*/;
+
 	$scope.selected = new Object();
 
 	$scope.guardar = function() {
@@ -35,7 +21,7 @@ function($scope) {
 				$scope.mensaje = "Se ha creado el bloque " + name + " exitosamente.";
 				$scope.bloques.push(JSON.parse(bloque.toJson()));
 			} else {
-				$scope.mensaje = "Ocurrio un error al guradar el bloque " + name + ".";
+				$scope.mensaje = "Ocurrio un error al guardar el bloque " + name + ".";
 			}
 
 		}
