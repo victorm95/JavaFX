@@ -1,8 +1,0 @@
-.box{
-	-fx-padding: 10 10 10 10;
-	-fx-alignment: center;
-}
-
-.msg-error{
-    -fx-text-fill: red;
-}
