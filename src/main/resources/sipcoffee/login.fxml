@@ -51,6 +51,6 @@
     <Button text="Iniciar Sesion" fx:id="btnLogin" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
     <Button text="Cancelar" fx:id="btnCancel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-    <Label fx:id="msgLabel" styleClass="msg-error" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <Label fx:id="msgLabel" styleClass="msg-error" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2"/>
 
 </GridPane>
