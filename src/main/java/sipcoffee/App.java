@@ -28,53 +28,11 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
-
-
-        // Iniciarlizar los Objetos para consular la DB
-        new Scripts().start();
-
-		Parent splash = FXMLLoader.load(getClass().getResource("login.fxml"));
+		Parent splash = FXMLLoader.load(getClass().getResource("splash.fxml"));
 		stage.setScene(new Scene(splash));
 		//stage.initStyle(StageStyle.UNDECORATED);
 		stage.setTitle("Sipcoffee");
         stage.show();
-
-		/*
-		webView = new WebView();
-		engine = webView.getEngine();
-		windowJS = (JSObject) engine.executeScript("window");
-
-		windowJS.setMember("javaMain", this);
-		engine.executeScript("window.console.log = function(obj){ javaMain.print(obj); };");
-		engine.executeScript("window.load = function(url){ javaMain.load(url); };");
-
-		/*-------------------------------  Agragar los modelos al webView --------------------------------
-		windowJS.setMember("Rol", new RolCtrl());
-		windowJS.setMember("Usuario", new UsuarioCtrl());
-		windowJS.setMember("Terreno", new TerrenoCtrl());
-		windowJS.setMember("Bloque", new BloqueCtrl());
-		windowJS.setMember("Municipio", new MunicipioCtrl());
-		windowJS.setMember("Departamento", new DepartamentoCtrl());
-
-		/*------------------------------------------------------------------------------------------------
-
-		// engine.load(getClass().getResource("web/views/roles.html").toExternalForm());
-
-		load("web/views/index.html");
-
-		stage.setTitle("Sipcoffee");
-		stage.setScene(new Scene(webView));
-		stage.show();
-
-		// Iniciarlizar los Objetos para consular la DB
-		new Scripts().start();
-		*/
-        
-		
-	}
-
-	public void load(String url) {
-		engine.load(getClass().getResource(url).toExternalForm());
 	}
 
 	public static void main(String[] args) {

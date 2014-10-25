@@ -23,7 +23,6 @@ public class ParcelaCtrl {
             parcela.setArea(json.getInt("area"));
             parcela.setFechaRegistro(new Date());
             parcela.setBloque(new Bloque().find(json.getInt("bloque")) );
-            parcela.setActivo(json.getBoolean("activo"));
          
             return parcela;
         } catch (JSONException e) {

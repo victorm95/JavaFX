@@ -5,36 +5,6 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<!--
-<VBox xmlns:fx="http://javafx.com/fxml"
-	fx:controller="sipcoffee.Login" styleClass="box">
-
-	<stylesheets>
-		<URL value="@login.css"/>
-	</stylesheets>
-
-	<HBox styleClass="box">
-		<Label text="Usuario"/>
-		<TextField fx:id="usuarioField"/>
-	</HBox>
-
-	<HBox styleClass="box">
-		<Label text="Contraseña"/>
-		<PasswordField fx:id="passwordField"/>
-	</HBox>
-
-	<HBox styleClass="box">
-		<Button text="Iniciar Sesion" fx:id="btnLogin"/>
-		<Button text="Cancelar" fx:id="btnCancel"/>
-	</HBox>
-
-	<HBox styleClass="box">
-		<Label fx:id="msgLabel" styleClass="msg-error"/>
-	</HBox>
-
-</VBox>
--->
-
 <GridPane xmlns:fx="http://javafx.com/fxml"
           fx:controller="sipcoffee.Login" styleClass="main-box">
 

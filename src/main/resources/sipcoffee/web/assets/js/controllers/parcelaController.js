@@ -17,7 +17,6 @@ function($scope) {
 			var parcela = Parcela.create(JSON.stringify({
 				nombre : $scope.nombre,		
 				area : $scope.area,
-				activo : $scope.activo,
 				bloque : parseInt($scope.bloque)
 			}));
 

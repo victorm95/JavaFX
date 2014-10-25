@@ -151,7 +151,7 @@ public class Parcela {
             List<Parcela> listParcelas = Conexion.manager.createNamedQuery(
                     "all-Parcelas", Parcela.class).getResultList();
             List<Bloque> listBloques = Conexion.manager.createNamedQuery(
-                    "all-Bloque", Bloque.class).getResultList();
+                    "all-Bloques", Bloque.class).getResultList();
             List<Terreno> listTerrenos = Conexion.manager.createNamedQuery(
                     "all-Terreno", Terreno.class).getResultList();
 
@@ -193,6 +193,7 @@ public class Parcela {
 
             return ((JSONObject)jsonTerrenos.get(0)).toString(2);
         }catch(Exception e){
+            System.out.println("[Error GetData]: " + e.toString());
             return null;
         }
     }
