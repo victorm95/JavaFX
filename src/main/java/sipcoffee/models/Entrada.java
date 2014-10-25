@@ -20,32 +20,31 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Entity
-@Table(name = "Bloque")
+@Table(name = "Entradas")
 @NamedQueries({
-@NamedQuery(name = "all-Bloques", query = "SELECT bloque FROM Bloque as bloque"),
-@NamedQuery(name = "findByName-Bloque", query = "SELECT bloque FROM Bloque as bloque WHERE bloque.nombre=:nombre"),
-@NamedQuery(name = "findById-Bloque", query = "SELECT bloque FROM Bloque as bloque WHERE bloque.id=:id")
+@NamedQuery(name = "all-Entradas", query = "SELECT entrada FROM Entrada as entrada"),
+@NamedQuery(name = "findById-Entrada", query = "SELECT entrada FROM Entrada as entrada WHERE entrada.id=:id")
 })
 
-public class Bloque {
+public class Entrada {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idBloque")
+	@Column(name = "idEntrada")
 	private int id;
 
-	@JoinColumn(name = "idTerreno", referencedColumnName = "idTerreno", nullable = true)
+	@JoinColumn(name = "idProducto", referencedColumnName = "idProducto", nullable = true)
 	@OneToOne
-	private Terreno terreno;
+	private Producto producto;
 
-	@Column(name = "nombre")
-	private String nombre;
+	@Column(name = "cantidad")
+	private int cantidad;
+	
+	@Column(name = "valor")
+	private int valor;
 
-	@Column(name = "area")
-	private int area;
-
-	@Column(name = "ubicacion")
-	private String ubicacion;
+	@Column(name = "cometario")
+	private String comentario;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaRegistro")
@@ -57,25 +56,19 @@ public class Bloque {
 		return Conexion.persist(this);
 	}
 
-	public Bloque find(int id) {
+	public Entrada find(int id) {
 		Conexion.init();
-		return (Bloque) Conexion.manager.createNamedQuery("findById-Bloque")
+		return (Entrada) Conexion.manager.createNamedQuery("findById-Entrada")
 				.setParameter("id", id).getSingleResult();
 	}
 	
-	public Bloque find(String nombre) {
-		Conexion.init();
-		return (Bloque) Conexion.manager.createNamedQuery("findByName-Bloque")
-				.setParameter("nombre", nombre).getSingleResult();
-	}
-
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
 
-		List<Object> list = Conexion.namedQuery("all-Bloques");
+		List<Object> list = Conexion.namedQuery("all-Entradas");
 
-		for (Object bloque : list) {
-			jsonArray.put(((Bloque) bloque).toJson());
+		for (Object entrada : list) {
+			jsonArray.put(((Entrada) entrada).toJson());
 		}
 
 		return jsonArray.toString();
@@ -91,36 +84,36 @@ public class Bloque {
 		return this.id;
 	}
 
-	public Terreno getTerreno() {
-		return this.terreno;
+	public Producto getProducto() {
+		return this.producto;
 	}
 
-	public void setTerreno(Terreno terreno) {
-		this.terreno = terreno;
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
 
-	public String getNombre() {
-		return this.nombre;
+	public int getCantidad() {
+		return this.cantidad;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
-	public int getArea() {
-		return this.area;
+	public int getValor() {
+		return this.valor;
 	}
 
-	public void setArea(int area) {
-		this.area = area;
+	public void setValor(int valor) {
+		this.valor = valor;
 	}
 
-	public String getUbicacion() {
-		return this.ubicacion;
+	public String getComentario() {
+		return this.comentario;
 	}
 
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion = ubicacion;
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 
 	public Date getFechaRegistro() {
@@ -136,10 +129,11 @@ public class Bloque {
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put("id", this.id);	
-		json.put("terreno", new JSONObject(this.terreno.toJson()));
-		json.put("nombre", this.nombre);
-		json.put("area", this.area);
-		json.put("ubicacion", this.ubicacion);
+		json.put("producto", new JSONObject(this.producto.toJson()));
+		json.put("cantidad", this.cantidad);
+		json.put("valor", this.valor);
+		json.put("comentario", this.comentario);
+		json.put("fechaRegistro", this.fechaRegistro);
 		return json.toString();
 	}
 }

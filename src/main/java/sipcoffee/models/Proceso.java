@@ -17,7 +17,7 @@ import org.json.JSONObject;
 @Entity
 @Table(name = "Procesos")
 @NamedQueries({
-		@NamedQuery(name = "all-Proceso", query = "SELECT proceso FROM Proceso as proceso"),
+		@NamedQuery(name = "all-Procesos", query = "SELECT proceso FROM Proceso as proceso"),
 		@NamedQuery(name = "findById-Proceso", query = "SELECT proceso FROM Proceso as proceso WHERE proceso.id = :id"),
 		@NamedQuery(name = "findByName-Proceso", query = "SELECT proceso FROM Proceso as proceso WHERE proceso.nombre = :nombre") })
 public class Proceso {
@@ -59,7 +59,7 @@ public class Proceso {
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
 
-		List<Object> list = Conexion.namedQuery("all-Proceso");
+		List<Object> list = Conexion.namedQuery("all-Procesos");
 
 		for (Object proceso : list) {
 			jsonArray.put(((Proceso) proceso).toJson());

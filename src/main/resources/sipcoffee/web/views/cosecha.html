@@ -33,7 +33,7 @@
 
 		</article>
 
-		<article  ng-controller="cosechaController">
+		<article>
 
 			<table class="table table-striped" >
 
@@ -43,6 +43,12 @@
     				<th>Usuario</th>
     				<th>Fecha</th>
     			</tr>
+				<tr ng-repeat="cosecha in cosechas">
+					<td>{{cosecha.cantidad}} Unid</td>
+					<td>{{cosecha.parcela.nombre}}</td>
+					<td>{{cosecha.usuario.nombre}}</td>
+					<td>{{cosecha.fechaRegistro}}</td>
+				</tr>
 
 			</table>
 		</article>

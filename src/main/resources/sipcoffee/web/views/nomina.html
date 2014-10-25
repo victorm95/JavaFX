@@ -7,16 +7,8 @@
 			<form name="formNomina">
 		
 				<div class="form-group">
-					<label for="tiempo">Tiempo</label>
-                    <input class="form-control" type="text" id="tiempo" name="tiempo"/>
-				</div>
-
-				<div class="form-group">
-					<label for="costo">Costo</label>
-					<div class="input-group">
-						<input class="form-control" type="text" id="costo" name="costo"/>
-						<span class="input-group-addon">$</span>
-					</div>
+					<label for="usuario">Usuario</label>
+                    <input class="form-control" type="text" id="usuario" name="usuario"/>
 				</div>
 
 				<div class="form-group">
@@ -25,10 +17,18 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="usuario">Usuario</label>
-					<select class="form-control" id="usuario" name="usuario"></select>
+					<label for="horas">Horas</label>
+					<select class="form-control" id="horas" name="horas"></select>
 				</div>
 				
+				<div class="form-group">
+					<label for="valor">Valor</label>
+					<div class="input-group">
+						<input class="form-control" type="text" id="valor" name="valor"/>
+						<span class="input-group-addon">$</span>
+					</div>
+				</div>
+
 				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
 				<button class="btn btn-success">
 					Editar
@@ -41,17 +41,24 @@
 
 		</article>
 
-		<article  ng-controller="nominaController">
+		<article>
 
 			<table class="table table-striped" >
 
 				<tr class="info">
-    				<th>Tiempo</th>
-    				<th>Costo</th>
-    				<th>Proceso</th>
     				<th>Usuario</th>
+    				<th>Proceso</th>
+    				<th>Horas</th>
+    				<th>Valor</th>
     				<th>Fecha</th>
     			</tr>
+				<tr ng-repeat="nomina in nominas">
+					<td>{{nomina.usuario.nombre</td>
+					<td>{{nomina.proceso.nombre}}</td>
+					<td>{{nomina.horas}}</td>
+					<td>{{nomina.cantidad}}</td>
+					<td>{{nomina.fechaRegistro}}</td>
+				</tr>
 
 			</table>
 		</article>

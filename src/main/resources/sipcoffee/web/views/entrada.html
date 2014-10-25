@@ -1,0 +1,66 @@
+<article class="well well-lg">
+
+		<article>
+			<div class="page-header">
+				<h3>Entradas</h3>
+			</div>
+			<form name="formEntradas">
+		
+				<div class="form-group">
+					<label for="cantidad">Cantidad</label>
+                    <input class="form-control" type="text" id="cantidad" name="cantidad" placeholder="Cantidad"/>
+				</div>
+
+				<div class="form-group">
+					<label for="valor">Valor</label>
+					<div class="input-group">
+                        <input class="form-control" type="text" id="valor" name="valor" placeholder="Valor"/>
+                        <span class="input-group-addon">$</span>
+                    </div>
+				</div>
+
+				<div class="form-group">
+					<label for="producto">Producto o Servicio</label>
+					<select class="form-control" id="producto" name="producto"></select>
+				</div>
+				
+				<div class="form-group">
+					<label for="cometario">Comentario</label>
+					<textarea class="form-control" id="comentario" name="comentario" rows="3"></textarea>
+				</div>
+				
+				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
+				<button class="btn btn-success">
+					Editar
+				</button>
+				<button class="btn btn-success">
+					Eliminar
+				</button>
+
+			</form>
+
+		</article>
+
+		<article>
+
+			<table class="table table-striped" >
+
+				<tr class="info">
+    				<th>Cantidad</th>
+    				<th>Valor</th>
+    				<th>Producto</th>
+    				<th>Fecha</th>
+    				<th>Comentario</th>
+    			</tr>
+				<tr ng-repeat="entrada in entradas">
+					<td>{{entrada.cantidad}} Unid</td>
+					<td>{{entrada.valor}}</td>
+					<td>{{entrada.producto.nombre}}</td>
+					<td>{{entrada.fechaRegistro}}</td>
+					<td>{{entrada.comentario}}</td>
+				</tr>
+
+			</table>
+		</article>
+		
+</article>

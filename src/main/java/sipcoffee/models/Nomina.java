@@ -20,33 +20,33 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Entity
-@Table(name = "Bloque")
+@Table(name = "Nomina")
 @NamedQueries({
-@NamedQuery(name = "all-Bloques", query = "SELECT bloque FROM Bloque as bloque"),
-@NamedQuery(name = "findByName-Bloque", query = "SELECT bloque FROM Bloque as bloque WHERE bloque.nombre=:nombre"),
-@NamedQuery(name = "findById-Bloque", query = "SELECT bloque FROM Bloque as bloque WHERE bloque.id=:id")
+@NamedQuery(name = "all-Nominas", query = "SELECT nomina FROM Nomina as nomina"),
+@NamedQuery(name = "findById-Nomina", query = "SELECT nomina FROM Nomina as nomina WHERE nomina.id=:id")
 })
 
-public class Bloque {
+public class Nomina {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idBloque")
+	@Column(name = "idNomina")
 	private int id;
 
-	@JoinColumn(name = "idTerreno", referencedColumnName = "idTerreno", nullable = true)
+	@JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario", nullable = true)
 	@OneToOne
-	private Terreno terreno;
+	private Usuario usuario;
 
-	@Column(name = "nombre")
-	private String nombre;
+	@JoinColumn(name = "idProceso", referencedColumnName = "idProceso", nullable = true)
+	@OneToOne
+	private Proceso proceso;
 
-	@Column(name = "area")
-	private int area;
-
-	@Column(name = "ubicacion")
-	private String ubicacion;
-
+	@Column(name = "horas")
+	private int horas;
+	
+	@Column(name = "valor")
+	private int valor;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaRegistro")
 	private Date fechaRegistro;
@@ -57,25 +57,19 @@ public class Bloque {
 		return Conexion.persist(this);
 	}
 
-	public Bloque find(int id) {
+	public Nomina find(int id) {
 		Conexion.init();
-		return (Bloque) Conexion.manager.createNamedQuery("findById-Bloque")
+		return (Nomina) Conexion.manager.createNamedQuery("findById-Nomina")
 				.setParameter("id", id).getSingleResult();
 	}
 	
-	public Bloque find(String nombre) {
-		Conexion.init();
-		return (Bloque) Conexion.manager.createNamedQuery("findByName-Bloque")
-				.setParameter("nombre", nombre).getSingleResult();
-	}
-
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
 
-		List<Object> list = Conexion.namedQuery("all-Bloques");
+		List<Object> list = Conexion.namedQuery("all-Nominas");
 
-		for (Object bloque : list) {
-			jsonArray.put(((Bloque) bloque).toJson());
+		for (Object nomina : list) {
+			jsonArray.put(((Nomina) nomina).toJson());
 		}
 
 		return jsonArray.toString();
@@ -91,36 +85,36 @@ public class Bloque {
 		return this.id;
 	}
 
-	public Terreno getTerreno() {
-		return this.terreno;
+	public Usuario getUsuario() {
+		return this.usuario;
 	}
 
-	public void setTerreno(Terreno terreno) {
-		this.terreno = terreno;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public String getNombre() {
-		return this.nombre;
+	public Proceso getProceso() {
+		return this.proceso;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setProceso(Proceso proceso) {
+		this.proceso = proceso;
 	}
 
-	public int getArea() {
-		return this.area;
+	public int getHoras() {
+		return this.horas;
 	}
 
-	public void setArea(int area) {
-		this.area = area;
+	public void setHoras(int horas) {
+		this.horas = horas;
 	}
 
-	public String getUbicacion() {
-		return this.ubicacion;
+	public int getValor() {
+		return this.valor;
 	}
 
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion = ubicacion;
+	public void setValor(int valor) {
+		this.valor = valor;
 	}
 
 	public Date getFechaRegistro() {
@@ -136,10 +130,11 @@ public class Bloque {
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put("id", this.id);	
-		json.put("terreno", new JSONObject(this.terreno.toJson()));
-		json.put("nombre", this.nombre);
-		json.put("area", this.area);
-		json.put("ubicacion", this.ubicacion);
+		json.put("usuario", new JSONObject(this.usuario.toJson()));
+		json.put("proceso", new JSONObject(this.proceso.toJson()));
+		json.put("horas", this.horas);
+		json.put("valor", this.valor);
+		json.put("fechaRegistro", this.fechaRegistro);
 		return json.toString();
 	}
 }

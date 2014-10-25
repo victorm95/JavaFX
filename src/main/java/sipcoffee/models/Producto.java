@@ -17,7 +17,7 @@ import org.json.JSONObject;
 @Entity
 @Table(name = "Productos")
 @NamedQueries({
-		@NamedQuery(name = "all-Producto", query = "SELECT producto FROM Producto as producto"),
+		@NamedQuery(name = "all-Productos", query = "SELECT producto FROM Producto as producto"),
 		@NamedQuery(name = "findById-Producto", query = "SELECT producto FROM Producto as producto WHERE producto.id = :id"),
 		@NamedQuery(name = "findByName-Producto", query = "SELECT producto FROM Producto as producto WHERE producto.nombre = :nombre") })
 public class Producto {
@@ -59,7 +59,7 @@ public class Producto {
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
 
-		List<Object> list = Conexion.namedQuery("all-Producto");
+		List<Object> list = Conexion.namedQuery("all-Productos");
 
 		for (Object producto : list) {
 			jsonArray.put(((Producto) producto).toJson());
