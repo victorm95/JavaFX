@@ -21,10 +21,10 @@ function($scope) {
 			}));
 
 			if (bloque.save()) {
-				$scope.mensaje = "Se ha creado el bloque " + name + " exitosamente.";
+				$scope.mensaje = "Se ha creado el bloque exitosamente.";
 				$scope.bloques.push(JSON.parse(bloque.toJson()));
 			} else {
-				toast.text = "Ocurrio un error al guardar el bloque " + name + ".";
+				toast.text = "Ocurrio un error al guardar.";
 				toast.show();
 			}
 

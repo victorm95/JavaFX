@@ -1,4 +1,4 @@
-var main = angular.module('main', [ 'ngRoute', 'rol', 'usuario', 'bloque', 'terreno', 'parcela', 'cafeto']);
+var main = angular.module('main', [ 'ngRoute', 'rol', 'usuario', 'proceso', 'producto', 'terreno', 'bloque', 'parcela', 'cafeto', 'siembra', 'cosecha', 'entrada', 'salida', 'nomina']);
 
 main.config([ '$routeProvider', function($routeProvider) {
 
@@ -12,6 +12,14 @@ main.config([ '$routeProvider', function($routeProvider) {
 		templateUrl: 'usuarios.html',
 		controller: 'usuarioController'
 	})	
+	.when('/proceso', {
+		templateUrl: 'proceso.html',
+		controller: 'procesoController'
+	})
+	.when('/producto', {
+		templateUrl: 'producto.html',
+		controller: 'productoController'
+	})
 	.when('/terreno', {
 		templateUrl: 'terreno.html',
 		controller: 'terrenoController'
@@ -20,25 +28,33 @@ main.config([ '$routeProvider', function($routeProvider) {
 		templateUrl: 'bloque.html',
 		controller: 'bloqueController'
 	})
+	.when('/parcela', {
+		templateUrl: 'parcela.html',
+		controller: 'parcelaController'
+	})
 	.when('/cafeto', {
 		templateUrl: 'cafeto.html',
 		controller: 'cafetoController'
 	})
 	.when('/siembra', {
-		templateUrl: 'siembra.html'
-	})
-	.when('/entradas', {
-		templateUrl: 'entradas.html'
-	})
-	.when('/salidas', {
-		templateUrl: 'salidas.html'
-	})
-	.when('/parcela', {
-		templateUrl: 'parcela.html',
-		controller: 'parcelaController'
+		templateUrl: 'siembra.html',
+		controller: 'siembraController'
 	})
 	.when('/cosecha', {
-		templateUrl: 'cosecha.html'
+		templateUrl: 'cosecha.html',
+		controller: 'cosechaController'
+	})
+	.when('/entrada', {
+		templateUrl: 'entrada.html',
+		controller: 'entradaController'
+	})
+	.when('/salida', {
+		templateUrl: 'salida.html',
+		controller: 'salidaController'
+	})
+	.when('/nomina', {
+		templateUrl: 'nomina.html',
+		controller: 'nominaController'
 	});
 	
 } ]);

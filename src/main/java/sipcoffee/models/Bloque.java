@@ -22,7 +22,7 @@ import org.json.JSONObject;
 @Entity
 @Table(name = "Bloque")
 @NamedQueries({
-@NamedQuery(name = "all-Bloque", query = "SELECT bloque FROM Bloque as bloque"),
+@NamedQuery(name = "all-Bloques", query = "SELECT bloque FROM Bloque as bloque"),
 @NamedQuery(name = "findByName-Bloque", query = "SELECT bloque FROM Bloque as bloque WHERE bloque.nombre=:nombre"),
 @NamedQuery(name = "findById-Bloque", query = "SELECT bloque FROM Bloque as bloque WHERE bloque.id=:id")
 })
@@ -72,7 +72,7 @@ public class Bloque {
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
 
-		List<Object> list = Conexion.namedQuery("all-Bloque");
+		List<Object> list = Conexion.namedQuery("all-Bloques");
 
 		for (Object bloque : list) {
 			jsonArray.put(((Bloque) bloque).toJson());

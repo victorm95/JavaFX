@@ -39,7 +39,7 @@ function($scope) {
 
 		if( parcela.delete() ) {
 			for (var i = 0; i < $scope.parcelas.length; i++) {
-				if ($scope.parcelas[i].id == bloque.getId()) {
+				if ($scope.parcelas[i].id == parcela.getId()) {
 					$scope.parcelas.splice(i, 1);
 					//$scope.$apply();
 					break;

@@ -4,7 +4,7 @@
 			<div class="page-header">
 				<h3>Siembra</h3>
 			</div>
-			<form name="formSiembra">
+			<form name="formSiembra" ng-submit="guardar()">
 		
 				<div class="form-group">
 					<label for="cantidad">Cantidad Sembrada</label>
@@ -38,7 +38,7 @@
 
 		</article>
 
-		<article  ng-controller="siembraController">
+		<article>
 
 			<table class="table table-striped" >
 
@@ -49,6 +49,13 @@
     				<th>Usuario</th>
     				<th>Fecha</th>
     			</tr>
+				<tr ng-repeat="siembra in siembras">
+					<td>{{siembra.cantidad}} Unid</td>
+					<td>{{siembra.cafeto.nombre}}</td>
+					<td>{{siembra.parcela.nombre}}</td>
+					<td>{{siembra.usuario.nombre}}</td>
+					<td>{{siembra.fechaRegistro}}</td>
+				</tr>
 
 			</table>
 		</article>
