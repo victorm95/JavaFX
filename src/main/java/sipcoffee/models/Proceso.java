@@ -59,13 +59,13 @@ public class Proceso {
 	public String all() {
 		JSONArray jsonArray = new JSONArray();
 
-		List<Object> list = Conexion.namedQuery("all-Procesos");
+        List<Proceso> listProceso = Conexion.manager.createNamedQuery(
+                "all-Procesos", Proceso.class).getResultList();
 
-		for (Object proceso : list) {
-			jsonArray.put(((Proceso) proceso).toJson());
-		}
-
-		return jsonArray.toString();
+        for (Proceso proceso : listProceso) {
+            jsonArray.put(proceso.toJson());
+        }
+        return jsonArray.toString();
 	}
 
 	public boolean delete() {
