@@ -12,7 +12,7 @@ function($scope) {
 	$scope.guardar = function() {
 
 		if ($scope.nombre) {
-
+console.log($scope.nombre);
 			var producto = Producto.create(JSON.stringify({
 				nombre : $scope.nombre
 			}));
@@ -21,7 +21,7 @@ function($scope) {
 				toast.text = "Se ha creado la producto exitosamente.";
 				$scope.productos.push(JSON.parse(producto.toJson()));
 			} else {
-				toast.text = "Ocurrio un error al guardar la parcela.";
+				toast.text = "Ocurrio un error al guardar.";
 			}
             toast.show();
 		}

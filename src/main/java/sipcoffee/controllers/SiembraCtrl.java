@@ -30,7 +30,7 @@ public class SiembraCtrl {
             return siembra;
         } catch (JSONException e) {
             System.out.println(e.toString());
-            return new Entrada();
+            return new Siembra();
         }
     }
 	

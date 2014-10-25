@@ -23,7 +23,7 @@ import org.json.JSONObject;
 @Table(name = "Salidas")
 @NamedQueries({
 @NamedQuery(name = "all-Salidas", query = "SELECT salida FROM Salida as salida"),
-@NamedQuery(name = "findById-Entrada", query = "SELECT salida FROM Salida as salida WHERE salida.id=:id")
+@NamedQuery(name = "findById-Salida", query = "SELECT salida FROM Salida as salida WHERE salida.id=:id")
 })
 
 public class Salida {
@@ -131,7 +131,7 @@ public class Salida {
 		JSONObject json = new JSONObject();
 		json.put("id", this.id);	
 		json.put("producto", new JSONObject(this.producto.toJson()));
-		json.put("usuario", new JSONObject(this.usaurio.toJson()));
+		json.put("usuario", new JSONObject(this.usuario.toJson()));
 		json.put("cantidad", this.cantidad);
 		json.put("comentatio", this.comentario);
 		json.put("fechaRegistro", this.fechaRegistro);

@@ -23,7 +23,7 @@ import org.json.JSONObject;
 @Table(name = "Cosechas")
 @NamedQueries({
 @NamedQuery(name = "all-Cosechas", query = "SELECT cosecha FROM Cosecha as cosecha"),
-@NamedQuery(name = "findById-Cosecha", query = "SELECT siembra FROM Cosecha as cosecha WHERE cosecha.id=:id")
+@NamedQuery(name = "findById-Cosecha", query = "SELECT cosecha FROM Cosecha as cosecha WHERE cosecha.id=:id")
 })
 
 public class Cosecha {
@@ -86,8 +86,8 @@ public class Cosecha {
 		return this.parcela;
 	}
 
-	public void setParsela(Parsela parcela) {
-		this.parsela = parsela;
+	public void setParcela(Parcela parcela) {
+		this.parcela = parcela;
 	}
 	
 	public Usuario getUsuario() {

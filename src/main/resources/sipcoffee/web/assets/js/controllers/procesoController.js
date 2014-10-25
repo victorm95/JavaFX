@@ -21,7 +21,7 @@ function($scope) {
 				toast.text = "Se ha creado la producto exitosamente.";
 				$scope.procesos.push(JSON.parse(proceso.toJson()));
 			} else {
-				toast.text = "Ocurrio un error al guardar la parcela.";
+				toast.text = "Ocurrio un error al guardar.";
 			}
             toast.show();
 		}

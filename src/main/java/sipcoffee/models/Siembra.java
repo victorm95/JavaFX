@@ -90,8 +90,8 @@ public class Siembra {
 		return this.parcela;
 	}
 
-	public void setParsela(Parsela parcela) {
-		this.parsela = parsela;
+	public void setParcela(Parcela parcela) {
+		this.parcela = parcela;
 	}
 
 	public Cafeto getCafeto() {
