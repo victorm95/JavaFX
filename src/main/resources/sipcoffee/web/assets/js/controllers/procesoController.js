@@ -10,7 +10,7 @@ function($scope) {
 	$scope.selected = new Object();
 
 	$scope.guardar = function() {
-
+console.log($scope.nombre);
 		if ($scope.nombre) {
 
 			var proceso = Proceso.create(JSON.stringify({

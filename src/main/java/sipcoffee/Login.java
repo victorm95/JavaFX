@@ -68,6 +68,13 @@ public class Login implements Initializable {
                     windowJS.setMember("Departamento", new DepartamentoCtrl());
                     windowJS.setMember("Parcela", new ParcelaCtrl());
                     windowJS.setMember("Cafeto", new CafetoCtrl());
+                    windowJS.setMember("Proceso", new ProcesoCtrl());
+                    windowJS.setMember("Producto", new ProductoCtrl());
+                    windowJS.setMember("Siembra", new SiembraCtrl());
+                    windowJS.setMember("Cosecha", new CosechaCtrl());
+                    windowJS.setMember("Nomina", new NominaCtrl());
+                    windowJS.setMember("Entrada", new EntradaCtrl());
+                    windowJS.setMember("Salida", new SalidaCtrl());
 
 			/*------------------------------------------------------------------------------------------------*/
 

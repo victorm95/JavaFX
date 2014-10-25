@@ -14,6 +14,15 @@ import sipcoffee.controllers.MunicipioCtrl;
 import sipcoffee.controllers.RolCtrl;
 import sipcoffee.controllers.TerrenoCtrl;
 import sipcoffee.controllers.UsuarioCtrl;
+import sipcoffee.controllers.ParcelaCtrl;
+import sipcoffee.controllers.SiembraCtrl;
+import sipcoffee.controllers.CosechaCtrl;
+import sipcoffee.controllers.CafetoCtrl;
+import sipcoffee.controllers.EntradaCtrl;
+import sipcoffee.controllers.SalidaCtrl;
+import sipcoffee.controllers.NominaCtrl;
+import sipcoffee.controllers.ProcesoCtrl;
+import sipcoffee.controllers.ProductoCtrl;
 import sipcoffee.models.Scripts;
 import javafx.scene.Parent;
 import javafx.stage.StageStyle;
@@ -51,10 +60,19 @@ public class App extends Application {
 		/*-------------------------------  Agragar los modelos al webView --------------------------------
 		windowJS.setMember("Rol", new RolCtrl());
 		windowJS.setMember("Usuario", new UsuarioCtrl());
-		windowJS.setMember("Terreno", new TerrenoCtrl());
-		windowJS.setMember("Bloque", new BloqueCtrl());
 		windowJS.setMember("Municipio", new MunicipioCtrl());
 		windowJS.setMember("Departamento", new DepartamentoCtrl());
+		windowJS.setMember("Proceso", new ProcesoCtrl());
+		windowJS.setMember("Producto", new ProductoCtrl());
+		windowJS.setMember("Cafeto", new CafetoCtrl());
+		windowJS.setMember("Terreno", new TerrenoCtrl());
+		windowJS.setMember("Bloque", new BloqueCtrl());
+		windowJS.setMember("Parcela", new ParcelaCtrl());
+		windowJS.setMember("Siembra", new SiembraCtrl());
+		windowJS.setMember("Cosecha", new CosechaCtrl());
+		windowJS.setMember("Entrada", new EntradaCtrl());
+		windowJS.setMember("Salida", new SalidaCtrl());
+		windowJS.setMember("Nomina", new NominaCtrl());
 
 		/*------------------------------------------------------------------------------------------------
 
