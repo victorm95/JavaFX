@@ -33,7 +33,7 @@ public class App extends Application {
         // Iniciarlizar los Objetos para consular la DB
         new Scripts().start();
 
-		Parent splash = FXMLLoader.load(getClass().getResource("splash.fxml"));
+		Parent splash = FXMLLoader.load(getClass().getResource("login.fxml"));
 		stage.setScene(new Scene(splash));
 		//stage.initStyle(StageStyle.UNDECORATED);
 		stage.setTitle("Sipcoffee");

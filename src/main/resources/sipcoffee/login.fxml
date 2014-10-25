@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Imports -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<!--
+<VBox xmlns:fx="http://javafx.com/fxml"
+	fx:controller="sipcoffee.Login" styleClass="box">
+
+	<stylesheets>
+		<URL value="@login.css"/>
+	</stylesheets>
+
+	<HBox styleClass="box">
+		<Label text="Usuario"/>
+		<TextField fx:id="usuarioField"/>
+	</HBox>
+
+	<HBox styleClass="box">
+		<Label text="Contraseña"/>
+		<PasswordField fx:id="passwordField"/>
+	</HBox>
+
+	<HBox styleClass="box">
+		<Button text="Iniciar Sesion" fx:id="btnLogin"/>
+		<Button text="Cancelar" fx:id="btnCancel"/>
+	</HBox>
+
+	<HBox styleClass="box">
+		<Label fx:id="msgLabel" styleClass="msg-error"/>
+	</HBox>
+
+</VBox>
+-->
+
+<GridPane xmlns:fx="http://javafx.com/fxml"
+          fx:controller="sipcoffee.Login" styleClass="main-box">
+
+    <stylesheets>
+        <URL value="@login.css"/>
+    </stylesheets>
+
+    <Label text="Usuario" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextField fx:id="usuarioField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+    <Label text="Contraseña" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Button text="Iniciar Sesion" fx:id="btnLogin" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <Button text="Cancelar" fx:id="btnCancel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Label fx:id="msgLabel" styleClass="msg-error" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+</GridPane>

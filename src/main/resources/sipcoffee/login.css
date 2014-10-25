@@ -1,0 +1,15 @@
+.main-box{
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+    -fx-alignment: center;
+    -fx-padding: 10;
+}
+
+.box{
+	-fx-padding: 10 10 10 10;
+	-fx-alignment: center;
+}
+
+.msg-error{
+    -fx-text-fill: red;
+}
