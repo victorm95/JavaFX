@@ -2,7 +2,6 @@ package sipcoffee.models;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +14,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import sipcoffee.App;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -60,7 +58,7 @@ public class Parcela {
 	}
 
 	public Parcela find(int id) {
-		Conexion.init();
+		//Conexion.init();
 		return (Parcela) Conexion.manager.createNamedQuery("findById-Parcela")
 				.setParameter("id", id).getSingleResult();
 	}
@@ -74,7 +72,6 @@ public class Parcela {
 		for (Parcela parcela : listParcela) {
 			jsonArray.put(parcela.toJson());
 		}
-
 		return jsonArray.toString();
 	}
 
@@ -148,5 +145,56 @@ public class Parcela {
 
 		return json.toString();
 	}
+
+    public String getData(){
+        try {
+            List<Parcela> listParcelas = Conexion.manager.createNamedQuery(
+                    "all-Parcelas", Parcela.class).getResultList();
+            List<Bloque> listBloques = Conexion.manager.createNamedQuery(
+                    "all-Bloque", Bloque.class).getResultList();
+            List<Terreno> listTerrenos = Conexion.manager.createNamedQuery(
+                    "all-Terreno", Terreno.class).getResultList();
+
+            JSONArray jsonTerrenos = new JSONArray();
+
+            for (Terreno terreno : listTerrenos) {
+                JSONObject jsonTerreno = new JSONObject();
+
+                jsonTerreno.put("id", terreno.getId());
+                jsonTerreno.put("nombre", terreno.getNombre());
+                jsonTerreno.put("area", terreno.getArea());
+                jsonTerreno.put("children", new JSONArray());
+
+                for (Bloque bloque : listBloques) {
+                    JSONObject jsonBloque = new JSONObject();
+                    if (terreno.getId() == bloque.getTerreno().getId()) {
+
+                        jsonBloque.put("id", bloque.getId());
+                        jsonBloque.put("nombre", bloque.getNombre());
+                        jsonBloque.put("area", bloque.getArea());
+                        jsonBloque.put("children", new JSONArray());
+
+                        for (Parcela parcela : listParcelas) {
+                            if (parcela.getBloque().getId() == bloque.getId()) {
+                                JSONObject jsonParcela = new JSONObject();
+
+                                jsonParcela.put("id", parcela.getId());
+                                jsonParcela.put("nombre", parcela.getNombre());
+                                jsonParcela.put("area", parcela.getArea());
+
+                                jsonBloque.append("children", jsonParcela);
+                            }
+                        }
+                    }
+                    jsonTerreno.append("children", jsonBloque);
+                }
+                jsonTerrenos.put(jsonTerreno);
+            }
+
+            return ((JSONObject)jsonTerrenos.get(0)).toString(2);
+        }catch(Exception e){
+            return null;
+        }
+    }
 
 }

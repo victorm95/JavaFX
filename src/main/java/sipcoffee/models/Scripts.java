@@ -1,5 +1,7 @@
 package sipcoffee.models;
 
+import sipcoffee.controllers.ParcelaCtrl;
+
 import java.util.Date;
 
 public class Scripts extends Thread {
@@ -54,6 +56,9 @@ public class Scripts extends Thread {
 				}
 			}
 		}
+
+        //System.out.println("[Parcelas]: " + new ParcelaCtrl().all());
+        System.out.println( new Parcela().getData() );
 
 	}
 }

@@ -87,7 +87,7 @@ public class Bloque {
 	
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 
-	public int geId() {
+	public int getId() {
 		return this.id;
 	}
 

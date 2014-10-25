@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import sipcoffee.controllers.BloqueCtrl;
 
 @Entity
 @Table(name = "Terreno")
@@ -144,13 +145,13 @@ public class Terreno {
 	/*-------------------------------------- Conversiones ---------------------------------------------*/
 
 	public String toJson() {
-		JSONObject json = new JSONObject();
-		json.put("id", this.id);
-		json.put("municipio", new JSONObject(this.municipio.toJson()));
-		json.put("nombre", this.nombre);
-		json.put("direccion", this.direccion);
-		json.put("area", this.area);
-		//json.put("rutaImagen", this.rutaImagen);
-		return json.toString();
-	}
+        JSONObject json = new JSONObject();
+        json.put("id", this.id);
+        json.put("municipio", new JSONObject(this.municipio.toJson()));
+        json.put("nombre", this.nombre);
+        json.put("direccion", this.direccion);
+        json.put("area", this.area);
+        //json.put("rutaImagen", this.rutaImagen);
+        return json.toString();
+    }
 }
