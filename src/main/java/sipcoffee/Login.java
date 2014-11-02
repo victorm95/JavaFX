@@ -2,7 +2,6 @@ package sipcoffee;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,10 +53,6 @@ public class Login implements Initializable {
 
                     windowJS.setMember("javaMain", this);
                     engine.executeScript("window.console.log = function(obj){ javaMain.print(obj); };");
-                    //engine.executeScript("window.load = function(url){ javaMain.load(url); };");
-
-                    //System.out.println("[Session:] " + "sessionStorage.setItem('usuario', "+ user.toJson() +");");
-                    //engine.executeScript("sessionStorage.setItem('usuario', "+ user.toJson() +");");
 
 			/*-------------------------------  Agragar los modelos al webView --------------------------------*/
                     windowJS.setMember("Rol", new RolCtrl());
