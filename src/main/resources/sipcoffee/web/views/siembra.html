@@ -1,63 +1,64 @@
 <article class="well well-lg">
 
-		<article>
-			<div class="page-header">
-				<h3>Siembra</h3>
-			</div>
-			<form name="formSiembra" ng-submit="guardar()">
-		
-				<div class="form-group">
-					<label for="cantidad">Cantidad Sembrada</label>
-                    <input class="form-control" type="text" id="cantidad" name="cantidad" placeholder="Cantidad" ng-model="cantidad"/>
-				</div>
+    <article>
+        <div class="page-header">
+            <h3>Siembra</h3>
+        </div>
+        <form name="formSiembra" ng-submit="guardar()">
 
-				<div class="form-group">
-					<label for="cafeto">Cafeto</label>
-					<select class="form-control" id="cafeto" name="cafeto"></select>
-				</div>
+            <div class="form-group">
+                <label for="cantidad">Cantidad Sembrada</label>
+                <input class="form-control" type="text" id="cantidad" name="cantidad" placeholder="Cantidad"
+                       ng-model="cantidad"/>
+            </div>
 
-				<div class="form-group">
-					<label for="parcela">Parcela</label>
-					<select class="form-control" id="parcela" name="parcela"></select>
-				</div>
+            <div class="form-group">
+                <label for="cafeto">Cafeto</label>
+                <select class="form-control" id="cafeto" name="cafeto"></select>
+            </div>
 
-				<div class="form-group">
-					<label for="usuario">Usuario</label>
-					<select class="form-control" id="usuario" name="usuario"></select>
-				</div>
+            <div class="form-group">
+                <label for="parcela">Parcela</label>
+                <select class="form-control" id="parcela" name="parcela"></select>
+            </div>
 
-				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
-				<button class="btn btn-success">
-					Editar
-				</button>
-				<button class="btn btn-success">
-					Eliminar
-				</button>
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <select class="form-control" id="usuario" name="usuario"></select>
+            </div>
 
-			</form>
+            <input type="submit" id="guardar" value="Guardar" class="btn btn-success"/>
+            <button class="btn btn-success">
+                Editar
+            </button>
+            <button class="btn btn-success">
+                Eliminar
+            </button>
 
-		</article>
+        </form>
 
-		<article>
+    </article>
 
-			<table class="table table-striped" >
+    <article>
 
-				<tr class="info">
-    				<th>Cantidad</th>
-                	<th>Cafeto</th>
-    				<th>Parcela</th>
-    				<th>Usuario</th>
-    				<th>Fecha</th>
-    			</tr>
-				<tr ng-repeat="siembra in siembras">
-					<td>{{siembra.cantidad}} Unid</td>
-					<td>{{siembra.cafeto.nombre}}</td>
-					<td>{{siembra.parcela.nombre}}</td>
-					<td>{{siembra.usuario.nombre}}</td>
-					<td>{{siembra.fechaRegistro}}</td>
-				</tr>
+        <table class="table table-striped">
 
-			</table>
-		</article>
-		
+            <tr class="info">
+                <th>Cantidad</th>
+                <th>Cafeto</th>
+                <th>Parcela</th>
+                <th>Usuario</th>
+                <th>Fecha</th>
+            </tr>
+            <tr ng-repeat="siembra in siembras">
+                <td>{{siembra.cantidad}} Unid</td>
+                <td>{{siembra.cafeto.nombre}}</td>
+                <td>{{siembra.parcela.nombre}}</td>
+                <td>{{siembra.usuario.nombre}}</td>
+                <td>{{siembra.fechaRegistro}}</td>
+            </tr>
+
+        </table>
+    </article>
+
 </article>

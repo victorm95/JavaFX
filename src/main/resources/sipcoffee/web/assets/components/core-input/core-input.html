@@ -90,21 +90,30 @@ Fired when the inputValue of this text input changes and passes validation.
 
 <polymer-element name="core-input" on-focus="{{focusAction}}">
 
-  <template>
+    <template>
 
-    <link href="core-input.css" rel="stylesheet">
+        <link href="core-input.css" rel="stylesheet">
 
-    <template if="{{multiline}}">
-      <textarea id="input" value="{{inputValue}}" rows="{{rows}}" fit?="{{rows === 'fit'}}" disabled?="{{disabled}}" placeholder="{{placeholder}}" autofocus?="{{autofocus}}" required?="{{required}}" readonly?="{{readonly}}" maxlength="{{maxlength}}" aria-label="{{label || placeholder}}" aria-invalid="{{invalid}}" on-change="{{inputChangeAction}}" on-focus="{{inputFocusAction}}" on-blur="{{inputBlurAction}}"></textarea>
+        <template if="{{multiline}}">
+            <textarea id="input" value="{{inputValue}}" rows="{{rows}}" fit?="{{rows === 'fit'}}"
+                      disabled?="{{disabled}}" placeholder="{{placeholder}}" autofocus?="{{autofocus}}"
+                      required?="{{required}}" readonly?="{{readonly}}" maxlength="{{maxlength}}"
+                      aria-label="{{label || placeholder}}" aria-invalid="{{invalid}}" on-change="{{inputChangeAction}}"
+                      on-focus="{{inputFocusAction}}" on-blur="{{inputBlurAction}}"></textarea>
+        </template>
+
+        <template if="{{!multiline}}">
+            <input id="input" value="{{inputValue}}" disabled?="{{disabled}}" type="{{type}}"
+                   placeholder="{{placeholder}}" autofocus?="{{autofocus}}" required?="{{required}}"
+                   readonly?="{{readonly}}" pattern="{{pattern}}" min="{{min}}" max="{{max}}" step="{{step}}"
+                   maxlength="{{maxlength}}" aria-label="{{label || placeholder}}" aria-invalid="{{invalid}}"
+                   on-keypress="{{keypressAction}}" on-change="{{inputChangeAction}}" on-focus="{{inputFocusAction}}"
+                   on-blur="{{inputBlurAction}}">
+        </template>
+
     </template>
 
-    <template if="{{!multiline}}">
-      <input id="input" value="{{inputValue}}" disabled?="{{disabled}}" type="{{type}}" placeholder="{{placeholder}}" autofocus?="{{autofocus}}" required?="{{required}}" readonly?="{{readonly}}" pattern="{{pattern}}" min="{{min}}" max="{{max}}" step="{{step}}" maxlength="{{maxlength}}" aria-label="{{label || placeholder}}" aria-invalid="{{invalid}}" on-keypress="{{keypressAction}}" on-change="{{inputChangeAction}}" on-focus="{{inputFocusAction}}" on-blur="{{inputBlurAction}}">
-    </template>
-
-  </template>
-
-  <script>
+    <script>
 
     Polymer('core-input', {
       publish: {
@@ -449,6 +458,7 @@ Fired when the inputValue of this text input changes and passes validation.
       }
 
     });
-  </script>
+
+    </script>
 
 </polymer-element>

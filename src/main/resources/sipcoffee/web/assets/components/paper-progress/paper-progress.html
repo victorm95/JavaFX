@@ -53,20 +53,21 @@ To change the progress bar background color:
 
 <polymer-element name="paper-progress" extends="core-range" attributes="secondaryProgress">
 
-  <template>
-  
-    <link rel="stylesheet" href="paper-progress.css">
-  
-    <div id="progressContainer" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="{{min}}" aria-valuemax="{{max}}">
-    
-      <div id="secondaryProgress" _style="width: {{secondaryRatio}}%;"></div>
-      <div id="activeProgress" _style="width: {{ratio}}%;"></div>
-      
-    </div>
-    
-  </template>
-  
-  <script>
+    <template>
+
+        <link rel="stylesheet" href="paper-progress.css">
+
+        <div id="progressContainer" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="{{min}}"
+             aria-valuemax="{{max}}">
+
+            <div id="secondaryProgress" _style="width: {{secondaryRatio}}%;"></div>
+            <div id="activeProgress" _style="width: {{ratio}}%;"></div>
+
+        </div>
+
+    </template>
+
+    <script>
   
     Polymer('paper-progress', {
       
@@ -93,6 +94,7 @@ To change the progress bar background color:
       
     });
     
-  </script>
-  
+
+    </script>
+
 </polymer-element>

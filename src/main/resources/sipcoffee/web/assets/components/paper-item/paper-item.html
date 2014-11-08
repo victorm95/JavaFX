@@ -40,16 +40,16 @@ Example:
 
 <polymer-element name="paper-item" attributes="label iconSrc icon" center horizontal layout>
 
-  <template>
+    <template>
 
-    <paper-ripple id="ripple"></paper-ripple>
+        <paper-ripple id="ripple"></paper-ripple>
 
-    <core-icon id="icon" hidden?="{{!iconSrc && !icon}}" src="{{iconSrc}}" icon="{{icon}}"></core-icon>
-    <div id="label">{{label}}</div>
-    <content></content>
-  </template>
+        <core-icon id="icon" hidden?="{{!iconSrc && !icon}}" src="{{iconSrc}}" icon="{{icon}}"></core-icon>
+        <div id="label">{{label}}</div>
+        <content></content>
+    </template>
 
-  <script>
+    <script>
     Polymer('paper-item', {
 
       publish: {
@@ -100,5 +100,6 @@ Example:
         this.$.ripple.upAction(e);
       }
     });
-  </script>
+
+    </script>
 </polymer-element>

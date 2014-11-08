@@ -45,18 +45,23 @@ contains the selection state.
 <link href="core-popup-overlay.html" rel="import">
 
 <polymer-element name="core-popup-menu">
-<template>
+    <template>
 
-  <link href="core-popup-menu.css" rel="stylesheet">
+        <link href="core-popup-menu.css" rel="stylesheet">
 
-  <core-popup-overlay id="overlay" target="{{}}" sizingTarget="{{$.menu}}" relatedTarget="{{relatedTarget}}" opened="{{opened}}" halign="{{halign}}" valign="{{valign}}" transition="{{transition}}"></core-popup-overlay>
+        <core-popup-overlay id="overlay" target="{{}}" sizingTarget="{{$.menu}}" relatedTarget="{{relatedTarget}}"
+                            opened="{{opened}}" halign="{{halign}}" valign="{{valign}}"
+                            transition="{{transition}}"></core-popup-overlay>
 
-  <core-menu id="menu" selected="{{selected}}" valueattr="{{valueattr}}" selectedClass="{{selectedClass}}" selectedProperty="{{selectedProperty}}" selectedAttribute="{{selectedAttribute}}" selectedItem="{{selectedItem}}" selectedModel="{{selectedModel}}" selectedIndex="{{selectedIndex}}" on-core-select="{{selectAction}}">
-    <content></content>
-  </core-menu>
+        <core-menu id="menu" selected="{{selected}}" valueattr="{{valueattr}}" selectedClass="{{selectedClass}}"
+                   selectedProperty="{{selectedProperty}}" selectedAttribute="{{selectedAttribute}}"
+                   selectedItem="{{selectedItem}}" selectedModel="{{selectedModel}}" selectedIndex="{{selectedIndex}}"
+                   on-core-select="{{selectAction}}">
+            <content></content>
+        </core-menu>
 
-</template>
-<script>
+    </template>
+    <script>
 
   Polymer({
 
@@ -194,5 +199,6 @@ contains the selection state.
 
   });
 
-</script>
+
+    </script>
 </polymer-element>

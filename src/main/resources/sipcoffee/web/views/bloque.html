@@ -1,67 +1,71 @@
 <article class="well well-lg">
 
-	<div class="row">
+    <div class="row">
 
-		<div class="col-md-6 col-sm-6 col-xs-6">
-			<form ng-submit="guardar()" >
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <form ng-submit="guardar()">
 
-				<div class="form-group">
-					<label for="terreno">Terreno</label>
+                <div class="form-group">
+                    <label for="terreno">Terreno</label>
                     <select name="terreno" id="terreno" ng-model="terreno" class="form-control">
                         <option ng-repeat="terreno in terrenos" ng-value="terreno.id">{{ terreno.nombre }}</option>
                     </select>
-				</div>
+                </div>
 
-				<div class="form-group">
-					<label for="nombre">Nombre</label>
-					<input type="text" class="form-control" ng-model="nombre" id="nombre" name="nombre" placeholder="Nombre" />
-				</div>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" ng-model="nombre" id="nombre" name="nombre"
+                           placeholder="Nombre"/>
+                </div>
 
-				<div class="form-group">
-					<label for="area">Area</label>
-					<div class="input-group">
-						<input type="text" class="form-control" ng-model="area" id="area" name="area" placeholder="Area" />
-						<span class="input-group-addon">Mts<sup>2</sup></span>
-					</div>
-				</div>
+                <div class="form-group">
+                    <label for="area">Area</label>
 
-				<div class="form-group">
-					<label for="ubicacion">Ubicacion</label>
-					<input type="text" class="form-control" ng-model="ubicacion" id="ubicacion" name="ubicacion" placeholder="Ubicacion" />
-				</div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="area" id="area" name="area"
+                               placeholder="Area"/>
+                        <span class="input-group-addon">Mts<sup>2</sup></span>
+                    </div>
+                </div>
 
-				<input type="submit" value="Guardar" id="guardar" class="btn btn-success"/>
-				<button class="btn btn-success">
-					Editar
-				</button>
-				<button class="btn btn-success">
-					Eliminar
-				</button>
+                <div class="form-group">
+                    <label for="ubicacion">Ubicacion</label>
+                    <input type="text" class="form-control" ng-model="ubicacion" id="ubicacion" name="ubicacion"
+                           placeholder="Ubicacion"/>
+                </div>
 
-			</form>
-		</div>
+                <input type="submit" value="Guardar" id="guardar" class="btn btn-success"/>
+                <button class="btn btn-success">
+                    Editar
+                </button>
+                <button class="btn btn-success">
+                    Eliminar
+                </button>
 
-		<div class="col-md-6 col-sm-6 col-xs-6">
+            </form>
+        </div>
 
-			<table class="table table-striped">
+        <div class="col-md-6 col-sm-6 col-xs-6">
 
-				<tr>
-					<th>Terreno</th>
-					<th>Nombre</th>
-					<th>Area</th>
-					<th>Ubicacion</th>
-				</tr>
-				<tr ng-repeat="bloque in bloques">
-					<td>{{bloque.terreno.nombre}}</td>
-					<td>{{bloque.nombre}}</td>
-					<td>{{bloque.area}} mts<sup>2</sup></td>
-					<td>{{bloque.ubicacion}}</td>
-				</tr>
+            <table class="table table-striped">
 
-			</table>
+                <tr>
+                    <th>Terreno</th>
+                    <th>Nombre</th>
+                    <th>Area</th>
+                    <th>Ubicacion</th>
+                </tr>
+                <tr ng-repeat="bloque in bloques">
+                    <td>{{bloque.terreno.nombre}}</td>
+                    <td>{{bloque.nombre}}</td>
+                    <td>{{bloque.area}} mts<sup>2</sup></td>
+                    <td>{{bloque.ubicacion}}</td>
+                </tr>
 
-		</div>
+            </table>
 
-	</div>
+        </div>
+
+    </div>
 
 </article>

@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sipcoffee.models.*;
+
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -19,17 +20,18 @@ import java.util.ResourceBundle;
 public class Splash implements Initializable {
 
     /* Attrs */
-    @FXML private Label textTask;
+    @FXML
+    private Label textTask;
 
     /* Init */
-    public void initialize(URL url, ResourceBundle resources){
-        Platform.runLater( new LoadDB() );
+    public void initialize(URL url, ResourceBundle resources) {
+        Platform.runLater(new LoadDB());
     }
 
     /* Hilo Interno Para Cargar la Base de Datos */
     private class LoadDB implements Runnable {
         @Override
-        public void run(){
+        public void run() {
             Usuario usuario;
             Departamento departamento;
             String listDepartamentos[];
@@ -61,21 +63,21 @@ public class Splash implements Initializable {
 
             departamento = new Departamento();
             if (departamento.isEmpty()) {
-                listDepartamentos = new String[] { "Antioquia", "Caldas",
+                listDepartamentos = new String[]{"Antioquia", "Caldas",
                         "Risaralda", "Bogota", "Atlantico", "Bolivar", "Cordoba",
                         "San Andres y Providencia", "Sucre", "Arauca", "Boyaca",
                         "Casanare", "Amazonas", "Caqueta", "Cauca", "Choco",
                         "Guainia", "Guaviare", "Narino", "Putumayo", "Quindio",
-                        "Valle del Cauca", "Vaupes" };
+                        "Valle del Cauca", "Vaupes"};
 
-                for(String d : listDepartamentos){
+                for (String d : listDepartamentos) {
                     Departamento temp = new Departamento(d);
 
                     Splash.this.textTask.setText("Guardando Departamento: " + temp.getNombre());
-                    if( temp.save() ){
+                    if (temp.save()) {
                         System.out.println("[save]: " + d);
 
-                        if(d.equals("Antioquia")){
+                        if (d.equals("Antioquia")) {
                             new Municipio("Andes", temp).save();
                             new Municipio("Medellin", temp).save();
                         }
@@ -95,8 +97,9 @@ public class Splash implements Initializable {
                 stage.show();
 
                 // Close Splah
-                ((Stage)Splash.this.textTask.getScene().getWindow()).close();
-            }catch(Exception e){ }
+                ((Stage) Splash.this.textTask.getScene().getWindow()).close();
+            } catch (Exception e) {
+            }
         }
 
     }

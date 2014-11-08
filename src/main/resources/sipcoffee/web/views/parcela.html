@@ -1,62 +1,65 @@
 <article class="well well-lg">
 
-		<article>
-			<div class="page-header">
-				<h3>Parcela</h3>
-			</div>
-			<form name="formParcela" ng-submit="guardar()">
-		
-				<div class="form-group">
-					<label for="nombre">Nombre Parcela</label>
-                    <input class="form-control" type="text" id="nombre" name="nombre" ng-model="nombre" placeholder="Nombre"/>
-				</div>
+    <article>
+        <div class="page-header">
+            <h3>Parcela</h3>
+        </div>
+        <form name="formParcela" ng-submit="guardar()">
 
-				<div class="form-group">
-					<label for="area">Area</label>
-					<div class="input-group">
-					    <input class="form-control" type="text" id="area" name="area" ng-model="area" placeholder="Cantidad"/>
-						<span class="input-group-addon">Mts<sup>2</sup></span>
-					</div>
-				</div>
+            <div class="form-group">
+                <label for="nombre">Nombre Parcela</label>
+                <input class="form-control" type="text" id="nombre" name="nombre" ng-model="nombre"
+                       placeholder="Nombre"/>
+            </div>
 
-				<div class="form-group">
-					<label for="bloque">Bloque</label>
-                    <select name="bloque" id="bloque" ng-model="bloque" class="form-control">
-                        <option ng-repeat="bloque in bloques" ng-value="bloque.id">{{ bloque.nombre }}</option>
-                    </select>
-				</div>
+            <div class="form-group">
+                <label for="area">Area</label>
 
-				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
-				<button class="btn btn-success">
-					Editar
-				</button>
-				<button class="btn btn-success">
-					Eliminar
-				</button>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="area" name="area" ng-model="area"
+                           placeholder="Cantidad"/>
+                    <span class="input-group-addon">Mts<sup>2</sup></span>
+                </div>
+            </div>
 
-			</form>
+            <div class="form-group">
+                <label for="bloque">Bloque</label>
+                <select name="bloque" id="bloque" ng-model="bloque" class="form-control">
+                    <option ng-repeat="bloque in bloques" ng-value="bloque.id">{{ bloque.nombre }}</option>
+                </select>
+            </div>
 
-		</article>
+            <input type="submit" id="guardar" value="Guardar" class="btn btn-success"/>
+            <button class="btn btn-success">
+                Editar
+            </button>
+            <button class="btn btn-success">
+                Eliminar
+            </button>
 
-		<article>
+        </form>
 
-			<table class="table table-striped" >
+    </article>
 
-				<tr class="info">
-    				<th>Nombre</th>
-                	<th>Area</th>
-    				<th>Bloque</th>
-    				<th>Activo</th>
-    			</tr>
+    <article>
 
-                <tr ng-repeat="parcela in parcelas">
-                    <td>{{ parcela.nombre }}</td>
-                    <td>{{ parcela.area }}</td>
-                    <td>{{ parcela.bloque.nombre }}</td>
-                    <td><input type="checkbox" ng-model="parcela.activo"/></td>
-                </tr>
+        <table class="table table-striped">
 
-			</table>
-		</article>
-		
+            <tr class="info">
+                <th>Nombre</th>
+                <th>Area</th>
+                <th>Bloque</th>
+                <th>Activo</th>
+            </tr>
+
+            <tr ng-repeat="parcela in parcelas">
+                <td>{{ parcela.nombre }}</td>
+                <td>{{ parcela.area }}</td>
+                <td>{{ parcela.bloque.nombre }}</td>
+                <td><input type="checkbox" ng-model="parcela.activo"/></td>
+            </tr>
+
+        </table>
+    </article>
+
 </article>

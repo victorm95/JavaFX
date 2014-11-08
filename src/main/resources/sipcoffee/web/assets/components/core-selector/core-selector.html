@@ -66,14 +66,14 @@ Fired when an item element is tapped.
 <link rel="import" href="../core-selection/core-selection.html">
 
 <polymer-element name="core-selector"
-    attributes="selected multi valueattr selectedClass selectedProperty selectedAttribute selectedItem selectedModel selectedIndex notap target itemsSelector activateEvent">
+                 attributes="selected multi valueattr selectedClass selectedProperty selectedAttribute selectedItem selectedModel selectedIndex notap target itemsSelector activateEvent">
 
-  <template>
-    <core-selection id="selection" multi="{{multi}}" on-core-select="{{selectionSelect}}"></core-selection>
-    <content id="items" select="*"></content>
-  </template>
+    <template>
+        <core-selection id="selection" multi="{{multi}}" on-core-select="{{selectionSelect}}"></core-selection>
+        <content id="items" select="*"></content>
+    </template>
 
-  <script>
+    <script>
 
     Polymer('core-selector', {
 
@@ -456,5 +456,6 @@ Fired when an item element is tapped.
       }
       
     });
-  </script>
+
+    </script>
 </polymer-element>

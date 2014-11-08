@@ -64,46 +64,52 @@ To change the slider secondary progress bar color:
 <link rel="import" href="../paper-progress/paper-progress.html">
 <link rel="import" href="../paper-input/paper-input.html">
 
-<polymer-element name="paper-slider" extends="core-range" attributes="snaps pin disabled secondaryProgress editable immediateValue">
-<template>
+<polymer-element name="paper-slider" extends="core-range"
+                 attributes="snaps pin disabled secondaryProgress editable immediateValue">
+    <template>
 
-  <link rel="stylesheet" href="paper-slider.css">
+        <link rel="stylesheet" href="paper-slider.css">
 
-  <div id="sliderContainer" class="{{ {disabled: disabled, pin: pin, snaps: snaps, ring: immediateValue <= min, expand: expand, dragging: dragging, editable: editable} | tokenList }}" on-keydown="{{keydown}}">
-  
-    <div class="bar-container">
-      <paper-progress id="sliderBar" aria-hidden="true" min="{{min}}" max="{{max}}" value="{{immediateValue}}" secondaryProgress="{{secondaryProgress}}"
-          on-down="{{bardown}}" on-up="{{resetKnob}}" 
-          on-trackstart="{{trackStart}}" on-trackx="{{trackx}}" on-trackend="{{trackEnd}}"></paper-progress>
-    </div>
-    
-    <template if="{{snaps && !disabled}}">
-      <div class="slider-markers" horizontal layout>
-        <template repeat="{{markers}}">
-          <div flex class="slider-marker"></div>
+        <div id="sliderContainer"
+             class="{{ {disabled: disabled, pin: pin, snaps: snaps, ring: immediateValue <= min, expand: expand, dragging: dragging, editable: editable} | tokenList }}"
+             on-keydown="{{keydown}}">
+
+            <div class="bar-container">
+                <paper-progress id="sliderBar" aria-hidden="true" min="{{min}}" max="{{max}}" value="{{immediateValue}}"
+                                secondaryProgress="{{secondaryProgress}}"
+                                on-down="{{bardown}}" on-up="{{resetKnob}}"
+                                on-trackstart="{{trackStart}}" on-trackx="{{trackx}}"
+                                on-trackend="{{trackEnd}}"></paper-progress>
+            </div>
+
+            <template if="{{snaps && !disabled}}">
+                <div class="slider-markers" horizontal layout>
+                    <template repeat="{{markers}}">
+                        <div flex class="slider-marker"></div>
+                    </template>
+                </div>
+            </template>
+
+            <div id="sliderKnob" on-down="{{expandKnob}}" on-up="{{resetKnob}}"
+                 on-trackstart="{{trackStart}}" on-trackx="{{trackx}}" on-trackend="{{trackEnd}}"
+                 on-transitionend="{{knobTransitionEnd}}"
+                 role="slider" aria-valuenow="{{value}}" aria-valuemin="{{min}}" aria-valuemax="{{max}}"
+                 aria-valuetext="{{value}}" tabindex="0"
+                 center-justified center horizontal layout>
+
+                <div id="sliderKnobInner" value="{{immediateValue}}"></div>
+
+            </div>
+
+        </div>
+
+        <template if="{{editable}}">
+            <paper-input id="input" class="slider-input" value="{{immediateValue}}" disabled?="{{disabled}}"
+                         on-change="{{inputChange}}"></paper-input>
         </template>
-      </div>
-    </template>
-    
-    <div id="sliderKnob" on-down="{{expandKnob}}" on-up="{{resetKnob}}" 
-        on-trackstart="{{trackStart}}" on-trackx="{{trackx}}" on-trackend="{{trackEnd}}"
-        on-transitionend="{{knobTransitionEnd}}"
-        role="slider" aria-valuenow="{{value}}" aria-valuemin="{{min}}" aria-valuemax="{{max}}"
-        aria-valuetext="{{value}}" tabindex="0"
-        center-justified center horizontal layout>
-        
-      <div id="sliderKnobInner" value="{{immediateValue}}"></div>
-      
-    </div>
-    
-  </div>
-  
-  <template if="{{editable}}">
-    <paper-input id="input" class="slider-input" value="{{immediateValue}}" disabled?="{{disabled}}" on-change="{{inputChange}}"></paper-input>
-  </template>
 
-</template>
-<script>
+    </template>
+    <script>
 
   Polymer('paper-slider', {
     
@@ -303,5 +309,6 @@ To change the slider secondary progress bar color:
 
   });
 
-</script>
+
+    </script>
 </polymer-element>

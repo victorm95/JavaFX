@@ -1,70 +1,74 @@
 <article class="well well-lg">
-	<div class="row">
+    <div class="row">
 
-		<div class="col-md-6  col-sm-6 col-xs-6">
+        <div class="col-md-6  col-sm-6 col-xs-6">
 
-			<form name="formTerreno" ng-submit="guardar()">
+            <form name="formTerreno" ng-submit="guardar()">
 
-				<div class="form-group">
-					<label for="munucipio">Municipio</label>
-					<select name="municipio" id="municipio" ng-model="municipio" class="form-control">
-						<option ng-repeat="m in municipios" ng-value="m.id">{{ m.nombre }}</option>
-					</select>
-				</div>
+                <div class="form-group">
+                    <label for="munucipio">Municipio</label>
+                    <select name="municipio" id="municipio" ng-model="municipio" class="form-control">
+                        <option ng-repeat="m in municipios" ng-value="m.id">{{ m.nombre }}</option>
+                    </select>
+                </div>
 
-				<div class="form-group">
-					<label for="finca">Finca</label>
-					<input class="form-control" type="text" ng-model="nombre" id="finca" name="finca" placeholder="Nombre finca"/>
-				</div>
+                <div class="form-group">
+                    <label for="finca">Finca</label>
+                    <input class="form-control" type="text" ng-model="nombre" id="finca" name="finca"
+                           placeholder="Nombre finca"/>
+                </div>
 
-				<div class="form-group">
-					<label for="direccion">Direccion</label>
-					<input class="form-control" type="text" id="direccion" ng-model="direccion" name="direccion" placeholder="Direccion"/>
-				</div>
+                <div class="form-group">
+                    <label for="direccion">Direccion</label>
+                    <input class="form-control" type="text" id="direccion" ng-model="direccion" name="direccion"
+                           placeholder="Direccion"/>
+                </div>
 
-				<div class="form-group">
-					<label for="area">Area</label>
-					<div class="input-group">
-						<input class="form-control" name="area" id="area" ng-model="area" type="text" pattern="[0-9]" required="required" placeholder="Area"/>
-						<span class="input-group-addon">Mts<sup>2</sup></span>
-					</div>
-				</div>
+                <div class="form-group">
+                    <label for="area">Area</label>
 
-				<div class="form-group">
-					<label for="imagen">Imagen</label>
-					<input class="form-control" type="file" ng-model="imagen" />
-				</div>
+                    <div class="input-group">
+                        <input class="form-control" name="area" id="area" ng-model="area" type="text" pattern="[0-9]"
+                               required="required" placeholder="Area"/>
+                        <span class="input-group-addon">Mts<sup>2</sup></span>
+                    </div>
+                </div>
 
-				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
-				<button class="btn btn-success">
-					Editar
-				</button>
-				<button class="btn btn-success">
-					Eliminar
-				</button>
+                <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <input class="form-control" type="file" ng-model="imagen"/>
+                </div>
 
-			</form>
+                <input type="submit" id="guardar" value="Guardar" class="btn btn-success"/>
+                <button class="btn btn-success">
+                    Editar
+                </button>
+                <button class="btn btn-success">
+                    Eliminar
+                </button>
 
-		</div>
+            </form>
 
-		<div class="col-md-6 col-sm-6 col-xs-6">
+        </div>
 
-			<table class="table table-striped" >
+        <div class="col-md-6 col-sm-6 col-xs-6">
 
-				<tr>
-					<th>Municipio</th>
-					<th>Finca</th>
-					<th>Direccion</th>
-					<th>Area</th>
-				</tr>
-				
-				<tr ng-repeat="terreno in terrenos">
-					<td>{{terreno.municipio.nombre}}</td>
-					<td>{{terreno.nombre}}</td>
-					<td>{{terreno.direccion}}</td>
-					<td>{{terreno.area}} <span>M<sup>2</sup></span></td>
-				</tr>
+            <table class="table table-striped">
 
-			</table>
-		</div>
+                <tr>
+                    <th>Municipio</th>
+                    <th>Finca</th>
+                    <th>Direccion</th>
+                    <th>Area</th>
+                </tr>
+
+                <tr ng-repeat="terreno in terrenos">
+                    <td>{{terreno.municipio.nombre}}</td>
+                    <td>{{terreno.nombre}}</td>
+                    <td>{{terreno.direccion}}</td>
+                    <td>{{terreno.area}} <span>M<sup>2</sup></span></td>
+                </tr>
+
+            </table>
+        </div>
 </article>

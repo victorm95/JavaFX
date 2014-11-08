@@ -69,28 +69,28 @@ Use `mode` to control the header and scrolling behavior.
 <link rel="import" href="../polymer/polymer.html">
 
 <polymer-element name="core-header-panel">
-<template>
+    <template>
 
-  <link rel="stylesheet" href="core-header-panel.css">
-  
-  <div id="outerContainer" on-scroll="{{scroll}}" vertical layout>
+        <link rel="stylesheet" href="core-header-panel.css">
 
-    <content id="headerContent" select="core-toolbar, .core-header"></content>
+        <div id="outerContainer" on-scroll="{{scroll}}" vertical layout>
 
-    <div id="mainPanel" flex vertical layout>
-    
-      <div id="mainContainer" flex?="{{mode !== 'cover'}}" on-scroll="{{scroll}}">
-        <content id="mainContent" select="*"></content>
-      </div>
-      
-      <div id="dropShadow"></div>
-      
-    </div>
+            <content id="headerContent" select="core-toolbar, .core-header"></content>
 
-  </div>
+            <div id="mainPanel" flex vertical layout>
 
-</template>
-<script>
+                <div id="mainContainer" flex?="{{mode !== 'cover'}}" on-scroll="{{scroll}}">
+                    <content id="mainContent" select="*"></content>
+                </div>
+
+                <div id="dropShadow"></div>
+
+            </div>
+
+        </div>
+
+    </template>
+    <script>
 
   Polymer('core-header-panel', {
     
@@ -221,5 +221,6 @@ Use `mode` to control the header and scrolling behavior.
 
   });
 
-</script>
+
+    </script>
 </polymer-element>

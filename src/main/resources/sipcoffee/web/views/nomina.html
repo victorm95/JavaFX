@@ -1,66 +1,67 @@
 <article class="well well-lg">
 
-		<article>
-			<div class="page-header">
-				<h3>Nomina</h3>
-			</div>
-			<form name="formNomina" ng-submit="guardar()">
-		
-				<div class="form-group">
-					<label for="usuario">Usuario</label>
-                    <input class="form-control" type="text" id="usuario" name="usuario"/>
-				</div>
+    <article>
+        <div class="page-header">
+            <h3>Nomina</h3>
+        </div>
+        <form name="formNomina" ng-submit="guardar()">
 
-				<div class="form-group">
-					<label for="proceso">Proceso</label>
-					<select class="form-control" id="proceso" name="proceso"></select>
-				</div>
-				
-				<div class="form-group">
-					<label for="horas">Horas</label>
-					<select class="form-control" id="horas" name="horas"></select>
-				</div>
-				
-				<div class="form-group">
-					<label for="valor">Valor</label>
-					<div class="input-group">
-						<input class="form-control" type="text" id="valor" name="valor"/>
-						<span class="input-group-addon">$</span>
-					</div>
-				</div>
+            <div class="form-group">
+                <label for="usuario">Usuario</label>
+                <input class="form-control" type="text" id="usuario" name="usuario"/>
+            </div>
 
-				<input type="submit" id="guardar" value="Guardar" class="btn btn-success" />
-				<button class="btn btn-success">
-					Editar
-				</button>
-				<button class="btn btn-success">
-					Eliminar
-				</button>
+            <div class="form-group">
+                <label for="proceso">Proceso</label>
+                <select class="form-control" id="proceso" name="proceso"></select>
+            </div>
 
-			</form>
+            <div class="form-group">
+                <label for="horas">Horas</label>
+                <select class="form-control" id="horas" name="horas"></select>
+            </div>
 
-		</article>
+            <div class="form-group">
+                <label for="valor">Valor</label>
 
-		<article>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="valor" name="valor"/>
+                    <span class="input-group-addon">$</span>
+                </div>
+            </div>
 
-			<table class="table table-striped" >
+            <input type="submit" id="guardar" value="Guardar" class="btn btn-success"/>
+            <button class="btn btn-success">
+                Editar
+            </button>
+            <button class="btn btn-success">
+                Eliminar
+            </button>
 
-				<tr class="info">
-    				<th>Usuario</th>
-    				<th>Proceso</th>
-    				<th>Horas</th>
-    				<th>Valor</th>
-    				<th>Fecha</th>
-    			</tr>
-				<tr ng-repeat="nomina in nominas">
-					<td>{{nomina.usuario.nombre</td>
-					<td>{{nomina.proceso.nombre}}</td>
-					<td>{{nomina.horas}}</td>
-					<td>{{nomina.cantidad}}</td>
-					<td>{{nomina.fechaRegistro}}</td>
-				</tr>
+        </form>
 
-			</table>
-		</article>
-		
+    </article>
+
+    <article>
+
+        <table class="table table-striped">
+
+            <tr class="info">
+                <th>Usuario</th>
+                <th>Proceso</th>
+                <th>Horas</th>
+                <th>Valor</th>
+                <th>Fecha</th>
+            </tr>
+            <tr ng-repeat="nomina in nominas">
+                <td>{{nomina.usuario.nombre</td>
+                <td>{{nomina.proceso.nombre}}</td>
+                <td>{{nomina.horas}}</td>
+                <td>{{nomina.cantidad}}</td>
+                <td>{{nomina.fechaRegistro}}</td>
+            </tr>
+
+        </table>
+    </article>
+
 </article>

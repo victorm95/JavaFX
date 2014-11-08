@@ -53,23 +53,25 @@ To change the radio unchecked color:
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 
 <polymer-element name="paper-radio-button" role="radio" tabindex="0" aria-checked="false">
-<template>
+    <template>
 
-  <link rel="stylesheet" href="paper-radio-button.css">
-  
-  <div id="radioContainer" class="{{ {labeled: label} | tokenList }}">
-  
-    <div id="offRadio"></div>
-    <div id="onRadio"></div>
-    
-    <paper-ripple id="ink" class="circle recenteringTouch" checked?="{{!checked}}"></paper-ripple>
-    
-  </div>
-  
-  <div id="radioLabel" aria-hidden="true" hidden?="{{!label}}">{{label}}<content></content></div>
-  
-</template>
-<script>
+        <link rel="stylesheet" href="paper-radio-button.css">
+
+        <div id="radioContainer" class="{{ {labeled: label} | tokenList }}">
+
+            <div id="offRadio"></div>
+            <div id="onRadio"></div>
+
+            <paper-ripple id="ink" class="circle recenteringTouch" checked?="{{!checked}}"></paper-ripple>
+
+        </div>
+
+        <div id="radioLabel" aria-hidden="true" hidden?="{{!label}}">{{label}}
+            <content></content>
+        </div>
+
+    </template>
+    <script>
 
   Polymer('paper-radio-button', {
     
@@ -153,5 +155,6 @@ To change the radio unchecked color:
     
   });
   
-</script>
+
+    </script>
 </polymer-element>

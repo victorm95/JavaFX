@@ -43,19 +43,19 @@ To change the sliding bar color:
 <link rel="import" href="paper-tab.html">
 
 <polymer-element name="paper-tabs" extends="core-selector" attributes="noink nobar" role="tablist">
-<template>
+    <template>
 
-  <link rel="stylesheet" href="paper-tabs.css">
-  
-  <div id="tabsContainer" horizontal layout>
-  
-    <shadow></shadow>
-    <div id="selectionBar" hidden?="{{nobar}}" on-transitionend="{{barTransitionEnd}}"></div>
-    
-  </div>
-    
-</template>
-<script>
+        <link rel="stylesheet" href="paper-tabs.css">
+
+        <div id="tabsContainer" horizontal layout>
+
+            <shadow></shadow>
+            <div id="selectionBar" hidden?="{{nobar}}" on-transitionend="{{barTransitionEnd}}"></div>
+
+        </div>
+
+    </template>
+    <script>
 
   Polymer('paper-tabs', {
     
@@ -127,5 +127,6 @@ To change the sliding bar color:
     
   });
   
-</script>
+
+    </script>
 </polymer-element>

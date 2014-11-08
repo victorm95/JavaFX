@@ -54,34 +54,34 @@ To style the background, text and hover color, apply the `background` and
 <link href="../paper-shadow/paper-shadow.html" rel="import">
 
 <polymer-element name="paper-button" extends="paper-focusable" attributes="label raisedButton iconSrc icon"
-role="button">
+                 role="button">
 
-  <template>
+    <template>
 
-    <link href="paper-button.css" rel="stylesheet">
+        <link href="paper-button.css" rel="stylesheet">
 
-    <template if="{{raisedButton}}">
-      <div fit id="shadow-container">
-        <paper-shadow id="shadow" z="{{z}}" animated></paper-shadow>
-      </div>
+        <template if="{{raisedButton}}">
+            <div fit id="shadow-container">
+                <paper-shadow id="shadow" z="{{z}}" animated></paper-shadow>
+            </div>
+        </template>
+
+        <div id="clip">
+            <!-- <div id="focusBg"></div> -->
+            <paper-ripple id="ripple"></paper-ripple>
+            <div id="content">
+                <template if="{{iconSrc || icon}}">
+                    <core-icon id="icon" src="{{iconSrc}}" icon="{{icon}}"></core-icon>
+                </template>
+                <template if="{{label}}">
+                    <span>{{label}}</span>
+                </template>
+            </div>
+        </div>
+
     </template>
 
-    <div id="clip">
-      <!-- <div id="focusBg"></div> -->
-      <paper-ripple id="ripple"></paper-ripple>
-      <div id="content">
-        <template if="{{iconSrc || icon}}">
-          <core-icon id="icon" src="{{iconSrc}}" icon="{{icon}}"></core-icon>
-        </template>
-        <template if="{{label}}">
-          <span>{{label}}</span>
-        </template>
-      </div>
-    </div>
-
-  </template>
-
-  <script>
+    <script>
     Polymer('paper-button', {
 
       publish: {
@@ -207,5 +207,6 @@ role="button">
       }
 
     });
-  </script>
+
+    </script>
 </polymer-element>

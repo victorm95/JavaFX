@@ -1,51 +1,57 @@
 package sipcoffee;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import netscape.javascript.JSObject;
 import sipcoffee.controllers.*;
 import sipcoffee.models.Usuario;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class Login implements Initializable {
 
-	/* Attrs */
-	@FXML Button btnLogin;
-	@FXML Button btnCancel;
-	@FXML TextField usuarioField;
-	@FXML PasswordField passwordField;
-    @FXML Label msgLabel;
-	
+    /* Attrs */
+    @FXML
+    Button btnLogin;
+    @FXML
+    Button btnCancel;
+    @FXML
+    TextField usuarioField;
+    @FXML
+    PasswordField passwordField;
+    @FXML
+    Label msgLabel;
 
-	/* Init */
-	public void initialize(URL url, ResourceBundle resources){
+
+    /* Init */
+    public void initialize(URL url, ResourceBundle resources) {
 
         this.passwordField.setOnAction(e -> this.login(e));
-		this.btnLogin.setOnAction(e -> this.login(e));
-		this.btnCancel.setOnAction( e -> System.exit(0) );
+        this.btnLogin.setOnAction(e -> this.login(e));
+        this.btnCancel.setOnAction(e -> System.exit(0));
 
     }
 
-    private void login(ActionEvent e){
+    private void login(ActionEvent e) {
 
-		UsuarioCtrl userCtrl = new UsuarioCtrl();
+        UsuarioCtrl userCtrl = new UsuarioCtrl();
 
-        if(!this.usuarioField.getText().equals("") && !this.passwordField.getText().equals("")){
+        if (!this.usuarioField.getText().equals("") && !this.passwordField.getText().equals("")) {
             Usuario user = userCtrl.login(this.usuarioField.getText(), this.passwordField.getText());
 
-            if( user != null ){
-                if(user.isActivo()){
+            if (user != null) {
+                if (user.isActivo()) {
                     WebView webView = new WebView();
                     Stage stage = new Stage();
                     WebEngine engine = webView.getEngine();
@@ -79,14 +85,14 @@ public class Login implements Initializable {
                     stage.show();
 
                     // Close Login
-                    ((Stage)(((Node)e.getSource()).getScene().getWindow())).close();
-                }else{
+                    ((Stage) (((Node) e.getSource()).getScene().getWindow())).close();
+                } else {
                     this.msgLabel.setText("Es usuario no esta activo.");
                 }
-            }else{
+            } else {
                 this.msgLabel.setText("Usuario y/o Contraseña incorrectos.");
             }
-        }else{
+        } else {
             this.msgLabel.setText("Todos los campos son obligatorios.");
         }
     }
@@ -94,6 +100,6 @@ public class Login implements Initializable {
     public void print(Object obj) {
         System.out.println(obj);
     }
-	
+
 
 }

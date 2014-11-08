@@ -60,24 +60,28 @@ contains the selection state.
 <link href="../paper-shadow/paper-shadow.html" rel="import">
 
 <polymer-element name="paper-dropdown">
-<template>
+    <template>
 
-  <link href="paper-dropdown.css" rel="stylesheet">
+        <link href="paper-dropdown.css" rel="stylesheet">
 
-  <div id="control" layout horizontal selected?="{{selectedItem}}" on-tap="{{toggle}}">
-    <div flex>
-      {{selectedItem ? (selectedItem.label || selected) : label}}
-    </div>
-    <core-icon id="arrow" icon="{{opened ? 'arrow-drop-up' : 'arrow-drop-down'}}"></core-icon>
-  </div>
+        <div id="control" layout horizontal selected?="{{selectedItem}}" on-tap="{{toggle}}">
+            <div flex>
+                {{selectedItem ? (selectedItem.label || selected) : label}}
+            </div>
+            <core-icon id="arrow" icon="{{opened ? 'arrow-drop-up' : 'arrow-drop-down'}}"></core-icon>
+        </div>
 
-  <core-popup-menu id="menu" relatedTarget="{{$.control}}" opened="{{opened}}" halign="{{halign}}" valign="{{valign}}"selected="{{selected}}" selectedItem="{{selectedItem}}" selectedClass="{{selectedClass}}" valueattr="{{valueattr}}" selectedProperty="{{selectedProperty}}" selectedAttribute="{{selectedAttribute}}" on-core-select="{{selectAction}}">
-    <paper-shadow z="1" target="{{$.menu}}" hasPosition></paper-shadow>
-    <content select="*"></content>
-  </core-popup-menu>
+        <core-popup-menu id="menu" relatedTarget="{{$.control}}" opened="{{opened}}" halign="{{halign}}"
+                         valign="{{valign}}" selected="{{selected}}" selectedItem="{{selectedItem}}"
+                         selectedClass="{{selectedClass}}" valueattr="{{valueattr}}"
+                         selectedProperty="{{selectedProperty}}" selectedAttribute="{{selectedAttribute}}"
+                         on-core-select="{{selectAction}}">
+            <paper-shadow z="1" target="{{$.menu}}" hasPosition></paper-shadow>
+            <content select="*"></content>
+        </core-popup-menu>
 
-</template>
-<script>
+    </template>
+    <script>
 
   Polymer({
 
@@ -187,5 +191,6 @@ contains the selection state.
 
   });
 
-</script>
+
+    </script>
 </polymer-element>

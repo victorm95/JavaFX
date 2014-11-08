@@ -53,29 +53,29 @@ or class `content` to delineate the content section.
 <link rel="import" href="../polymer/polymer.html">
 
 <polymer-element name="core-scroll-header-panel">
-<template>
+    <template>
 
-  <link rel="stylesheet" href="core-scroll-header-panel.css">
+        <link rel="stylesheet" href="core-scroll-header-panel.css">
 
-  <div id="mainContainer" on-scroll="{{scroll}}">
-  
-    <content id="mainContent" select="[content], .content"></content>
-    
-  </div>
-  
-  <div id="headerContainer">
-  
-    <div class="bg-container">
-      <div id="condensedHeaderBg"></div>
-      <div id="headerBg"></div>
-    </div>
-    
-    <content id="headerContent" select="core-toolbar, .core-header"></content>
-    
-  </div>
-  
-</template>
-<script>
+        <div id="mainContainer" on-scroll="{{scroll}}">
+
+            <content id="mainContent" select="[content], .content"></content>
+
+        </div>
+
+        <div id="headerContainer">
+
+            <div class="bg-container">
+                <div id="condensedHeaderBg"></div>
+                <div id="headerBg"></div>
+            </div>
+
+            <content id="headerContent" select="core-toolbar, .core-header"></content>
+
+        </div>
+
+    </template>
+    <script>
 
   Polymer('core-scroll-header-panel', {
     
@@ -309,5 +309,6 @@ or class `content` to delineate the content section.
 
   });
 
-</script>
+
+    </script>
 </polymer-element>

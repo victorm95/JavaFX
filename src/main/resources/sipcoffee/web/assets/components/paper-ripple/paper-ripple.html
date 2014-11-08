@@ -57,35 +57,35 @@ Apply `circle` class to make the rippling effect within a circle.
 @homepage github.io
 -->
 
-<link rel="import" href="../polymer/polymer.html" >
+<link rel="import" href="../polymer/polymer.html">
 
 <polymer-element name="paper-ripple" attributes="initialOpacity opacityDecayVelocity">
-<template>
+    <template>
 
-  <style>
+        <style>
 
-    :host {
-      display: block;
-      position: relative;
-    }
+            :host {
+            display: block;
+            position: relative;
+            }
 
-    #canvas {
-      pointer-events: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+            #canvas {
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            }
 
-    :host(.circle) #canvas {
-      border-radius: 50%;
-    }
+            :host(.circle) #canvas {
+            border-radius: 50%;
+            }
 
-  </style>
+        </style>
 
-</template>
-<script>
+    </template>
+    <script>
 
   (function() {
 
@@ -423,5 +423,6 @@ Apply `circle` class to make the rippling effect within a circle.
 
   })();
 
-</script>
+
+    </script>
 </polymer-element>

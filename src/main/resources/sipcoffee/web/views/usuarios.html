@@ -1,120 +1,140 @@
 <div class="row">
 
-	<article class="col-md-6">
-		<table class="table table-striped table-hover table-bordered">
+    <article class="col-md-6">
+        <table class="table table-striped table-hover table-bordered">
 
-			<tr class="info">
-				<th>Rol</th>
-				<th>Nombre</th>
-            	<th>Usuario</th>
-				<th>Cedula</th>
-				<th>Direcci&oacute;n</th>
-				<th>Municipio</th>
-				<th>Telefono</th>
-				<th>Activo</th>
-			</tr>
-			
-			<tr ng-repeat="usuario in usuarios" ng-click="seleccionar(usuario)">
-				<td>{{ usuario.rol.nombre }}</td>
-				<td>{{ usuario.nombre }}</td>
-            	<td>{{ usuario.usuario }}</td>
-				<td>{{ usuario.cedula }}</td>
-				<td>{{ usuario.direccion }}</td>
-				<td>{{ usuario.municipio }}</td>
-				<td>{{ usuario.telefono }}</td>
-				<td> <input type="checkbox" ng-model="usuario.activo" ng-click="desactivar(usuario)"> </td>
-			</tr>
+            <tr class="info">
+                <th>Rol</th>
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Cedula</th>
+                <th>Direcci&oacute;n</th>
+                <th>Municipio</th>
+                <th>Telefono</th>
+                <th>Activo</th>
+            </tr>
+
+            <tr ng-repeat="usuario in usuarios" ng-click="seleccionar(usuario)">
+                <td>{{ usuario.rol.nombre }}</td>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.usuario }}</td>
+                <td>{{ usuario.cedula }}</td>
+                <td>{{ usuario.direccion }}</td>
+                <td>{{ usuario.municipio }}</td>
+                <td>{{ usuario.telefono }}</td>
+                <td><input type="checkbox" ng-model="usuario.activo" ng-click="desactivar(usuario)"></td>
+            </tr>
 
 
-		</table>
-	</article>
+        </table>
+    </article>
 
-	<article class="well well-lg col-md-offset-6 col-md-5 affix affix-top">
-		<form class="form-horizontal" ng-submit="guardar()">
+    <article class="well well-lg col-md-offset-6 col-md-5 affix affix-top">
+        <form class="form-horizontal" ng-submit="guardar()">
 
-			<div class="form-group">
-				<label for="rol" class="control-label col-md-offset-1 col-md-2">Rol</label>
-				<div class="col-md-8">
-					<select name="rol" id="rol" ng-model="rol" class="form-control">
-						<option ng-repeat="r in roles" ng-value="r.nombre">{{ r.nombre }}</option>
-					</select>
-				</div>
-			</div>
+            <div class="form-group">
+                <label for="rol" class="control-label col-md-offset-1 col-md-2">Rol</label>
 
-			<div class="form-group">
-				<label for="nombre" class="control-label col-md-offset-1 col-md-2">Nombre</label>
-				<div class="col-md-8">
-					<input type="text" name="nombre" id="nombre" ng-model="nombre" placeholder="Nombre" class="form-control" required/>
-				</div>
-			</div>
+                <div class="col-md-8">
+                    <select name="rol" id="rol" ng-model="rol" class="form-control">
+                        <option ng-repeat="r in roles" ng-value="r.nombre">{{ r.nombre }}</option>
+                    </select>
+                </div>
+            </div>
 
-			<div class="form-group">
-				<label for="usuario" class="control-label col-md-offset-1 col-md-2">Usuario</label>
-				<div class="col-md-8">
-					<input type="text" name="usuario" id="usuario" ng-model="usuario" placeholder="Usuario" class="form-control" required/>
-				</div>
-			</div>
+            <div class="form-group">
+                <label for="nombre" class="control-label col-md-offset-1 col-md-2">Nombre</label>
 
-			<div class="form-group">
-				<label for="clave1" class="control-label col-md-offset-1 col-md-2">Clave</label>
-				<div class="col-md-8">
-					<input type="password" name="clave1" id="clave1" ng-model="clave1" placeholder="Clave" class="form-control" required/>
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<label for="clave2" class="control-label col-md-offset-1 col-md-2">Verificar Clave</label>
-				<div class="col-md-8">
-					<input type="password" name="clave2" id="clave2" ng-model="clave2" placeholder="Clave" class="form-control" required/>
-				</div>
-			</div>
+                <div class="col-md-8">
+                    <input type="text" name="nombre" id="nombre" ng-model="nombre" placeholder="Nombre"
+                           class="form-control" required/>
+                </div>
+            </div>
 
-			<div class="form-group">
-				<label for="cedula" class="control-label col-md-offset-1 col-md-2">Cedula</label>
-				<div class="col-md-8">
-					<input type="text" name="cedula" id="cedula" ng-model="cedula" placeholder="Cedula" class="form-control" pattern="[0-9]+" title="Solo puedes instroducir n�meros" required/>
-				</div>
-			</div>
+            <div class="form-group">
+                <label for="usuario" class="control-label col-md-offset-1 col-md-2">Usuario</label>
 
-			<div class="form-group">
-				<label for="fechaExpedicion" class="control-label col-md-3">Fecha de expedici&oacute;n del documento</label>
-				<div class="col-md-8">
-					<input type="text" name="fechaExpedicion" id="fechaExpedicion" ng-model="expedicion" placeholder="Fecha de Expedici&oacute;n (mm/dd/aaaa)" class="form-control" title="Solo puedes instroducir n�meros" required/>
-				</div>
-			</div>
+                <div class="col-md-8">
+                    <input type="text" name="usuario" id="usuario" ng-model="usuario" placeholder="Usuario"
+                           class="form-control" required/>
+                </div>
+            </div>
 
-			<div class="form-group">
-				<label for="direccion" class="control-label col-md-offset-1 col-md-2">Direcci&oacute;n</label>
-				<div class="col-md-8">
-					<input type="text" name="direccion" id="direccion" ng-model="direccion" placeholder="Direcci&oacute;n" class="form-control" required/>
-				</div>
-			</div>
+            <div class="form-group">
+                <label for="clave1" class="control-label col-md-offset-1 col-md-2">Clave</label>
 
-			<div class="form-group">
-				<label for="telefono" class="control-label col-md-offset-1 col-md-2">Telefono</label>
-				<div class="col-md-8">
-					<input type="tel" name="telefono" id="telefono" ng-model="telefono" placeholder="Telefono" class="form-control" required/>
-				</div>
-			</div>
+                <div class="col-md-8">
+                    <input type="password" name="clave1" id="clave1" ng-model="clave1" placeholder="Clave"
+                           class="form-control" required/>
+                </div>
+            </div>
 
-			<div class="form-group">
+            <div class="form-group">
+                <label for="clave2" class="control-label col-md-offset-1 col-md-2">Verificar Clave</label>
 
-				<label for="activo" class="col-md-offset-1 col-md-2">Activo</label>
-				<div class="col-md-1">
-					<input type="checkbox" ng-model="activo" name="activo" id="activo" checked/>
-				</div>
-			</div>
+                <div class="col-md-8">
+                    <input type="password" name="clave2" id="clave2" ng-model="clave2" placeholder="Clave"
+                           class="form-control" required/>
+                </div>
+            </div>
 
-			<div class="form-group">
-				<div class="col-md-offset-3 col-md-1">
-					<input type="submit" value="Guardar" class="btn btn-success"/>
-				</div>
-				<div class="col-md-offset-2 col-md-1">
-					<input type="reset" value="Cancelar" class="btn btn-danger"/>
-				</div>
-			</div>
+            <div class="form-group">
+                <label for="cedula" class="control-label col-md-offset-1 col-md-2">Cedula</label>
 
-		</form>
-	</article>
+                <div class="col-md-8">
+                    <input type="text" name="cedula" id="cedula" ng-model="cedula" placeholder="Cedula"
+                           class="form-control" pattern="[0-9]+" title="Solo puedes instroducir n�meros" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="fechaExpedicion" class="control-label col-md-3">Fecha de expedici&oacute;n del
+                    documento</label>
+
+                <div class="col-md-8">
+                    <input type="text" name="fechaExpedicion" id="fechaExpedicion" ng-model="expedicion"
+                           placeholder="Fecha de Expedici&oacute;n (mm/dd/aaaa)" class="form-control"
+                           title="Solo puedes instroducir n�meros" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="direccion" class="control-label col-md-offset-1 col-md-2">Direcci&oacute;n</label>
+
+                <div class="col-md-8">
+                    <input type="text" name="direccion" id="direccion" ng-model="direccion"
+                           placeholder="Direcci&oacute;n" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono" class="control-label col-md-offset-1 col-md-2">Telefono</label>
+
+                <div class="col-md-8">
+                    <input type="tel" name="telefono" id="telefono" ng-model="telefono" placeholder="Telefono"
+                           class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label for="activo" class="col-md-offset-1 col-md-2">Activo</label>
+
+                <div class="col-md-1">
+                    <input type="checkbox" ng-model="activo" name="activo" id="activo" checked/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-1">
+                    <input type="submit" value="Guardar" class="btn btn-success"/>
+                </div>
+                <div class="col-md-offset-2 col-md-1">
+                    <input type="reset" value="Cancelar" class="btn btn-danger"/>
+                </div>
+            </div>
+
+        </form>
+    </article>
 
 </div>

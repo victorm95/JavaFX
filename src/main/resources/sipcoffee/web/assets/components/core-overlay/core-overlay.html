@@ -76,7 +76,7 @@ Fired when the `core-overlay` has completely closed.
 @event core-overlay-close-completed
 -->
 <style>
-  .core-overlay-backdrop {
+    .core-overlay-backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -85,15 +85,15 @@ Fired when the `core-overlay` has completely closed.
     background-color: black;
     opacity: 0;
     transition: opacity 0.2s;
-  }
+    }
 
-  .core-overlay-backdrop.core-opened {
+    .core-overlay-backdrop.core-opened {
     opacity: 0.6;
-  }
+    }
 </style>
 
 <polymer-element name="core-overlay">
-<script>
+    <script>
 (function() {
 
   Polymer('core-overlay', {
@@ -683,5 +683,6 @@ Fired when the `core-overlay` has completely closed.
     return backdrops;
   }
 })();
-</script>
+
+    </script>
 </polymer-element>

@@ -66,26 +66,27 @@ the toast will automatically fits at the bottom of the screen.
 
 <polymer-element name="paper-toast" attributes="text duration opened responsiveWidth swipeDisabled" role="status">
 
-<template>
+    <template>
 
-  <link rel="stylesheet" href="paper-toast.css" >
+        <link rel="stylesheet" href="paper-toast.css">
 
-  <core-overlay opened="{{opened}}" target="{{}}" sizingTarget="{{$.container}}" transition="core-transition-bottom"></core-overlay>
+        <core-overlay opened="{{opened}}" target="{{}}" sizingTarget="{{$.container}}"
+                      transition="core-transition-bottom"></core-overlay>
 
-  <div class="toast-container" horizontal layout>
+        <div class="toast-container" horizontal layout>
 
-    <div class="toast-text" flex>{{text}}</div>
-    
-    <div class="toast-text toast-action" on-tap="{{dismiss}}">
-      <content></content>
-    </div>
+            <div class="toast-text" flex>{{text}}</div>
 
-  </div>
-  
-  <core-media-query query="max-width: {{responsiveWidth}}" queryMatches="{{narrowMode}}"></core-media-query>
+            <div class="toast-text toast-action" on-tap="{{dismiss}}">
+                <content></content>
+            </div>
 
-</template>
-<script>
+        </div>
+
+        <core-media-query query="max-width: {{responsiveWidth}}" queryMatches="{{narrowMode}}"></core-media-query>
+
+    </template>
+    <script>
 
   (function() {
   
@@ -254,5 +255,6 @@ the toast will automatically fits at the bottom of the screen.
     
   })();
 
-</script>
+
+    </script>
 </polymer-element>

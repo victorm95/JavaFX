@@ -6,10 +6,10 @@ import sipcoffee.models.Cafeto;
 
 public class CafetoCtrl {
 
-	public CafetoCtrl() {
-	}
+    public CafetoCtrl() {
+    }
 
-	public Cafeto create(Object obj) {
+    public Cafeto create(Object obj) {
         JSONObject json;
         try {
             json = new JSONObject(obj.toString());
@@ -34,13 +34,13 @@ public class CafetoCtrl {
             return new Cafeto();
         }
     }
-	
-	public Cafeto findId(int id){
-		return new Cafeto().find(id);
-	}
-	
-	public String all(){
-		return new Cafeto().all();
-	}
-	
+
+    public Cafeto findId(int id) {
+        return new Cafeto().find(id);
+    }
+
+    public String all() {
+        return new Cafeto().all();
+    }
+
 }

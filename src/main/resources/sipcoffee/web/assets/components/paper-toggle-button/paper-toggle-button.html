@@ -61,21 +61,23 @@ To change the bar color for unchecked state:
 <link rel="import" href="../paper-radio-button/paper-radio-button.html">
 
 <polymer-element name="paper-toggle-button" attributes="checked" role="button" aria-pressed="false" tabindex="0">
-<template>
+    <template>
 
-  <link rel="stylesheet" href="paper-toggle-button.css">
+        <link rel="stylesheet" href="paper-toggle-button.css">
 
-  <div id="toggleContainer">
-  
-    <div id="toggleBar" checked?="{{checked}}"></div>
-  
-    <paper-radio-button id="toggleRadio" toggles checked="{{checked}}" on-change="{{changeAction}}" on-core-change="{{stopPropagation}}"
-        on-trackstart="{{trackStart}}" on-trackx="{{trackx}}" on-trackend="{{trackEnd}}"></paper-radio-button>
-    
-  </div>
+        <div id="toggleContainer">
 
-</template>
-<script>
+            <div id="toggleBar" checked?="{{checked}}"></div>
+
+            <paper-radio-button id="toggleRadio" toggles checked="{{checked}}" on-change="{{changeAction}}"
+                                on-core-change="{{stopPropagation}}"
+                                on-trackstart="{{trackStart}}" on-trackx="{{trackx}}"
+                                on-trackend="{{trackEnd}}"></paper-radio-button>
+
+        </div>
+
+    </template>
+    <script>
 
   Polymer('paper-toggle-button', {
     
@@ -140,5 +142,6 @@ To change the bar color for unchecked state:
 
   });
 
-</script>
+
+    </script>
 </polymer-element>
