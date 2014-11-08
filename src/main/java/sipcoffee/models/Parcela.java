@@ -181,7 +181,7 @@ public class Parcela {
                 jsonTerrenos.put(jsonTerreno);
             }
 
-            return ((JSONObject) jsonTerrenos.get(0)).toString(2);
+            return ((JSONObject) jsonTerrenos.get(0)).toString();
         } catch (Exception e) {
             System.out.println("[Error GetData]: " + e.toString());
             return null;

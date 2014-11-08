@@ -1,9 +1,12 @@
-var main = angular.module('main', [ 'ngRoute', 'rol', 'usuario', 'proceso', 'producto', 'terreno', 'bloque', 'parcela', 'cafeto', 'siembra', 'cosecha', 'entrada', 'salida', 'nomina']);
+var main = angular.module('main', [ 'ngRoute', 'rol', 'usuario', 'proceso', 'producto', 'terreno', 'bloque', 'parcela', 'cafeto', 'siembra', 'cosecha', 'entrada', 'salida', 'nomina', 'graph']);
 
 main.config([ '$routeProvider', function($routeProvider) {
 
 	$routeProvider
-	.when('/', { })
+	.when('/', {
+	 	templateUrl: 'graph.html',
+	 	controller: 'graphController'
+	 })
 	.when('/roles', {
 		templateUrl: 'roles.html',
 		controller: 'rolController'

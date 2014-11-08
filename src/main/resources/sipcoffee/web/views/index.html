@@ -10,6 +10,10 @@
     <script src="../assets/js/jquery/jquery-2.1.1.min.js"></script>
     <script src="../assets/js/bootstrap/bootstrap.min.js"></script>
 
+    <!-- D3 -->
+    <script src="../assets/js/d3/d3.min.js"></script>
+    <!--<script src="../assets/js/controllers/graphScript.js"></script>-->
+
     <!-- AngularJS -->
     <script src="../assets/js/angularjs/angular.min.js"></script>
     <script src="../assets/js/angularjs/angular-route.min.js"></script>
@@ -29,6 +33,7 @@
     <script src="../assets/js/controllers/entradaController.js"></script>
     <script src="../assets/js/controllers/salidaController.js"></script>
     <script src="../assets/js/controllers/nominaController.js"></script>
+    <script src="../assets/js/controllers/graphController.js"></script>
     <script src="../assets/js/controllers/mainController.js"></script>
 
     <!-- Polymer -->
@@ -51,27 +56,8 @@
             <a class="navbar-brand" href="#/home"><span class="glyphicon glyphicon-home"></span> Inicio</a>
         </div>
 
-        <div class="collapse navbar-collapse" id="navbar">
+        <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav">
-
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
-                        Usuarios <span class="caret"></span> </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="#/roles">Roles</a>
-                        </li>
-                        <li>
-                            <a href="#/usuarios">Usuarios</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-left">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
                         Finca <span class="caret"></span> </a>
@@ -123,8 +109,19 @@
                         </li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
+                        Usuarios <span class="caret"></span> </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#/roles">Roles</a>
+                        </li>
+                        <li>
+                            <a href="#/usuarios">Usuarios</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
-
         </div>
 
     </div>
@@ -136,7 +133,6 @@
 
 
 <paper-toast id="toast" text="" class="capsule"></paper-toast>
-
 
 </body>
 </html>

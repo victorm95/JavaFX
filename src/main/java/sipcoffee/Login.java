@@ -1,5 +1,6 @@
 package sipcoffee;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,11 +37,11 @@ public class Login implements Initializable {
 
     /* Init */
     public void initialize(URL url, ResourceBundle resources) {
-
         this.passwordField.setOnAction(e -> this.login(e));
         this.btnLogin.setOnAction(e -> this.login(e));
         this.btnCancel.setOnAction(e -> System.exit(0));
 
+        Platform.runLater(  new LoadDB());
     }
 
     private void login(ActionEvent e) {

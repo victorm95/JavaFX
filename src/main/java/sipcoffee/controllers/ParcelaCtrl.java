@@ -30,6 +30,10 @@ public class ParcelaCtrl {
         }
     }
 
+    public String getData(){
+        return new Parcela().getData();
+    }
+
     public Parcela findId(int id) {
         return new Parcela().find(id);
     }
