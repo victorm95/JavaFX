@@ -3,23 +3,18 @@ angular.module('graph', [])
 .controller('graphController', ['$scope',
 function($scope){
 
-    /*
-    try{
+    /*try{
         $scope.data = JSON.parse(Parcela.getData().toString().replace(/\"/g, "").replace(/\\/g, '"'));
     }catch(error){
-        console.log("[Error Graph]: " + error]);
-    }
+        console.log("[Error in Graph]: " + error);
+    }*/
+    $scope.data = {"nombre": "terreno","children": [{"nombre": "Bloque 1","children": [{"nombre": "Parcela 1", "size": 70},{"nombre": "Parcela 2", "size": 50},{"nombre": "Parcela 3", "size": 100}]},{"nombre": "Bloque 2","children": [{"nombre": "Parcela 1", "size": 120},{"nombre": "Parcela 2", "size": 70},{"nombre": "Parcela 3", "size": 80}]},{"nombre": "Bloque 3","children":[{"nombre": "Parcela 1", "size": 70},{"nombre": "Parcela 2", "size": 90},{"nombre": "Parcela 3", "size": 100},{"nombre": "Parcela 4", "size": 50}]}]};
 
-    try{
-        graph($scope.data);
-    }catch(error){
-        console.log("[Error Graph]: " + error]);
-    }
-    */
-
+    graph($scope.data);
 }]);
 
 function graph(data){
+    console.log("Generate Graph");
 	var margin = {top: 10, bottom: 10, left: 10, right: 10};
 	var width = window.innerWidth - margin.left - margin.right - 200;
 	var height = window.innerHeight - margin.top - margin.bottom;
@@ -30,9 +25,9 @@ function graph(data){
 	var node = null;
 
 	var treemap = d3.layout.treemap()
-		.area([width, height])
+		.size([width, height])
 		.sticky(true)
-		.value(function(d){ return d.area; });
+		.value(function(d){ return d.size; });
 
 	var svg = d3.select('#graph')
 		.append('div')
@@ -73,7 +68,7 @@ function graph(data){
         .attr("y", function(d){ return d.dy / 2;})
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
-        .text(function(d){ return d.nombre + " ("+d.area+"m)"; });
+        .text(function(d){ return d.nombre + " ("+d.size+"m)"; });
 
     d3.select(window).on("click", function(){ zoom(root); });
 
@@ -99,7 +94,9 @@ function graph(data){
         d3.event.stopPropagation();
     }
 
-    document.querySelector("btnRoot").onClick = function(){
+    /*document.querySelector("btnRoot").onClick = function(){
         zoom(root);
-    };
+    };*/
+    d3.select("#btnRoot")
+        .on('click', function(){ zoom(root); });
 }

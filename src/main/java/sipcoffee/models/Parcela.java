@@ -152,7 +152,7 @@ public class Parcela {
 
                 jsonTerreno.put("id", terreno.getId());
                 jsonTerreno.put("nombre", terreno.getNombre());
-                jsonTerreno.put("area", terreno.getArea());
+                jsonTerreno.put("size", terreno.getArea());
                 jsonTerreno.put("children", new JSONArray());
 
                 for (Bloque bloque : listBloques) {
@@ -161,7 +161,7 @@ public class Parcela {
 
                         jsonBloque.put("id", bloque.getId());
                         jsonBloque.put("nombre", bloque.getNombre());
-                        jsonBloque.put("area", bloque.getArea());
+                        jsonBloque.put("size", bloque.getArea());
                         jsonBloque.put("children", new JSONArray());
 
                         for (Parcela parcela : listParcelas) {
@@ -170,7 +170,7 @@ public class Parcela {
 
                                 jsonParcela.put("id", parcela.getId());
                                 jsonParcela.put("nombre", parcela.getNombre());
-                                jsonParcela.put("area", parcela.getArea());
+                                jsonParcela.put("size", parcela.getArea());
 
                                 jsonBloque.append("children", jsonParcela);
                             }
