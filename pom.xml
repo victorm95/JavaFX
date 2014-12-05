@@ -26,34 +26,44 @@
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
-            <version>2.5.2-M1</version>
+            <version>2.5.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
             <version>8.20.7</version>
-        </dependency>
+			</dependency>
 
-        <!--
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.30</version>
-		</dependency>
-        -->
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.4.182</version>
+			</dependency>
 
+			<dependency>
+				<groupId>org.glassfish.jersey.containers</groupId>
+				<artifactId>jersey-container-grizzly2-http</artifactId>
+				<version>2.13</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.glassfish.jersey.media</groupId>
+				<artifactId>jersey-media-moxy</artifactId>
+				<version>2.13</version>
+			</dependency>
+			<!--
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.32</version>
-        </dependency>
-
-        <dependency>
+		  </dependency>
+		  <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20140107</version>
-        </dependency>
+		  </dependency>
+		  -->
     </dependencies>
 
 
@@ -65,17 +75,24 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>3.2</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                </configuration>
+					  </configuration>
+					  <executions>
+						  <execution>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+							</execution>
+					  </executions>
             </plugin>
 
 
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.5.2</version>
                 <configuration>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
@@ -83,22 +100,14 @@
                     <archive>
                         <manifest>
                             <Main-Class>${mainClass}</Main-Class>
-                            <addClasspath>true</addClasspath>
                         </manifest>
-                        <manifestEntries>
-                            <JavaFX-Application-Class>${mainClass}</JavaFX-Application-Class>
-                            <Main-Class>${mainClass}</Main-Class>
-                            <JavaFX-Version>${javafx.version}+</JavaFX-Version>
-                            <implementation-version>1.0</implementation-version>
-                            <Class-Path>javafx-${javafx.version}.jar</Class-Path>
-                        </manifestEntries>
                     </archive>
                 </configuration>
                 <executions>
                     <execution>
                         <phase>package</phase>
                         <goals>
-                            <goal>single</goal>
+									<goal>assembly</goal>
                         </goals>
                     </execution>
                 </executions>

@@ -5,6 +5,7 @@
 
     <persistence-unit name="dev" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
         <class>sipcoffee.models.Rol</class>
         <class>sipcoffee.models.Usuario</class>
         <class>sipcoffee.models.Departamento</class>
@@ -20,12 +21,12 @@
         <class>sipcoffee.models.Entrada</class>
         <class>sipcoffee.models.Salida</class>
         <class>sipcoffee.models.Nomina</class>
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3306/test"/>
-            <property name="javax.persistence.jdbc.user" value=""/>
-            <property name="javax.persistence.jdbc.password" value=""/>
+
+		  <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:./database"/>
+            <property name="javax.persistence.jdbc.user" value="test"/>
+            <property name="javax.persistence.jdbc.password" value="test"/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
         </properties>
 

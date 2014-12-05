@@ -23,7 +23,6 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idUsuario")
     private int id;
 
     @Column(name = "nombre", length = 30)
@@ -38,17 +37,13 @@ public class Usuario {
     @Column(name = "cedula", nullable = false)
     private long cedula;
 
-    @Column(name = "direccion")
     private String direccion;
-
-    @Column(name = "telefono")
     private long telefono;
 
     @Column(name = "activo", nullable = false)
     private boolean activo;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fechaRegistro")
     private Date fechaRegistro;
 
     @Temporal(TemporalType.DATE)
@@ -56,7 +51,6 @@ public class Usuario {
     private Date expedicionDocumento;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "ultimaSesion")
     private Date ultimaSesion;
 
     @JoinColumn(name = "idRol", referencedColumnName = "idRol", nullable = false)
@@ -67,46 +61,7 @@ public class Usuario {
     @OneToOne
     private Municipio municipio;
 
-	/*-------------------------------------- Acciones DB ---------------------------------------------*/
 
-    public boolean save() {
-        return Conexion.persist(this);
-    }
-
-    public Usuario find(int id) {
-        Conexion.init();
-        return (Usuario) Conexion.manager.createNamedQuery("findById-Usuario")
-                .setParameter("id", id).getSingleResult();
-    }
-
-    public Usuario login(String usuario, String clave) {
-        Conexion.init();
-        try {
-            return Conexion.manager
-                    .createNamedQuery("login-Usuario", Usuario.class)
-                    .setParameter("usuario", usuario).setParameter("clave", clave)
-                    .getSingleResult();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public String all() {
-        JSONArray jsonArray = new JSONArray();
-        Conexion.init();
-        List<Usuario> listUsuario = Conexion.manager.createNamedQuery(
-                "all-Usuarios", Usuario.class).getResultList();
-
-        for (Usuario usuario : listUsuario) {
-            jsonArray.put(usuario.toJson());
-        }
-
-        return jsonArray.toString();
-    }
-
-    public boolean delete() {
-        return Conexion.delete(this);
-    }
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 
@@ -217,26 +172,6 @@ public class Usuario {
     public boolean isEmpty() {
         Conexion.init();
         return Conexion.namedQuery("all-Usuarios").isEmpty();
-    }
-
-
-	/*-------------------------------------- Conversiones ---------------------------------------------*/
-
-    public String toJson() {
-        JSONObject json = new JSONObject();
-
-        json.put("id", this.id);
-        json.put("nombre", this.nombre);
-        json.put("usuario", this.usuario);
-        json.put("cedula", this.cedula);
-        json.put("telefono", this.telefono);
-        json.put("direccion", this.direccion);
-        json.put("rol", new JSONObject(this.rol.toJson()));
-        json.put("activo", this.activo);
-        json.put("fecha_registro", this.fechaRegistro);
-        json.put("expedicion", this.expedicionDocumento);
-
-        return json.toString();
     }
 
 }
