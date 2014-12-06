@@ -1,10 +1,6 @@
 package sipcoffee.models;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "Roles")
@@ -15,11 +11,9 @@ import java.util.List;
 public class Rol {
 
 	/* Attrs */
-
 	@Id
-	@GeneratedValues(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
 	private String nombre;
 
     /* Constructs */
@@ -30,20 +24,12 @@ public class Rol {
         this.nombre = nombre;
     }
 
-
 	/*-------------------------------------- Setter & Getters ---------------------------------------------*/
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getNombre() { return this.nombre; }
 
-    public String getNombre() {
-        return this.nombre;
-    }
-
-    public int getId() {
-        return this.id;
-    }
+    public int getId() { return this.id; }
 
     @Override
     public String toString() {

@@ -8,13 +8,22 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import netscape.javascript.JSObject;
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.server.ResourceConfig;
 
+import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
+import java.net.URI;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class App extends Application {
 
+    /* Attrs */
+    public static final int PORT = 3000;
+    public static final URI BASE_URI = UriBuilder.fromUri("http://localhost/rest").port(PORT).build();
+    private static HttpServer server;
     private WebView webView;
     private WebEngine engine;
     private JSObject windowJS;
@@ -29,6 +38,7 @@ public class App extends Application {
     }
 
     public static void main(String args[]) {
+        App.server = App.startServer();
         launch(args);
     }
 
@@ -54,4 +64,15 @@ public class App extends Application {
             return null;
         }
     }
+
+    public static HttpServer startServer(){
+        ResourceConfig config = new ResourceConfig()
+                .packages("sipcoffee.rest.resources")
+                .register(sipcoffee.rest.Config.class)
+                .register(org.glassfish.jersey.moxy.json.MoxyJsonConfig.class)
+                .register(org.glassfish.jersey.moxy.json.MoxyJsonFeature.class);
+
+        return GrizzlyHttpServerFactory.createHttpServer(BASE_URI, config);
+    }
+
 }
