@@ -1,8 +1,5 @@
 package sipcoffee.models;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -27,54 +24,13 @@ public class Terreno {
     @OneToOne
     private Municipio municipio;
 
-    @Column(name = "nombre")
     private String nombre;
-
-    @Column(name = "direccion")
     private String direccion;
-
-    @Column(name = "area")
     private int area;
-
-    @Column(name = "rutaImagen")
     private String rutaImagen;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "fechaRegistro")
     private Date fechaRegistro;
-
-	/*-------------------------------------- Acciones DB ---------------------------------------------*/
-
-    public boolean save() {
-        return Conexion.persist(this);
-    }
-
-    public Terreno find(int id) {
-        Conexion.init();
-        return (Terreno) Conexion.manager.createNamedQuery("findById-Terreno")
-                .setParameter("id", id).getSingleResult();
-    }
-
-    public Terreno find(String nombre) {
-        Conexion.init();
-        return (Terreno) Conexion.manager.createNamedQuery("findByName-Terreno")
-                .setParameter("nombre", nombre).getSingleResult();
-    }
-
-    public String all() {
-        JSONArray jsonArray = new JSONArray();
-
-        List<Object> list = Conexion.namedQuery("all-Terreno");
-
-        for (Object terreno : list) {
-            jsonArray.put(((Terreno) terreno).toJson());
-        }
-        return jsonArray.toString();
-    }
-
-    public boolean delete() {
-        return Conexion.delete(this);
-    }
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 
@@ -130,16 +86,4 @@ public class Terreno {
         this.fechaRegistro = fecha;
     }
 
-	/*-------------------------------------- Conversiones ---------------------------------------------*/
-
-    public String toJson() {
-        JSONObject json = new JSONObject();
-        json.put("id", this.id);
-        json.put("municipio", new JSONObject(this.municipio.toJson()));
-        json.put("nombre", this.nombre);
-        json.put("direccion", this.direccion);
-        json.put("area", this.area);
-        //json.put("rutaImagen", this.rutaImagen);
-        return json.toString();
-    }
 }

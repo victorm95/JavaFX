@@ -1,8 +1,5 @@
 package sipcoffee.models;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -29,43 +26,12 @@ public class Salida {
     @OneToOne
     private Usuario usuario;
 
-    @Column(name = "cantidad")
     private int cantidad;
-
-    @Column(name = "cometario")
     private String comentario;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fechaRegistro")
     private Date fechaRegistro;
 
-	/*-------------------------------------- Acciones DB ---------------------------------------------*/
-
-    public boolean save() {
-        return Conexion.persist(this);
-    }
-
-    public Salida find(int id) {
-        Conexion.init();
-        return (Salida) Conexion.manager.createNamedQuery("findById-Salida")
-                .setParameter("id", id).getSingleResult();
-    }
-
-    public String all() {
-        JSONArray jsonArray = new JSONArray();
-
-        List<Object> list = Conexion.namedQuery("all-Salidas");
-
-        for (Object salida : list) {
-            jsonArray.put(((Salida) salida).toJson());
-        }
-
-        return jsonArray.toString();
-    }
-
-    public boolean delete() {
-        return Conexion.delete(this);
-    }
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 
@@ -113,16 +79,4 @@ public class Salida {
         this.fechaRegistro = fecha;
     }
 
-	/*-------------------------------------- Conversiones ---------------------------------------------*/
-
-    public String toJson() {
-        JSONObject json = new JSONObject();
-        json.put("id", this.id);
-        json.put("producto", new JSONObject(this.producto.toJson()));
-        json.put("usuario", new JSONObject(this.usuario.toJson()));
-        json.put("cantidad", this.cantidad);
-        json.put("comentatio", this.comentario);
-        json.put("fechaRegistro", this.fechaRegistro);
-        return json.toString();
-    }
 }

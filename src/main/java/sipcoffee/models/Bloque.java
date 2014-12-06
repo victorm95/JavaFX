@@ -1,8 +1,5 @@
 package sipcoffee.models;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -19,59 +16,19 @@ public class Bloque {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idBloque")
+	 @Column(name = "idBloque")
     private int id;
 
     @JoinColumn(name = "idTerreno", referencedColumnName = "idTerreno", nullable = true)
     @OneToOne
     private Terreno terreno;
 
-    @Column(name = "nombre")
     private String nombre;
-
-    @Column(name = "area")
     private int area;
-
-    @Column(name = "ubicacion")
     private String ubicacion;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fechaRegistro")
     private Date fechaRegistro;
-
-	/*-------------------------------------- Acciones DB ---------------------------------------------*/
-
-    public boolean save() {
-        return Conexion.persist(this);
-    }
-
-    public Bloque find(int id) {
-        Conexion.init();
-        return (Bloque) Conexion.manager.createNamedQuery("findById-Bloque")
-                .setParameter("id", id).getSingleResult();
-    }
-
-    public Bloque find(String nombre) {
-        Conexion.init();
-        return (Bloque) Conexion.manager.createNamedQuery("findByName-Bloque")
-                .setParameter("nombre", nombre).getSingleResult();
-    }
-
-    public String all() {
-        JSONArray jsonArray = new JSONArray();
-
-        List<Object> list = Conexion.namedQuery("all-Bloques");
-
-        for (Object bloque : list) {
-            jsonArray.put(((Bloque) bloque).toJson());
-        }
-
-        return jsonArray.toString();
-    }
-
-    public boolean delete() {
-        return Conexion.delete(this);
-    }
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 
@@ -119,15 +76,4 @@ public class Bloque {
         this.fechaRegistro = fecha;
     }
 
-	/*-------------------------------------- Conversiones ---------------------------------------------*/
-
-    public String toJson() {
-        JSONObject json = new JSONObject();
-        json.put("id", this.id);
-        json.put("terreno", new JSONObject(this.terreno.toJson()));
-        json.put("nombre", this.nombre);
-        json.put("area", this.area);
-        json.put("ubicacion", this.ubicacion);
-        return json.toString();
-    }
 }

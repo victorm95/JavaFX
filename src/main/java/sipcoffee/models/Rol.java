@@ -4,25 +4,21 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Roles")
-@NamedQueries({
-        @NamedQuery(name = "all-Rol", query = "SELECT rol FROM Rol as rol"),
-        @NamedQuery(name = "findById-Rol", query = "SELECT rol FROM Rol as rol WHERE rol.id = :id"),
-        @NamedQuery(name = "findByName-Rol", query = "SELECT rol FROM Rol as rol WHERE rol.nombre = :nombre")})
+@NamedQuery(name = "all-Rol", query = "SELECT rol FROM Rol as rol")
 public class Rol {
 
 	/* Attrs */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idRol")
 	private int id;
+
 	private String nombre;
 
     /* Constructs */
-    public Rol() {
-    }
+    public Rol() { }
 
-    public Rol(String nombre) {
-        this.nombre = nombre;
-    }
+    public Rol(String nombre) { this.nombre = nombre; }
 
 	/*-------------------------------------- Setter & Getters ---------------------------------------------*/
 

@@ -23,6 +23,7 @@ public class App extends Application {
     /* Attrs */
     public static final int PORT = 3000;
     public static final URI BASE_URI = UriBuilder.fromUri("http://localhost/rest").port(PORT).build();
+	 public static final String PERSISTENCE_UNIT = "dev";
     private static HttpServer server;
     private WebView webView;
     private WebEngine engine;

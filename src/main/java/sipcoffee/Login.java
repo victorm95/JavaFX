@@ -14,9 +14,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import netscape.javascript.JSObject;
-import sipcoffee.controllers.*;
 import sipcoffee.models.Usuario;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -41,14 +39,13 @@ public class Login implements Initializable {
         this.btnLogin.setOnAction(e -> this.login(e));
         this.btnCancel.setOnAction(e -> System.exit(0));
 
-        Platform.runLater(  new LoadDB());
+        //Platform.runLater(new LoadDB());
     }
 
     private void login(ActionEvent e) {
 
-        UsuarioCtrl userCtrl = new UsuarioCtrl();
 
-        if (!this.usuarioField.getText().equals("") && !this.passwordField.getText().equals("")) {
+        /*if (!this.usuarioField.getText().equals("") && !this.passwordField.getText().equals("")) {
             Usuario user = userCtrl.login(this.usuarioField.getText(), this.passwordField.getText());
 
             if (user != null) {
@@ -60,25 +57,6 @@ public class Login implements Initializable {
 
                     windowJS.setMember("javaMain", this);
                     engine.executeScript("window.console.log = function(obj){ javaMain.print(obj); };");
-
-			/*-------------------------------  Agragar los modelos al webView --------------------------------*/
-                    windowJS.setMember("Rol", new RolCtrl());
-                    windowJS.setMember("Usuario", new UsuarioCtrl());
-                    windowJS.setMember("Terreno", new TerrenoCtrl());
-                    windowJS.setMember("Bloque", new BloqueCtrl());
-                    windowJS.setMember("Municipio", new MunicipioCtrl());
-                    windowJS.setMember("Departamento", new DepartamentoCtrl());
-                    windowJS.setMember("Parcela", new ParcelaCtrl());
-                    windowJS.setMember("Cafeto", new CafetoCtrl());
-                    windowJS.setMember("Proceso", new ProcesoCtrl());
-                    windowJS.setMember("Producto", new ProductoCtrl());
-                    windowJS.setMember("Siembra", new SiembraCtrl());
-                    windowJS.setMember("Cosecha", new CosechaCtrl());
-                    windowJS.setMember("Nomina", new NominaCtrl());
-                    windowJS.setMember("Entrada", new EntradaCtrl());
-                    windowJS.setMember("Salida", new SalidaCtrl());
-
-			/*------------------------------------------------------------------------------------------------*/
 
                     engine.load(App.class.getResource("web/views/index.html").toExternalForm());
                     stage.setTitle("Sipcoffee");
@@ -95,7 +73,7 @@ public class Login implements Initializable {
             }
         } else {
             this.msgLabel.setText("Todos los campos son obligatorios.");
-        }
+        }*/
     }
 
     public void print(Object obj) {

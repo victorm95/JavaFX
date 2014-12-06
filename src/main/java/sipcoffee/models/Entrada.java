@@ -1,8 +1,5 @@
 package sipcoffee.models;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -25,46 +22,12 @@ public class Entrada {
     @OneToOne
     private Producto producto;
 
-    @Column(name = "cantidad")
     private int cantidad;
-
-    @Column(name = "valor")
     private int valor;
-
-    @Column(name = "cometario")
     private String comentario;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fechaRegistro")
     private Date fechaRegistro;
-
-	/*-------------------------------------- Acciones DB ---------------------------------------------*/
-
-    public boolean save() {
-        return Conexion.persist(this);
-    }
-
-    public Entrada find(int id) {
-        Conexion.init();
-        return (Entrada) Conexion.manager.createNamedQuery("findById-Entrada")
-                .setParameter("id", id).getSingleResult();
-    }
-
-    public String all() {
-        JSONArray jsonArray = new JSONArray();
-
-        List<Object> list = Conexion.namedQuery("all-Entradas");
-
-        for (Object entrada : list) {
-            jsonArray.put(((Entrada) entrada).toJson());
-        }
-
-        return jsonArray.toString();
-    }
-
-    public boolean delete() {
-        return Conexion.delete(this);
-    }
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 
@@ -112,16 +75,4 @@ public class Entrada {
         this.fechaRegistro = fecha;
     }
 
-	/*-------------------------------------- Conversiones ---------------------------------------------*/
-
-    public String toJson() {
-        JSONObject json = new JSONObject();
-        json.put("id", this.id);
-        json.put("producto", new JSONObject(this.producto.toJson()));
-        json.put("cantidad", this.cantidad);
-        json.put("valor", this.valor);
-        json.put("comentario", this.comentario);
-        json.put("fechaRegistro", this.fechaRegistro);
-        return json.toString();
-    }
 }

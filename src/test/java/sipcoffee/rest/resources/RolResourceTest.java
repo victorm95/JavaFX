@@ -3,6 +3,7 @@ package sipcoffee.rest.resources;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
+import org.junit.Ignore;
 import sipcoffee.models.Rol;
 
 import javax.ws.rs.core.Application;
@@ -20,6 +21,7 @@ public class RolResourceTest extends JerseyTest {
     }
 
     @Test
+	 @Ignore
     public void test1() {
         List<Rol> roles = target("roles").request().get(List.class);
         System.out.println(roles.toArray().toString());

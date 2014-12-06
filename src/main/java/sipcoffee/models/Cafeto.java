@@ -1,8 +1,5 @@
 package sipcoffee.models;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -16,12 +13,11 @@ public class Cafeto {
 
     // Constructores
     public Cafeto() {
-
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCafeto")
+	 @Column(name = "idCafeto")
     private int id;
 
     @Column(name = "nombre", length = 30)
@@ -58,37 +54,7 @@ public class Cafeto {
     private String proveedor;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "fechaRegistro")
     private Date fechaRegistro;
-
-	/*-------------------------------------- Acciones DB ---------------------------------------------*/
-
-    public boolean save() {
-        return Conexion.persist(this);
-    }
-
-    public Cafeto find(int id) {
-        Conexion.init();
-        return (Cafeto) Conexion.manager.createNamedQuery("findById-Cafeto")
-                .setParameter("id", id).getSingleResult();
-    }
-
-    public String all() {
-        JSONArray jsonArray = new JSONArray();
-        Conexion.init();
-        List<Cafeto> listCafeto = Conexion.manager.createNamedQuery(
-                "all-Cafeto", Cafeto.class).getResultList();
-
-        for (Cafeto cafeto : listCafeto) {
-            jsonArray.put(cafeto.toJson());
-        }
-
-        return jsonArray.toString();
-    }
-
-    public boolean delete() {
-        return Conexion.delete(this);
-    }
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 
@@ -190,29 +156,6 @@ public class Cafeto {
 
     public void setFechaRegistro() {
         this.fechaRegistro = new Date();
-    }
-
-
-	/*-------------------------------------- Conversiones ---------------------------------------------*/
-
-    public String toJson() {
-        JSONObject json = new JSONObject();
-
-        json.put("id", this.id);
-        json.put("nombre", this.nombre);
-        json.put("cantidadAbono", this.cantidadAbono);
-        json.put("cantidadPesticida", this.cantidadPesticida);
-        json.put("distanciaCafeto", this.distanciaCafeto);
-        json.put("distanciaSurco", this.distanciaSurco);
-        json.put("tiempoSemillero", this.tiempoSemillero);
-        json.put("tiempoAlmacigo", this.tiempoAlmacigo);
-        json.put("tiempoGraneo", this.tiempoGraneo);
-        json.put("tiempoSoca", this.tiempoSoca);
-        json.put("primeraCosecha", this.primeraCosecha);
-        json.put("proveedor", this.proveedor);
-        json.put("fechaRegistro", this.fechaRegistro);
-
-        return json.toString();
     }
 
 }

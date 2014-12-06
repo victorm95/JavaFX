@@ -1,7 +1,5 @@
 package sipcoffee.models;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import sipcoffee.App;
 
 import javax.persistence.*;
@@ -10,10 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Usuarios")
-@NamedQueries({
-        @NamedQuery(name = "all-Usuarios", query = "SELECT user FROM Usuario as user"),
-        @NamedQuery(name = "findById-Usuario", query = "SELECT user FROM Usuario as user WHERE user.id=:id"),
-        @NamedQuery(name = "login-Usuario", query = "SELECT user FROM Usuario as user WHERE user.usuario=:usuario AND user.clave=:clave")})
+@NamedQuery(name = "all-Usuarios", query = "SELECT user FROM Usuario as user")
 public class Usuario {
 
     // Constructores
@@ -23,6 +18,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "idUsuario")
     private int id;
 
     @Column(name = "nombre", length = 30)
@@ -167,11 +163,6 @@ public class Usuario {
 
     public void setMunicipio(Municipio municipio) {
         this.municipio = municipio;
-    }
-
-    public boolean isEmpty() {
-        Conexion.init();
-        return Conexion.namedQuery("all-Usuarios").isEmpty();
     }
 
 }

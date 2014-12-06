@@ -1,8 +1,5 @@
 package sipcoffee.models;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -29,43 +26,11 @@ public class Nomina {
     @OneToOne
     private Proceso proceso;
 
-    @Column(name = "horas")
     private int horas;
-
-    @Column(name = "valor")
     private int valor;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fechaRegistro")
     private Date fechaRegistro;
-
-	/*-------------------------------------- Acciones DB ---------------------------------------------*/
-
-    public boolean save() {
-        return Conexion.persist(this);
-    }
-
-    public Nomina find(int id) {
-        Conexion.init();
-        return (Nomina) Conexion.manager.createNamedQuery("findById-Nomina")
-                .setParameter("id", id).getSingleResult();
-    }
-
-    public String all() {
-        JSONArray jsonArray = new JSONArray();
-
-        List<Object> list = Conexion.namedQuery("all-Nominas");
-
-        for (Object nomina : list) {
-            jsonArray.put(((Nomina) nomina).toJson());
-        }
-
-        return jsonArray.toString();
-    }
-
-    public boolean delete() {
-        return Conexion.delete(this);
-    }
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 
@@ -113,16 +78,4 @@ public class Nomina {
         this.fechaRegistro = fecha;
     }
 
-	/*-------------------------------------- Conversiones ---------------------------------------------*/
-
-    public String toJson() {
-        JSONObject json = new JSONObject();
-        json.put("id", this.id);
-        json.put("usuario", new JSONObject(this.usuario.toJson()));
-        json.put("proceso", new JSONObject(this.proceso.toJson()));
-        json.put("horas", this.horas);
-        json.put("valor", this.valor);
-        json.put("fechaRegistro", this.fechaRegistro);
-        return json.toString();
-    }
 }

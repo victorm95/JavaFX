@@ -2,6 +2,7 @@ package sipcoffee.rest.resources;
 
 import org.glassfish.grizzly.Result;
 import sipcoffee.models.Rol;
+import sipcoffee.App;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,7 +18,7 @@ import java.util.List;
 @Path("/roles")
 public class RolResource {
 
-    @PersistenceContext(unitName = "dev")
+    @PersistenceContext(unitName = App.PERSISTENCE_UNIT)
     EntityManager entityManager;
 
     @GET
@@ -30,10 +31,10 @@ public class RolResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveRol(Rol rol, @Context UriInfo uriInfo){
+		 this.entityManager.persist(rol);
+		 
         UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
         URI uriCreated = uriBuilder.path(String.valueOf(rol.getId())).build();
-
-        this.entityManager.persist(rol);
 
         return Response.created(uriCreated).entity(rol).build();
     }

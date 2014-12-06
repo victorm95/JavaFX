@@ -1,8 +1,5 @@
 package sipcoffee.models;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -27,39 +24,7 @@ public class Departamento {
     @Column(name = "idDepartamento", nullable = false)
     private int id;
 
-    @Column(name = "nombre")
     private String nombre;
-
-	/*-------------------------------------- Acciones DB ---------------------------------------------*/
-
-    public boolean save() {
-        return Conexion.persist(this);
-    }
-
-    public Departamento find(int id) {
-        Conexion.init();
-        return (Departamento) Conexion.manager.createNamedQuery("findById-Departamento").setParameter("id", id).getSingleResult();
-    }
-
-    public String all() {
-        JSONArray jsonArray = new JSONArray();
-
-        List<Object> list = Conexion.namedQuery("all-Departamento");
-
-        for (Object departamento : list) {
-            jsonArray.put(((Departamento) departamento).toJson());
-        }
-
-        return jsonArray.toString();
-    }
-
-    public boolean delete() {
-        return Conexion.delete(this);
-    }
-
-    public boolean isEmpty() {
-        return Conexion.namedQuery("all-Departamento").isEmpty();
-    }
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 
@@ -73,15 +38,6 @@ public class Departamento {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-	/*-------------------------------------- Conversiones ---------------------------------------------*/
-
-    public String toJson() {
-        JSONObject json = new JSONObject();
-        json.put("id", this.id);
-        json.put("nombre", this.nombre);
-        return json.toString();
     }
 
 }
