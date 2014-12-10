@@ -12,7 +12,6 @@ public class Rol {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idRol")
 	private int id;
-
 	private String nombre;
 
     /* Constructs */
@@ -25,6 +24,7 @@ public class Rol {
     public void setNombre(String nombre) { this.nombre = nombre; }
     public String getNombre() { return this.nombre; }
 
+	 public void setId(int id) { this.id = id; }
     public int getId() { return this.id; }
 
     @Override

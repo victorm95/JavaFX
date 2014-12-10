@@ -2,12 +2,13 @@ package sipcoffee.rest.resources;
 
 import org.glassfish.grizzly.Result;
 import sipcoffee.models.Rol;
+import sipcoffee.models.Connection;
 import sipcoffee.App;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import javax.ws.rs.core.Response.Status;
 import java.net.URI;
 import java.util.List;
 
@@ -16,22 +17,38 @@ import java.util.List;
  */
 
 @Path("/roles")
+@Produces(MediaType.APPLICATION_JSON)
 public class RolResource {
 
-    @PersistenceContext(unitName = App.PERSISTENCE_UNIT)
-    EntityManager entityManager;
+	 /* Attrs */
+    private EntityManager entityManager;
+
+	 /* Construct */
+	 public RolResource() {
+	 	this.entityManager = Connection.getInstance();
+	 }
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     public List<Rol> getRoles(){
         return this.entityManager.createNamedQuery("all-Rol").getResultList();
     }
 
+	 @Path("/{id}")
+	 @GET
+	 public Response getRol(@PathParam("id")int id) {
+	 	Rol rol = this.entityManager.find(Rol.class, id);
+		if(rol == null)
+			return Response.status(Status.NOT_FOUND).build();
+		else
+			return Response.ok(rol).build();
+	 }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response saveRol(Rol rol, @Context UriInfo uriInfo){
+		 this.entityManager.getTransaction().begin();
 		 this.entityManager.persist(rol);
+		 this.entityManager.getTransaction().commit();
 		 
         UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
         URI uriCreated = uriBuilder.path(String.valueOf(rol.getId())).build();
@@ -42,13 +59,25 @@ public class RolResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateRol(Rol rol){
+   	  this.entityManager.getTransaction().begin();
         this.entityManager.merge(rol);
+		  this.entityManager.getTransaction().commit();
     }
 
     @Path("/{id}")
     @DELETE
-    public void deleteRol(@PathParam("id")int id){
-        this.entityManager.remove(this.entityManager.find(Rol.class, id));
+    public Response deleteRol(@PathParam("id")int id){
+		  Rol rol = this.entityManager.find(Rol.class, id);
+
+		  if(rol != null){
+			  this.entityManager.getTransaction().begin();
+   	     this.entityManager.remove(rol);
+			  this.entityManager.getTransaction().commit();
+
+			  return Response.noContent().build();
+		  } else {
+			  return Response.status(Status.NOT_FOUND).build();
+		  }
     }
 
 }

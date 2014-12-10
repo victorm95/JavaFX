@@ -3,7 +3,8 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
-    <persistence-unit name="dev" transaction-type="RESOURCE_LOCAL">
+	<!-- PersistenceUnit for development -->
+    <persistence-unit name="development" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
         <class>sipcoffee.models.Rol</class>
@@ -23,13 +24,43 @@
         <class>sipcoffee.models.Nomina</class>
 
 		  <properties>
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:./database"/>
-            <property name="javax.persistence.jdbc.user" value="test"/>
-            <property name="javax.persistence.jdbc.password" value="test"/>
+	         <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:./development-database"/>
+            <property name="javax.persistence.jdbc.user" value="developer"/>
+            <property name="javax.persistence.jdbc.password" value="developer"/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
+				<property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.H2Platform"/>
         </properties>
+	  </persistence-unit>
 
-    </persistence-unit>
+	  <!-- Persistence Unit for UnitTest -->
+	  <persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
+		  <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+		  <class>sipcoffee.models.Rol</class>
+        <class>sipcoffee.models.Usuario</class>
+        <class>sipcoffee.models.Departamento</class>
+        <class>sipcoffee.models.Municipio</class>
+        <class>sipcoffee.models.Proceso</class>
+        <class>sipcoffee.models.Producto</class>
+        <class>sipcoffee.models.Terreno</class>
+        <class>sipcoffee.models.Bloque</class>
+        <class>sipcoffee.models.Parcela</class>
+        <class>sipcoffee.models.Cafeto</class>
+        <class>sipcoffee.models.Siembra</class>
+        <class>sipcoffee.models.Cosecha</class>
+        <class>sipcoffee.models.Entrada</class>
+        <class>sipcoffee.models.Salida</class>
+        <class>sipcoffee.models.Nomina</class>
+
+	      <properties>
+				<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+				<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test-database"/>
+				<property name="javax.persistence.jdbc.user" value="test"/>
+				<property name="javax.persistence.jdbc.password" value="test"/>
+				<property name="eclipselink.ddl-generation" value="create-tables"/>
+				<property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.H2Platform"/>
+			</properties>
+	  </persistence-unit>
 
 </persistence> 

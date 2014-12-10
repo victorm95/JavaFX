@@ -4,19 +4,16 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import netscape.javascript.JSObject;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-
 import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
 import java.net.URI;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import sipcoffee.models.Connection;
 
 public class App extends Application {
 
@@ -25,9 +22,6 @@ public class App extends Application {
     public static final URI BASE_URI = UriBuilder.fromUri("http://localhost/rest").port(PORT).build();
 	 public static final String PERSISTENCE_UNIT = "dev";
     private static HttpServer server;
-    private WebView webView;
-    private WebEngine engine;
-    private JSObject windowJS;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -39,17 +33,17 @@ public class App extends Application {
     }
 
     public static void main(String args[]) {
+		  Connection.getInstance(Connection.DEV_UNIT);
         App.server = App.startServer();
+		  System.out.println("Servicio REST corriendo en: " + BASE_URI);
+
         launch(args);
     }
 
     public static String hash(Object text) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
-
             md.update(text.toString().getBytes());
-
-            // return new String( md.digest() );
 
             byte byteData[] = md.digest();
 
