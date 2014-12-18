@@ -24,30 +24,29 @@ public class RolResourceTest extends JerseyTest {
         return new ResourceConfig(RolResource.class);
     }
 
-	 /** Test for create a Rol */
     @Test
     public void createRol() {
-		 Rol adminRol = new Rol("Admin");
+		 Rol rol = new Rol("Admin");
+		 Response response;
 
-		 Response response = target("roles").request().post(Entity.entity(adminRol, MediaType.APPLICATION_JSON));
-
-		 adminRol = response.readEntity(Rol.class);
-
+		 // Test for create a Rol
+		 response = target("roles").request().post(Entity.entity(rol, MediaType.APPLICATION_JSON));
+		 rol = response.readEntity(Rol.class);
 		 Assert.assertEquals(Response.Status.CREATED.getStatusCode(), response.getStatus());
-		 Assert.assertEquals(target("roles/"+adminRol.getId()).getUri().toString(), response.getHeaderString("Location"));
-    }
+		 Assert.assertEquals(target("roles/"+rol.getId()).getUri().toString(), response.getHeaderString("Location"));
 
-	 /** Test for remove a Rol */
-	 @Test
-	 public void removeRol(){
-		 Rol testRol = new Rol("test");
+		 // Test for consult a Rol
+		 response = target("roles/"+rol.getId()).request().get();
+		 Assert.assertEquals(rol.toString(), (response.readEntity(Rol.class)).toString());
 
-		 Response saveResponse = target("roles").request().post(Entity.entity(testRol, MediaType.APPLICATION_JSON));
-		 testRol = saveResponse.readEntity(Rol.class);
+		 // Test for update a Rol
+		 rol.setNombre("Test");
+		 response = target("roles").request().put(Entity.entity(rol, MediaType.APPLICATION_JSON));		 
+		 Assert.assertEquals(rol.toString(), (response.readEntity(Rol.class)).toString());
 
-		 Response response = target("roles/"+testRol.getId()).request().delete();
-
+		 // Test for delete a Rol
+		 response = target("roles/"+rol.getId()).request().delete();
 		 Assert.assertEquals(Response.Status.NO_CONTENT.getStatusCode(), response.getStatus());
-	 }
+    }
 
 }

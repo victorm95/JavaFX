@@ -58,10 +58,12 @@ public class RolResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void updateRol(Rol rol){
+    public Rol updateRol(Rol rol){
    	  this.entityManager.getTransaction().begin();
         this.entityManager.merge(rol);
 		  this.entityManager.getTransaction().commit();
+
+		  return rol;
     }
 
     @Path("/{id}")

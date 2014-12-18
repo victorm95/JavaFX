@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.grizzly.ssl.SSLContextConfigurator;
+import org.glassfish.grizzly.ssl.SSLEngineConfigurator;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import javax.ws.rs.core.UriBuilder;
@@ -19,7 +21,7 @@ public class App extends Application {
 
     /* Attrs */
     public static final int PORT = 3000;
-    public static final URI BASE_URI = UriBuilder.fromUri("http://localhost/rest").port(PORT).build();
+    public static final URI BASE_URI = UriBuilder.fromUri("https://localhost/rest").port(PORT).build();
 	 public static final String PERSISTENCE_UNIT = "dev";
     private static HttpServer server;
 
@@ -61,13 +63,21 @@ public class App extends Application {
     }
 
     public static HttpServer startServer(){
+		  SSLContextConfigurator sslConf = new SSLContextConfigurator();
+		  sslConf.setKeyStoreFile(App.class.getResource("secure/ServerStore").toString());
+		  sslConf.setKeyStorePass("sipcoffee-admin");
+		  //sslConf.setKeyStoreType("JKS");
+		  //sslConf.setKeyStoreProvider("SUN");
+		  //sslConf.setTrustStoreFile(App.class.getResource("secure/ClientStore").toString());
+		  //sslConf.setTrustStorePass("sipcoffee-admin");
+
         ResourceConfig config = new ResourceConfig()
                 .packages("sipcoffee.rest.resources")
                 .register(sipcoffee.rest.Config.class)
                 .register(org.glassfish.jersey.moxy.json.MoxyJsonConfig.class)
-                .register(org.glassfish.jersey.moxy.json.MoxyJsonFeature.class);
+                .register(org.glassfish.jersey.moxy.json.MoxyJsonFeature.class);		  
 
-        return GrizzlyHttpServerFactory.createHttpServer(BASE_URI, config);
+        return GrizzlyHttpServerFactory.createHttpServer(BASE_URI, config, true, new SSLEngineConfigurator(sslConf));
     }
 
 }
