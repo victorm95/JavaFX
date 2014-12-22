@@ -4,9 +4,9 @@ import org.glassfish.grizzly.Result;
 
 import sipcoffee.models.Usuario;
 import sipcoffee.App;
+import sipcoffee.models.Connection;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
@@ -20,8 +20,13 @@ import java.util.List;
 @Path("/usuarios")
 public class UsuarioResource {
 
-	@PersistenceContext(unitName = App.PERSISTENCE_UNIT)
-	EntityManager entityManager;
+	// Attrs
+	private EntityManager entityManager;
+
+	// Construct
+	public UsuarioResource() {
+		this.entityManager = Connection.getInstance();
+	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

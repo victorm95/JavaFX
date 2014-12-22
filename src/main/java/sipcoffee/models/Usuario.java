@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Usuarios")
-@NamedQuery(name = "all-Usuarios", query = "SELECT user FROM Usuario as user")
+@NamedQuery(name = "all-Usuario", query = "SELECT user FROM Usuario as user")
 public class Usuario {
 
     // Constructores
@@ -61,6 +61,10 @@ public class Usuario {
 
 	/*-------------------------------------- Setter / Getters ---------------------------------------------*/
 
+	 public void setId(int id) {
+		 this.id = id;
+	 }
+
     public int getId() {
         return this.id;
     }
@@ -97,16 +101,16 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public boolean isActivo() {
-        return activo;
-    }
-
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
 
+	 public boolean getActivo() {
+		 return this.activo;
+	 }
+
     public String getUsuario() {
-        return usuario;
+        return this.usuario;
     }
 
     public void setUsuario(String usuario) {
@@ -114,7 +118,7 @@ public class Usuario {
     }
 
     public String getClave() {
-        return clave;
+        return this.clave;
     }
 
     public void setClave(String clave) {
@@ -122,7 +126,7 @@ public class Usuario {
     }
 
     public Date getExpedicionDocumento() {
-        return expedicionDocumento;
+        return this.expedicionDocumento;
     }
 
     public void setExpedicionDocumento(Date expedicionDocumento) {
@@ -134,7 +138,7 @@ public class Usuario {
     }
 
     public Date getUltimaSesion() {
-        return ultimaSesion;
+        return this.ultimaSesion;
     }
 
     public void setUltimaSesion(Date ultimaSesion) {
@@ -142,7 +146,7 @@ public class Usuario {
     }
 
     public Rol getRol() {
-        return rol;
+        return this.rol;
     }
 
     public void setRol(Rol rol) {
@@ -150,7 +154,7 @@ public class Usuario {
     }
 
     public Date getFechaRegistro() {
-        return fechaRegistro;
+        return this.fechaRegistro;
     }
 
     public void setFechaRegistro(Date fechaRegistro) {
@@ -158,7 +162,7 @@ public class Usuario {
     }
 
     public Municipio getMunicipio() {
-        return municipio;
+        return this.municipio;
     }
 
     public void setMunicipio(Municipio municipio) {
