@@ -2,11 +2,14 @@ package sipcoffee.rest.resources;
 
 import org.glassfish.grizzly.Result;
 
+import org.h2.engine.User;
 import sipcoffee.models.Usuario;
 import sipcoffee.App;
 import sipcoffee.models.Connection;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.RollbackException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
@@ -38,7 +41,13 @@ public class UsuarioResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response saveUsuario(Usuario usuario, @Context UriInfo uriInfo) {
-		this.entityManager.persist(usuario);
+		try {
+			this.entityManager.getTransaction().begin();
+			this.entityManager.persist(usuario);
+			this.entityManager.getTransaction().commit();
+		} catch(RollbackException e) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
 
 		UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
 		URI uriCreated = uriBuilder.path(String.valueOf(usuario.getId())).build();
@@ -55,6 +64,27 @@ public class UsuarioResource {
 	@DELETE
 	public void deleteRol(@PathParam("id")int id) {
 		this.entityManager.remove(this.entityManager.find(Usuario.class, id));
+	}
+
+
+	@Path("/login")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response login(Usuario usuario) {
+		try {
+			Usuario temp = (Usuario) this.entityManager.createNamedQuery("login-Usuario")
+					.setParameter("usuario", usuario.getUsuario())
+					.setParameter("clave", usuario.getClave())
+					.getSingleResult();
+
+			if(temp.getActivo())
+				return Response.ok(temp).build();
+			else
+				return Response.status(Response.Status.UNAUTHORIZED).build();
+		} catch(NoResultException e) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
 	}
 
 }

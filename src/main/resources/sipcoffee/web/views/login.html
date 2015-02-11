@@ -1,34 +1,63 @@
-<div class="col-sm-offset-1 col-md-offset-4 col-sm-10 col-md-4 well well-lg">
+<!DOCTYPE html>
+<html ng-app="sesion">
+    <head>
+        <meta charset="utf-8"/>
 
-    <form class="form-horizontal" ng-submit="login()">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css"/>
 
-        <div class="form-group">
-            <div class="col-md-offset-1 col-sm-offset-3 col-md-3 col-sm-3">
-                <label for="usuario" class="control-label">Usuario</label>
-            </div>
-            <div class="col-sm-5 col-md-7">
-                <input type="text" ng-model="usuario" id="usuario" class="form-control" placeholder="Usuario"/>
-            </div>
-        </div>
+        <!-- AngularJS -->
+        <script src="../assets/js/angularjs/angular.min.js"></script>
+        <script src="../assets/js/angularjs/angular-resource.min.js"></script>
+        <script src="../assets/js/services/config.js"></script>
+        <script src="../assets/js/services/sesionService.js"></script>
+        <script src="../assets/js/controllers/sesionController.js"></script>
 
-        <div class="form-group">
-            <div class="col-md-offset-1 col-sm-offset-3 col-md-3 col-sm-3">
-                <label for="clave" class="control-label">Clave</label>
-            </div>
-            <div class="col-sm-5 col-md-7">
-                <input type="password" ng-model="clave" id="clave" class="form-control" placeholder="Clave"/>
-            </div>
-        </div>
+        <!-- Polymer -->
+        <script src="../assets/components/platform/platform.js"></script>
+        <link rel="import" href="../assets/components/paper-toast/paper-toast.html"/>
 
-        <div class="form-group">
-            <div class="col-md-offset-1 col-sm-offset-1 col-md-5 col-sm-5">
-                <input type="submit" value="Entrar" class="btn btn-success btn-block"/>
-            </div>
-            <div class="col-md-5 col-sm-5">
-                <input type="reset" value="Limpiar" class="btn btn-danger btn-block"/>
-            </div>
-        </div>
+    </head>
 
-    </form>
+<body>
 
-</div>
+
+    <div class="col-sm-offset-1 col-md-offset-4 col-sm-10 col-md-4 well well-lg" style="margin-top: 50px;" ng-controller="loginController">
+
+        <form class="form-horizontal" ng-submit="login()">
+
+            <div class="form-group">
+                <div class="col-md-offset-1 col-sm-offset-3 col-md-3 col-sm-3">
+                    <label for="usuario" class="control-label">Usuario</label>
+                </div>
+                <div class="col-sm-5 col-md-7">
+                    <input type="text" ng-model="usuario" id="usuario" class="form-control" placeholder="Usuario"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-1 col-sm-offset-3 col-md-3 col-sm-3">
+                    <label for="clave" class="control-label">Clave</label>
+                </div>
+                <div class="col-sm-5 col-md-7">
+                    <input type="password" ng-model="clave" id="clave" class="form-control" placeholder="Clave"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-1 col-sm-offset-1 col-md-5 col-sm-5">
+                    <input type="submit" value="Entrar" class="btn btn-success btn-block"/>
+                </div>
+                <div class="col-md-5 col-sm-5">
+                    <input type="reset" value="Limpiar" class="btn btn-danger btn-block"/>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <paper-toast id="toast" text="" class="capsule"></paper-toast>
+
+</body>
+</html>

@@ -27,10 +27,16 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent splash = FXMLLoader.load(getClass().getResource("login.fxml"));
+        /*Parent splash = FXMLLoader.load(getClass().getResource("login.fxml"));
         stage.setScene(new Scene(splash));
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Sipcoffee");
+        stage.show();*/
+
+        Browser browser = new Browser();
+
+        stage.setTitle("Sipcoffee");
+        stage.setScene(new Scene(browser.getWebView()));
         stage.show();
     }
 

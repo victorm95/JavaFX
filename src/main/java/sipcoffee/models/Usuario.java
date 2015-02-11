@@ -8,7 +8,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "Usuarios")
-@NamedQuery(name = "all-Usuario", query = "SELECT user FROM Usuario as user")
+@NamedQueries({
+        @NamedQuery(name = "all-Usuario", query = "SELECT user FROM Usuario as user"),
+        @NamedQuery(name = "login-Usuario", query = "SELECT user FROM Usuario as user WHERE user.usuario=:usuario AND user.clave=:clave") })
 public class Usuario {
 
     // Constructores
@@ -18,7 +20,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 @Column(name = "idUsuario")
+	@Column(name = "idUsuario")
     private int id;
 
     @Column(name = "nombre", length = 30)
@@ -168,5 +170,6 @@ public class Usuario {
     public void setMunicipio(Municipio municipio) {
         this.municipio = municipio;
     }
+
 
 }
