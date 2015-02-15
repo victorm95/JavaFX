@@ -29,7 +29,7 @@ public class Rol {
 
     @Override
     public String toString() {
-        return "{id: :id, nombre: ':nombre'}"
+        return "{'id': :id, 'nombre': ':nombre'}"
 			  .replace(":id", String.valueOf(this.id))
 			  .replace(":nombre", this.nombre);
     }

@@ -46,6 +46,8 @@ public class UsuarioResource {
 			this.entityManager.persist(usuario);
 			this.entityManager.getTransaction().commit();
 		} catch(RollbackException e) {
+            System.out.println("[Usuario]: " + usuario.toString());
+            //System.out.println(e.toString());
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 
@@ -56,8 +58,16 @@ public class UsuarioResource {
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void updateUsuario(Usuario usuario) {
-		this.entityManager.merge(usuario);
+	public Response updateUsuario(Usuario usuario) {
+        try {
+            this.entityManager.getTransaction().begin();
+            this.entityManager.merge(usuario);
+            this.entityManager.getTransaction().commit();
+
+            return Response.ok(usuario).build();
+        } catch(RollbackException e) {
+            return Response.status(Response.Status.CONFLICT).build();
+        }
 	}
 
 	@Path("/{id}")
@@ -81,7 +91,7 @@ public class UsuarioResource {
 			if(temp.getActivo())
 				return Response.ok(temp).build();
 			else
-				return Response.status(Response.Status.UNAUTHORIZED).build();
+				return Response.status(Response.Status.FORBIDDEN).build();
 		} catch(NoResultException e) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}

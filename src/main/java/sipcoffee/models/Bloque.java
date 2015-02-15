@@ -16,7 +16,7 @@ public class Bloque {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 @Column(name = "idBloque")
+	@Column(name = "idBloque")
     private int id;
 
     @JoinColumn(name = "idTerreno", referencedColumnName = "idTerreno", nullable = true)

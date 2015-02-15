@@ -16,6 +16,7 @@ public class Usuario {
     // Constructores
     public Usuario() {
         this.activo = true;
+        this.fechaRegistro = new Date();
     }
 
     @Id
@@ -45,7 +46,7 @@ public class Usuario {
     private Date fechaRegistro;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "expedicionDocumento", nullable = false)
+    @Column(name = "expedicionDocumento", nullable = true)
     private Date expedicionDocumento;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -169,6 +170,23 @@ public class Usuario {
 
     public void setMunicipio(Municipio municipio) {
         this.municipio = municipio;
+    }
+
+
+    @Override
+    public String toString() {
+        return "{'nombre': ':nombre', 'usuario': ':usuario', 'clave': ':clave', 'cedula', :cedula, 'direccion': ':direccion', 'telefono': :telefono, 'activo': :activo, 'fechaRegistro': ':fechaRegistro', 'expedicionDocumento': ':expedicionDocumento', 'ultimaSesion': ':ultimaSesion', 'rol': ':rol'}"
+                .replace(":nombre", this.nombre)
+                .replace(":usuario", this.usuario)
+                .replace(":clave", this.clave)
+                .replace(":cedula", String.valueOf(this.cedula))
+                .replace(":direccion", this.direccion)
+                .replace(":telefono", String.valueOf(this.telefono))
+                .replace(":activo", String.valueOf(this.activo))
+                .replace(":fechaRegistro", String.valueOf(this.fechaRegistro))
+                .replace(":expedicionDocumento", String.valueOf(this.expedicionDocumento))
+                .replace(":ultimaSesion", String.valueOf(this.ultimaSesion))
+                .replace(":rol", String.valueOf(this.rol));
     }
 
 
